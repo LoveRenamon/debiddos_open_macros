@@ -1,0 +1,271 @@
+/*
+	fuck gmod e seus sistema obrigatório que usa ordem sobre ID
+	dessa vez vou usar na sequência que eu quero e fuck-off
+
+	Se trata das expressões facias da Bianka Ataegina (AKA.: Durandal) usando os padrões do MikuMikuDance para Source.
+	Geralmente você não poderá usa-lo diretamente, (pois cada artista cria Shape Keys com nomes diferentes)
+	Portanto use como referência para editar conforme sua necessidade.
+*/
+flexcontroller head range -1 1 head_forwardback					// inútil para 9-way
+flexcontroller head range -60 60 head_rightleft					// inútil para 9-way
+flexcontroller head range -30 30 head_updown						// inútil para 9-way
+flexcontroller head range -15 15 head_tilt							// inútil para 9-way
+flexcontroller chest range -35 35 chest_rightleft				// inútil para 9-way
+flexcontroller chest range -21 21 chest_updown					// inútil para 9-way
+flexcontroller gesture range -45 45 gesture_updown			// inútil para 9-way
+flexcontroller gesture range -45 45 gesture_rightleft		// inútil para 9-way
+
+flexcontroller eye range 0 1 hide_iris
+flexcontroller eye range -1 1 pupil_size eye_bright  		// FIXME: FUCK YOU GMOD FACEPOSER
+flexcontroller eye range -0.25 1 right_iris left_iris  	// FIXME: FUCK YOU GMOD FACEPOSER
+flexcontroller eye range -$eyedeflection$ $eyedeflection$ eyes_updown
+flexcontroller eye range -$eyedeflection$ $eyedeflection$ eyes_rightleft
+
+flexcontroller fx range 0 1 star love blush lol shock droplet angry pinch tears close calm hachu salted
+
+flexcontroller eyelid range 0 1 half_closed blink wink
+flexcontroller eyelid range 0 1 right_wink left_wink
+flexcontroller eyelid range 0 1 right_lid_closer left_lid_closer
+flexcontroller eyelid range 0 1 right_lid_raiser left_lid_raiser
+flexcontroller eyelid range 0 1 right_lid_tightener left_lid_tightener
+flexcontroller eyelid range 0 1 right_lid_squinter left_lid_squinter
+flexcontroller eyelid range 0 1 right_lid_droop left_lid_droop
+
+flexcontroller brow range 0 1 right_inner_raiser left_inner_raiser
+flexcontroller brow range 0 1 right_outer_raiser left_outer_raiser
+flexcontroller brow range 0 1 right_lowerer left_lowerer
+
+flexcontroller nose range 0 1 right_cheek_raiser left_cheek_raiser
+//flexcontroller nose range 0 1 right_wrinkler left_wrinkler
+//flexcontroller nose range 0 1 wrinkler dilator
+
+flexcontroller mouth range 0 1 right_upper_raiser left_upper_raiser
+flexcontroller mouth range 0 1 right_corner_puller left_corner_puller
+//flexcontroller mouth range 0 1 right_corner_depressor left_corner_depressor
+//flexcontroller mouth range 0 1 right_cheek_puffer left_cheek_puffer
+//flexcontroller mouth range 0 1 right_sneer left_sneer
+//flexcontroller mouth range 0 1 chin_raiser
+flexcontroller mouth range 0 1 smile smile_2 lower_lip
+flexcontroller mouth range -1 1 tongue_updown
+flexcontroller mouth range 0 2 jaw_drop
+flexcontroller mouth range 0 1 right_mouth_drop left_mouth_drop
+flexcontroller mouth range 0 1 wide_open
+flexcontroller mouth range 0 1 bite presser tightener jaw_clencher
+//flexcontroller mouth	range -1 1 mouth_sideways    // FIXME: FUCK YOU GMOD FACEPOSER
+//flexcontroller mouth	range -1 1 jaw_sideways      // FIXME: FUCK YOU GMOD FACEPOSER
+flexcontroller mouth range 0 1 lick w
+
+flexcontroller phoneme range 0 1 a ah e i o ch m wa
+flexcontroller phoneme range 0 1 right_part left_part
+flexcontroller phoneme range 0 1 right_puckerer left_puckerer
+flexcontroller phoneme range 0 1 right_funneler left_funneler
+flexcontroller phoneme range 0 1 right_stretcher left_stretcher
+
+// Agora as equações lixosas que fiz na marra
+
+// descanço, para forçar resetar à expressão default
+%AU0R = (1-right_lid_squinter)*(1-right_lid_droop)*(1-right_lid_raiser) \\
+*(1-right_lid_tightener)*(1-half_closed)*(1-blink)*(1-wink)*(1-right_wink) \\
+*(1-a)*(1-ah)*(1-e)*(1-i)*(1-o)*(1-ch)*(1-m)*(1-wa)*(1-lick)*(1-w) \\
+*(1-right_stretcher)*(1-bite)*(1-presser)*(1-tightener)*(1-jaw_clencher) \\
+*(1-wide_open)*(1-right_mouth_drop)*(1-jaw_drop)*(1-smile)*(1-smile_2) \\
+*(1-lower_lip)*(1-right_corner_puller)*(1-hide_iris) \\
+*(1-star)*(1-love)*(1-blush)*(1-lol)*(1-shock)*(1-droplet) \\
+*(1-angry)*(1-pinch)*(1-tears)*(1-close)*(1-calm)*(1-hachu)*(1-salted)
+
+%AU0L = (1-left_lid_squinter)*(1-left_lid_droop)*(1-left_lid_raiser) \\
+*(1-left_lid_tightener)*(1-half_closed)*(1-blink)*(1-wink)*(1-left_wink) \\
+*(1-a)*(1-ah)*(1-e)*(1-i)*(1-o)*(1-ch)*(1-m)*(1-wa)*(1-lick)*(1-w) \\
+*(1-left_stretcher)*(1-bite)*(1-presser)*(1-tightener)*(1-jaw_clencher) \\
+*(1-wide_open)*(1-left_mouth_drop)*(1-jaw_drop)*(1-smile)*(1-smile_2) \\
+*(1-lower_lip)*(1-left_corner_puller)*(1-hide_iris) \\
+*(1-star)*(1-love)*(1-blush)*(1-lol)*(1-shock)*(1-droplet) \\
+*(1-angry)*(1-pinch)*(1-tears)*(1-close)*(1-calm)*(1-hachu)*(1-salted)
+
+// Sensors
+localvar lip_suppressor
+localvar lower_lip_active
+localvar right_open left_open
+localvar right_eye_suppressor left_eye_suppressor
+localvar eye_suppressor
+
+%lower_lip_active = lower_lip*(1-min(jaw_drop/2,1)
+%right_open = right_part+right_puckerer+right_funneler+right_upper_raiser*0.5+%lower_lip_active
+%left_open = left_part+left_puckerer+left_funneler+left_upper_raiser*0.5+%lower_lip_active
+%lip_suppressor = (1-presser)*(1-bite)
+%eye_suppressor = (1-blink)*(1-right_wink)*(1-wink)*(1-right_lid_closer)*(1-left_wink)*(1-wink)*(1-left_lid_closer)
+
+localvar right_open left_open
+%right_open = right_part*(1-smile)*(1-smile_2) \\
++right_puckerer+right_funneler+right_upper_raiser*0.5+lower_lip*0.5
+%left_open = left_part*(1-smile)*(1-smile_2) \\
++left_puckerer+left_funneler+left_upper_raiser*0.5+lower_lip*0.5
+
+// eye system part, dividimos por 15 que é o ângulo mágico permitido pelo flexcontroller que está settado em 30°
+%eyeup = min(max(eyes_updown/15,0),1)
+%eyedown = min(max(-eyes_updown/15,0),1)
+%eyeright = min(max(eyes_rightleft/15,0),1)
+%eyeleft = min(max(-eyes_rightleft/15,0),1)
+
+%eyebrightsize = max(eye_bright,-0.861539)
+%eyebrighthide = max(-eye_bright*0.5,0)
+
+// wink > blink > leftright_lid_closer || right_lid_closer
+%blinkR = half_closed*(1-blink)*(1-right_wink)*(1-wink)*(1-right_lid_closer)*0.25 \\
++ right_lid_closer*(1-blink)*(1-wink)*(1-right_wink) \\
++ blink*(1-wink)*(1-right_wink)
+%blinkL = half_closed*(1-blink)*(1-left_wink)*(1-wink)*(1-left_lid_closer)*0.25 \\
++ left_lid_closer*(1-blink)*(1-wink)*(1-left_wink) \\
++ blink*(1-wink)*(1-left_wink)
+
+%winkR = right_wink*(1-wink)+wink
+%winkL = left_wink*(1-wink)+wink
+
+// iris
+%irishide = min(hide_iris*16,1)
+%irissizeR = right_iris*(1-%irishide)
+%irissizeL = left_iris*(1-%irishide)
+
+// pupil
+%pupilsize = max(pupil_size,-0.864664)
+
+// eyelid
+%lidslantR = right_lid_droop*(1-right_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-right_lid_squinter*0.1)*(1-right_lid_tightener*0.1)*(1-right_lid_raiser*0.1)
+%lidslantL = left_lid_droop*(1-left_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-left_lid_squinter*0.1)*(1-left_lid_tightener*0.1)*(1-left_lid_raiser*0.1)
+%lidsurpriseR = right_lid_raiser*(1-right_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-right_lid_squinter*0.1)*(1-right_lid_tightener*0.1)*(1-right_lid_droop*0.1)
+%lidsurpriseL = left_lid_raiser*(1-left_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-left_lid_squinter*0.1)*(1-left_lid_tightener*0.1)*(1-left_lid_droop*0.1)
+%lidcontemptR = right_lid_tightener*(1-right_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-right_lid_squinter*0.1)*(1-right_lid_raiser*0.1)*(1-right_lid_droop*0.1)
+%lidcontemptL = left_lid_tightener*(1-left_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-left_lid_squinter*0.1)*(1-left_lid_raiser*0.1)*(1-left_lid_droop*0.1)
+%lidwailR = right_lid_squinter*(1-right_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-right_lid_droop*0.1)*(1-right_lid_tightener*0.1)*(1-right_lid_raiser*0.1)
+%lidwailL = left_lid_squinter*(1-left_lid_closer)*(1-blink)*(1-half_closed*0.5) \\
+* (1-left_lid_droop*0.1)*(1-left_lid_tightener*0.1)*(1-left_lid_raiser*0.1)
+
+// eyebrow
+// mixagem de AU1, AU2, AU4
+localvar RaiserInnerOuterLowererR RaiserInnerOuterLowererL
+%RaiserInnerOuterLowererR = right_inner_raiser*right_outer_raiser*right_lowerer
+%RaiserInnerOuterLowererL = left_inner_raiser*left_outer_raiser*left_lowerer
+
+// adiciona valor para flexcontroller ativo
+localvar ActiveBrowR ActiveBrowL
+%ActiveBrowR = min(%browseriousR+%browcheerfulR+%browsadnessR+%browupperR \\
++%browlowerR+%browangryR+%browshyR,1)/7
+%ActiveBrowL = min(%browseriousL+%browcheerfulL+%browsadnessL+%browupperL \\
++%browlowerL+%browangryL+%browshyL,1)/7
+
+%browseriousR = (right_outer_raiser*0.5*(1-right_inner_raiser))+right_outer_raiser*(1-right_inner_raiser)*(1-%browangryR) \\
+*right_lowerer+%RaiserInnerOuterLowererR/2+%ActiveBrowL
+%browseriousL = (left_outer_raiser*0.5*(1-left_inner_raiser))+left_outer_raiser*(1-left_inner_raiser)*(1-%browangryL) \\
+*left_lowerer+%RaiserInnerOuterLowererL/2+%ActiveBrowL
+%browcheerfulR = right_cheek_raiser+%ActiveBrowR
+%browcheerfulL = left_cheek_raiser+%ActiveBrowL
+%browsadnessR = (right_inner_raiser*0.5*(1-right_outer_raiser))+right_inner_raiser*right_outer_raiser*(1-right_lowerer)+%RaiserInnerOuterLowererR/2+%ActiveBrowL
+%browsadnessL = (left_inner_raiser*0.5*(1-left_outer_raiser))+left_inner_raiser*left_outer_raiser*(1-left_lowerer) \\
++%RaiserInnerOuterLowererL/2+%ActiveBrowL
+%browupperR = right_upper_raiser+%ActiveBrowR
+%browupperL = left_upper_raiser+%ActiveBrowL
+%browlowerR = right_lowerer \\
+*(1-(right_inner_raiser*0.4))*(1-right_outer_raiser) \\
+-%RaiserInnerOuterLowererR*0.5
+%browlowerL = left_lowerer \\
+*(1-(left_inner_raiser*0.4))*(1-left_outer_raiser) \\
+-%RaiserInnerOuterLowererL*0.5
+%browangryR = right_outer_raiser*(1-right_inner_raiser)*right_lowerer+%RaiserInnerOuterLowererR/2+%ActiveBrowL
+%browangryL = left_outer_raiser*(1-left_inner_raiser)*left_lowerer+%RaiserInnerOuterLowererL/2+%ActiveBrowL
+%browshyR = right_inner_raiser*(1-right_outer_raiser)*right_lowerer+%RaiserInnerOuterLowererR/2+%ActiveBrowL
+%browshyL = left_inner_raiser*(1-left_outer_raiser)*left_lowerer+%RaiserInnerOuterLowererL/2+%ActiveBrowL
+
+// phonemes
+%ahR = (wide_open+right_mouth_drop*0.337)*(1-ch)*(1-m)*(1-bite)*%lip_suppressor
+%ahL = (wide_open+left_mouth_drop*0.337)*(1-ch)*(1-m)*(1-bite)*%lip_suppressor
+%aR = a*(1-ah*0.5)*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%aL = a*(1-ah*0.5)*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%ah2R = ah*(1-a*0.5)*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%ah2L = ah*(1-a*0.5)*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%eR = e*(1-a*0.5)*(1-ah*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%eL = e*(1-a*0.5)*(1-ah*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%iR = i*(1-a*0.5)*(1-e*0.5)*(1-ah*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%iL = i*(1-a*0.5)*(1-e*0.5)*(1-ah*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%oR = o*(1-a*0.5)*(1-e*0.5)*(1-i*0.5)*(1-ah*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%oL = o*(1-a*0.5)*(1-e*0.5)*(1-i*0.5)*(1-ah*0.5)*(1-ch)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%chR = ch*(1-a*0.5)*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ah*0.5)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%chL = ch*(1-a*0.5)*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ah*0.5)*(1-m)*(1-wa*0.5) \\
+* (1-bite)*%lip_suppressor
+%mR = m*0.5+presser+(1-presser)*tightener
+%mL = m*0.5+presser+(1-presser)*tightener
+%waR = wa*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-ah*0.5) \\
+* (1-bite)*%lip_suppressor
+%waL = wa*(1-e*0.5)*(1-i*0.5)*(1-o*0.5)*(1-ch)*(1-m)*(1-ah*0.5) \\
+* (1-bite)*%lip_suppressor
+%wR = w*(1-bite)
+%wL = w*(1-bite)
+%lick = lick
+
+// mouth
+%mouthsmileR = right_corner_puller*(1-smile)*(1-%lower_lip_active)
+%mouthsmileL = left_corner_puller*(1-smile)*(1-%lower_lip_active)
+%mouthsmile2R = (smile+lower_lip+%right_open)/3
+%mouthsmile2L = (smile+lower_lip+%left_open)/3
+%mouthsmile3R = smile_2*(1-right_corner_puller)*(1-bite)
+%mouthsmile3L = smile_2*(1-left_corner_puller)*(1-bite)
+%mouthsmile4R = min(smile*2,1)*(1-smile_2)*2*(right_corner_puller)/2
+%mouthsmile4L = min(smile*2,1)*(1-smile_2)*2*(left_corner_puller)/2
+%mouthsmile5R = max(smile_2-0.5,0)*2*(1-smile)*(right_corner_puller)/2
+%mouthsmile5L = max(smile_2-0.5,0)*2*(1-smile)*(left_corner_puller)/2
+%mouthangryR = min(bite*2,1)*(1-bite)*2
+%mouthangryL = min(bite*2,1)*(1-bite)*2
+%mouthangry2R = max(bite-0.5,0)*2
+%mouthangry2L = max(bite-0.5,0)*2
+%AU26R = min(jaw_drop,1)*(1-bite)*%lip_suppressor*(1-wide_open)-%AU26ZR
+%AU26L = min(jaw_drop,1)*(1-bite)*%lip_suppressor*(1-wide_open)-%AU26ZL
+%AU26ZR = (max(jaw_drop,1)-1+(right_mouth_drop*jaw_drop*0.256))*(1-%ahR*0.5)*(1-bite)*%lip_suppressor*(1-wide_open)
+%AU26ZL = (max(jaw_drop,1)-1+(left_mouth_drop*jaw_drop*0.256))*(1-%ahL*0.5)*(1-bite)*%lip_suppressor*(1-wide_open)
+
+// tongue (lingua)
+%tongueupR = max(tongue_updown,0)
+%tongueupL = max(tongue_updown,0)
+%tonguedownR = max(-tongue_updown,0)
+%tonguedownL = max(-tongue_updown,0)
+
+// emoticons (MMD)
+%iconstar = min(star*4,1)
+%iconheart = min(love*4,1)
+%iconsour = min(droplet*4,1)
+%iconblush = min(blush*4,1)
+%iconshock = min(shock*4,1)
+%icontears = tears
+%iconangry = min(angry*4,1)
+%iconcalm = min(calm*4,1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconlolR)*(1-%iconlolL)
+%iconclose = min(close*4,1)*(1-%iconcalm)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconlolR)*(1-%iconlolL)
+%iconhachuR = min(hachu*4*(1-blink)*(1-right_wink)*(1-wink)*(1-right_lid_closer),1)*(1-%iconclose)*(1-%iconcalm)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconlolR)*(1-%iconlolL)
+%iconhachuL = min(hachu*4*(1-blink)*(1-left_wink)*(1-wink)*(1-left_lid_closer),1)*(1-%iconclose)*(1-%iconcalm)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconlolR)*(1-%iconlolL)
+%iconpinchR = min(pinch*4*(1-blink)*(1-right_wink)*(1-wink)*(1-right_lid_closer),1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconcalm)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconlolR)*(1-%iconlolL)
+%iconpinchL = min(pinch*4*(1-blink)*(1-left_wink)*(1-wink)*(1-left_lid_closer),1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconcalm)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconlolR)*(1-%iconlolL)
+%iconsaltedR = min(salted*4*(1-blink)*(1-right_wink)*(1-wink)*(1-right_lid_closer),1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconcalm)*(1-%iconlolR)*(1-%iconlolL)
+%iconsaltedL = min(salted*4*(1-blink)*(1-left_wink)*(1-wink)*(1-left_lid_closer),1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconcalm)*(1-%iconlolR)*(1-%iconlolL)
+%iconlolR = min(lol*4*(1-blink)*(1-right_wink)*(1-wink)*(1-right_lid_closer),1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconcalm)
+%iconlolL = min(lol*4*(1-blink)*(1-left_wink)*(1-wink)*(1-left_lid_closer),1)*(1-%iconclose)*(1-%iconhachuR)*(1-%iconhachuL)*(1-%iconpinchR)*(1-%iconpinchL)*(1-%iconsaltedR)*(1-%iconsaltedL)*(1-%iconcalm)
+
+// set the mouth shader illumination to roughly how far the mouth is open (isso nem é usado mais, but.. você soma metade do valor do flex para a variável %mouth)
+%mouth	= %ahR*0.5+%ahL*0.5+%ah2R*0.5+%ahL*0.5*%AU26R*0.5*%AU26L*0.5 \\
+					+ %eR*0.5+%eL*0.5+%oR*0.5+%oL*0.5*%AU26ZR*0.5*%AU26ZL*0.5 \\
+					+ %waR*0.5+%waL*0.5+%mouthsmile3R*0.5+%mouthsmile3L*0.5 \\
+					+ %aR*0.5+%aL*0.5

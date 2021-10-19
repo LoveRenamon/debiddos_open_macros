@@ -57,8 +57,8 @@ $jigglebone $BoneName$ \\
 		along_damping 8 \\
 		pitch_constraint -$Pitch$ $Pitch$ \\
 		yaw_constraint -$Yaw$ $Yaw$ \\
-	}
-}
+	} \\
+} \\
 
 
 /*

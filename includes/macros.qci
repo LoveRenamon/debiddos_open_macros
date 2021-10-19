@@ -26,6 +26,7 @@ $include ../debiddos_open_macros/includes/macro/ProportionTrick.qci
 
 // My macro for gmod viewmodel hands (c_arms) (v_model) or ... whataever you wanna call it
 $include ../debiddos_open_macros/includes/macro/ViewModelhands.qci
+$include ../debiddos_open_macros/includes/macro/GM_IncludeNPC.qci
 
 // My L4D2 macro research for the TLS Update
 $include ../debiddos_open_macros/includes/macro/ArkjArms.qci

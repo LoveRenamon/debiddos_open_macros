@@ -29,15 +29,15 @@ $jigglebone $BoneName$ { \\
 /*
 		Almost a full modular macro for "is_flexible"
 
-	Syntax: 			Macro							BoneName			Mass		Lenght			Pitch				Yaw			Along			Angle
+	Syntax: 			Macro							BoneName			Mass		Lengh			Pitch				Yaw			Along			Angle
 						$IsFlexibleAngle			 Prop_0 			 50				40				100 8			 75 8			60	6			 20
 */
-$definemacro IsFlexibleAngle BoneName Mass Lenght PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp Angle \\
+$definemacro IsFlexibleAngle BoneName Mass Lengh PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp Angle \\
 $jigglebone $BoneName$ { \\
 	is_flexible { \\
 		angle_constraint $Angle$ \\
 		tip_mass $Mass$ \\
-		length $Lenght$ \\
+		length $Lengh$ \\
 		pitch_stiffness $PitchStiff \\
 		pitch_damping $PitchDamp$ \\
 		yaw_stiffness $YawStiff \\
@@ -52,16 +52,16 @@ $jigglebone $BoneName$ { \\
 /*
 		A full modular macro for "is_flexible"
 
-	Syntax: 			Macro								BoneName			Mass		Lenght			Pitch				Yaw			Along
-						$IsFlexiblePitchYaw			 Jiggle_0 		 50				40				100 8			 75 8			60	6			
+	Syntax: 			Macro								BoneName			Mass		Lengh			Pitch				Yaw			Along
+						$IsFlexiblePitchYaw			 Jiggle_0 		 50				40				100 8			 75 8			60	6
 */
-$definemacro IsFlexiblePitchYaw BoneName Mass Lenght PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
+$definemacro IsFlexiblePitchYaw BoneName Mass Lengh PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
 $jigglebone $BoneName$ { \\
 	is_flexible { \\
-		pitch_constraint $Angle$ \\
-		yaw_constraint $Angle$ \\
+		pitch_constraint -$Angle$ $Angle$ \\
+		yaw_constraint -$Angle$ $Angle$ \\
 		tip_mass $Mass$ \\
-		length $Lenght$ \\
+		length $Lengh$ \\
 		pitch_stiffness $PitchStiff \\
 		pitch_damping $PitchDamp$ \\
 		yaw_stiffness $YawStiff \\

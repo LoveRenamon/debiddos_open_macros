@@ -6,8 +6,8 @@
 				Y = Yaw/Up
 				Z = Along/Front
 */
-$definemacro TailType1 BoneName Angle \\
-$jigglebone $BoneName$ \\
+$definemacro TailType1 BoneName Angle { \\
+$jigglebone $BoneName$ { \\
 { \\
 	is_flexible \\
 	{ \\
@@ -21,4 +21,23 @@ $jigglebone $BoneName$ \\
 		along_damping 0 \\
 		angle_constraint $Angle$ \\
 	} \\
+} \\
+
+
+/*
+	Fast and smooth, much like a Lizard tail behaviour with 15°
+*/
+$definemacro TailType2 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+  is_flexible { \\
+		length 200 \\
+		tip_mass 8 \\
+		pitch_stiffness 70 \\
+		pitch_damping 5 \\
+		yaw_stiffness 70 \\
+		yaw_damping 5 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint $Angle$ \\
+  } \\
 } \\

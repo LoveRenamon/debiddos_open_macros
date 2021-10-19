@@ -1,4 +1,11 @@
-/* the proportion trick discovered by CaptainBigButt */
+/*
+  the proportion trick discovered by CaptainBigButt
+
+  WARNING: Easier/Better use it by macro
+
+  Syntax:
+    $ProportionTrick "ReferenceFile "ProportionFile"
+*/
 
 // base pose, without any modifications
 $sequence "reference" $reference$ hidden fps 1
