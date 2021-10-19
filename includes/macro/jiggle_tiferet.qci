@@ -1,0 +1,58 @@
+/*
+	Originalmente feito para ser usado nas Tiferets da Rosemon que fiz;
+    Cada um dos ângulos por padrão eram 10°
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front/Forward
+*/
+
+
+/*
+	Syntax: 		Macro				BoneName		 Spring
+						$Tiferet			 Prop_0 		10 10 10
+*/
+$definemacro Tiferet BoneName AngleLeft AngleUp AngleForward \\
+$jigglebone $BoneName$ { \\
+	has_base_spring { \\
+	stiffness 41 \\
+	damping 6 \\
+	base_mass 10 \\
+	left_constraint -$AngleLeft$ $AngleLeft$ \\
+	up_constraint -$AngleUp$ $AngleUp$ \\
+	forward_constraint -$AngleForward$ $AngleForward$ \\
+	} \\
+} \\
+
+
+/*
+		Not actually used on Rosemon, but this also use "is_flexible" to gain even more movement
+
+	Syntax: 		Macro				BoneName		Pitch				Yaw			 Spring
+						$Tiferet2			 Prop_0 		-15 15		-15 15		10 10 10
+*/
+$definemacro Tiferet2 BoneName PitchMin PitchMax YawMin YawMax SpringAngleLeft SpringAngleUp SpringAngleForward \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 10 \\
+		tip_mass 10 \\
+		pitch_stiffness 120 \\
+		pitch_damping 4 \\
+		yaw_stiffness 120 \\
+		yaw_damping 4 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+	has_base_spring { \\
+		stiffness 41 \\
+		damping 6 \\
+		base_mass 10 \\
+		left_constraint -$SpringAngleLeft$ $SpringAngleLeft$ \\
+		up_constraint -$SpringAngleUp$ $SpringAngleUp$ \\
+		forward_constraint -$SpringAngleForward$ $SpringAngleForward$ \\
+	} \\
+} \\

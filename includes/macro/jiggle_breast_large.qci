@@ -1,0 +1,26 @@
+/*
+  Esse tipo de peito segue um tipo estilo purun purun (balança balança) de animes,
+  não tão distrativos quanto o jiggle_breast_purun.qci.
+	foi usado em commission privada da Nikolya "Nika" Akulova e Nataliya
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro BreastLarge BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		length 15 \\
+		tip_mass 0 \\
+		pitch_stiffness 50 \\
+		pitch_damping 5 \\
+		yaw_stiffness 50 \\
+		yaw_damping 5 \\
+		along_stiffness 50 \\
+		along_damping 0 \\
+		angle_constraint 15 \\
+	} \\
+} \\

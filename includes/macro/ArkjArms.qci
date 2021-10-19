@@ -1,0 +1,10 @@
+$definemacro ArkjArms filename fps \\
+  $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\
+  $sequence $filename$_arms a_$filename$ { \\
+  	fadein .256 fadeout .256 \\
+  	hidden loop \\
+  	fps $fps$ \\
+  	ikrule lhand release \\
+    ikrule "lhand" touch "ValveBiped.Bip01_R_Hand" \\
+  	weightlist CLAVICLES_ONLY \\
+  } \\

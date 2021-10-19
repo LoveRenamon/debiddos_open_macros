@@ -1,0 +1,15 @@
+/*
+  feito para adicionar Idle animation que da adiciona três "addlayer" e um blendlayer
+*/
+$definemacro ArkjIdleNoise SequenceName filename act fadein fadeout addlayer NoiseLayer \\
+  $sequence $SequenceName$ { \\
+  	a_$filename$ \\
+  	activity ACT_$act$ -1 \\
+  	loop \\
+  	blend "move_y" -1 1 blend "move_x" 1 -1 \\
+  	fadein $fadein$ fadeout $fadeout$ \\
+  	blendlayer $filename$_layer 0 0 0 0 local \\
+  	addlayer $filename$_arms \\
+  	addlayer $addlayer$ \\
+  	addlayer $NoiseLayer$ \\
+  } \\

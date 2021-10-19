@@ -1,0 +1,62 @@
+/*
+ 	Unique Upper Body Movement
+
+  Created for Melees and the Jockey that need a special controler
+
+	Syntax:	$uniqueLower <move> <weapon> <fps> <loopstart> <lastframe> <fixloop> <rotate>
+*/
+$definemacro ArkjUniqueUpper move weapon fps loopstart lastframe fixloop rotate weight \\
+$animation a_$move$_$weapon$ $move$_$weapon$ { \\
+  noautoik \\
+  fps $fps$ \\
+  startloop $loopstart$ frame 0 $lastframe$  \\
+  fixuploop -$fixloop$ $fixloop$ \\
+  LX LY loop \\
+  rotateto $rotate$ \\
+  cmdlist IK_to_BBox \\
+  alignto Idle_Standing_Align \\
+  weightlist $weight$ \\
+} \\
+
+$definemacro ArkjUniqueLower move weapon fps loopstart lastframe fixloop rotate weight walkframe \\
+$animation a_$move$_$weapon$ $move$_$weapon$ { \\
+  noautoik \\
+  fps $fps$ \\
+  startloop $loopstart$ frame 0 $lastframe$  \\
+  fixuploop -$fixloop$ $fixloop$ \\
+  LX LY loop \\
+  rotateto $rotate$ \\
+  cmdlist IK_to_BBox \\
+  alignto Idle_Standing_Align \\
+  weightlist $weight$ \\
+  walkframe $walkframe$ \\
+} \\
+
+// Esses são feitos para weapons que precisam usar as duas mãos
+$definemacro ArkjUniqueIK move weapon fps loopstart lastframe fixloop rotate weight walkframe \\
+$animation a_$move$_$weapon$ $move$_$weapon$ { \\
+  fps $fps$ \\
+  startloop $loopstart$ frame 0 $lastframe$  \\
+  fixuploop -$fixloop$ $fixloop$ \\
+  LX LY loop \\
+  rotateto $rotate$ \\
+  cmdlist IK_to_BBox \\
+  alignto Idle_Standing_Align \\
+  ikrule "lhand" touch "ValveBiped.weapon_bone" \\
+  weightlist $weight$ \\
+  walkframe $walkframe$ \\
+} \\
+
+// Para armas ou coisas que as mãos são (ou podem) ser livres
+$definemacro ArkjUnique move weapon fps loopstart lastframe fixloop rotate weight \\
+$animation a_$move$_$weapon$ $move$_$weapon$ { \\
+  noautoik \\
+  fps $fps$ \\
+  startloop $loopstart$ frame 0 $lastframe$  \\
+  fixuploop -$fixloop$ $fixloop$ \\
+  LX LY loop \\
+  rotateto $rotate$ \\
+  cmdlist IK_to_BBox \\
+  alignto Idle_Standing_Align \\
+  weightlist $weight$ \\
+} \\

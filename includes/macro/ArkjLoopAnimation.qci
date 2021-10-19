@@ -1,0 +1,6 @@
+/*
+  Feito para adicionar animações do Charger, mas devem ter outros usos
+*/
+
+$definemacro ArkjLoopAnimation sequence weight \\
+  $animation $sequence$ $sequence$ loop fixuploop -15 15 weightlist $weight$ \\

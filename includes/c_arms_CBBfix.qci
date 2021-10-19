@@ -1,0 +1,13 @@
+/*
+  Esse fix serve para corrigir um problema criado pela posição dos braços em relação ao mundo.
+  Isso acontece devido à má posição do Bone "ValveBiped.Bip01_Spine4" que deveria estar em "0 0 0" ao invés de "0 3.33 58.3521"
+
+  Sobre o problema:
+    é produto de todos que seguiram tutoriais baseados no que o CBB disse sobre viewmodel hands nos fóruns da facepunch, e por isso o fix se chama "CBBfix".
+        Quando a viewmodel hands executam alguma animação, muitas das vezes o pivot da iluminação vai ficar abaixo da terra, recebendo sombras (afinal, o chão está virtualmente sobre elas), escurecendo-as
+
+  E como você chegou nesse valor*?* Isso é uma subtração do offset obtido pela viewport 3D 1:1 do Blender e Source
+
+  Posso arrumar direto pleo Blender? Sim, mas sei lá, optei em fazer desse jeito e manter as viewmodelhands naquela pose
+*/
+$origin 0 3.33 58.3521 0

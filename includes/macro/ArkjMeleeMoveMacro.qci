@@ -1,0 +1,30 @@
+// Para Melees terem sequências próprias
+$definemacro ArkjMeleeSequenceMacro sequence weapon aimlayer act r1 l1 r2 l2 \\
+  $sequence $sequence$_$weapon$ { \\
+    a_$sequence$_$weapon$NW  a_$sequence$_$weapon$N     a_$sequence$_$weapon$NE \\
+    a_$sequence$_$weapon$W   a_$sequence$_$weapon$Zero  a_$sequence$_$weapon$E  \\
+    a_$sequence$_$weapon$SW  a_$sequence$_$weapon$S     a_$sequence$_$weapon$SE \\
+    blend move_y -1 1 blend move_x 1 -1 \\
+    fadein .5 fadeout .5 \\
+    addlayer $aimlayer$ \\
+    activity $act$ -1 \\
+    { event AE_FOOTSTEP_RIGHT $r1$ } \\
+    { event AE_FOOTSTEP_LEFT $l1$ } \\
+    { event AE_FOOTSTEP_RIGHT $r2$ } \\
+    { event AE_FOOTSTEP_LEFT $l2$ } \\
+  } \\
+
+
+
+// Para Melees terem animações próprias
+$definemacro ArkjMeleeMoveMacro sequence weapon pose act aimlayer weight r1 l1 r2 l2 fixloop fpsNW fpsN fpsNE fpsW fpsE fpsSW fpsS fpsSE FrameFirst FrameLast FrameNum \\
+    $animation a_$sequence$_$weapon$NW   $sequence$_$weapon$NW   fps   $fpsNW$ startloop $loopstartNW$ frame 0 $loopendNW$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox weightlist $weight$ worldspaceblendloop a_$pose$NW 0 weightlist FULLBODY \\
+		$animation a_$sequence$_$weapon$N    $sequence$_$weapon$N    fps   $fpsN$  startloop $loopstartN$  frame 0 $loopendN$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox \\
+    $animation a_$sequence$_$weapon$NE   $sequence$_$weapon$NE   fps   $fpsNE$ startloop $loopstartNE$ frame 0 $loopendNE$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox weightlist $weight$ worldspaceblendloop a_$pose$NE 0 weightlist FULLBODY \\
+    $animation a_$sequence$_$weapon$W    $sequence$_$weapon$W    fps   $fpsW$  startloop $loopstartW$  frame 0 $loopendW$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox weightlist $weight$ worldspaceblendloop a_$pose$W  0 weightlist FULLBODY \\
+    $animation a_$sequence$_$weapon$Zero $sequence$_$weapon$Zero frame $FrameFirst$ $FrameLast$ numframes $FrameNum$ loop ikrule "lhand" touch "ValveBiped.weapon_bone" weightlist AllUpperBody worldspaceblend a_$sequence$N weightlist FULLBODY cmdlist IK_to_BBox \\
+    $animation a_$sequence$_$weapon$E    $sequence$_$weapon$E    fps   $fpsE$  startloop $loopstartE$  frame 0 $loopendE$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox weightlist $weight$ worldspaceblendloop a_$pose$E  0 weightlist FULLBODY \\
+    $animation a_$sequence$_$weapon$SW   $sequence$_$weapon$SW   fps   $fpsSW$ startloop $loopstartSW$ frame 0 $loopendSW$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox weightlist $weight$ worldspaceblendloop a_$pose$SW 0 weightlist FULLBODY \\
+		$animation a_$sequence$_$weapon$S    $sequence$_$weapon$S    fps   $fpsS$  startloop $loopstartS$  frame 0 $loopendS$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox \\
+		$animation a_$sequence$_$weapon$SE   $sequence$_$weapon$SE   fps   $fpsSE$ startloop $loopstartSE$ frame 0 $loopendSE$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align ikrule "lhand" touch "ValveBiped.weapon_bone"  cmdlist IK_to_BBox weightlist $weight$ worldspaceblendloop a_$pose$SE 0 weightlist FULLBODY \\
+  $ArkjMeleeSequenceMacro $sequence$ $weapon$ $aimlayer$ $act$ $r1$ $l1$ $r2$ $l2$ \\

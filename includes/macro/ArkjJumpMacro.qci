@@ -1,0 +1,16 @@
+/*
+  Macro criado para adicionar delta animations para alguma idle
+  Esse macro foi criado com intuíto de recriar as animações corretivas de l4d e l4d2
+*/
+$definemacro ArkjJumpMacro SequenceName weapon activity \\
+$ArkjLayer $SequenceName$_layer 30 GASCAN \\
+$sequence $SequenceName$_01 { \\
+	a_Jump_S_Shotgun   a_Jump_Center_Shotgun   a_Jump_N_Shotgun \\
+	activity ACT_JUMP_$activity$ 1 \\
+	blendwidth 3 blend "move_x" -1 1 \\
+	{ event AE_FOOTSTEP_RIGHT 0 "" } \\
+	{ event AE_FOOTSTEP_LEFT 0 "" } \\
+	fadein .128 fadeout .128 \\
+	addlayer Jump_$weapon$_layer \\
+	addlayer AimMatrix_$weapon$_Standing \\
+} \\

@@ -1,0 +1,16 @@
+/*
+  generic walk for l4d'2 melees
+*/
+$definemacro ArkjMeleeWalk filename act weight fps fadein fadeout addlayer1 addlayer2 \\
+  $sequence $filename$ { \\
+    a_walkNW a_WalkN_Rifle a_WalkNE \\
+    a_walkW $filename$ a_WalkE \\
+    a_walkSW a_WalkS a_WalkSE \\
+    activity $act$ 1 \\
+    blend "move_y" -1 1 blend "move_x" 1 -1 \\
+    fadein $fadein$ \\
+    fadeout $fadeout$ \\
+    addlayer $addlayer1$ \\
+    addlayer $addlayer2$ \\
+    weightlist $weight$ \\
+  } \\

@@ -1,0 +1,37 @@
+/*
+  Muito parecido com o IdleMoveMacro_NoIK só que mais modular
+  cria genéricos *_layer *_arms
+*/
+$definemacro ArkjMeleeLayerArms filename pose act fps fadein fadeout range addlayer r1 l1 r2 l2 weapon \\
+  $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\
+  $sequence $filename$_layer $filename$ { \\
+  	fadein .256 fadeout .256 \\
+  	iklock "lfoot" 1 0 iklock "rfoot" 1 0 \\
+  	worldspace hidden loop x y z \\
+    alignto Idle_Standing_Align \\
+  	fps $fps$ \\
+  	weightlist PELVIS100ARMS0 \\
+  } \\
+  $sequence $filename$_arms $filename$ { \\
+  	fadein .256 fadeout .256 \\
+  	hidden loop \\
+  	fps $fps$ \\
+  	ikrule lhand release \\
+  	weightlist CLAVICLES_ONLY \\
+  } \\
+  $sequence $filename$ { \\
+  	a_$pose$NW a_$pose$N_$weapon$ a_$pose$NE \\
+  	a_$pose$W a_$filename$ a_$pose$E \\
+  	a_$pose$SW a_$pose$S a_$pose$SE \\
+  	activity $act$ -1 \\
+  	loop \\
+  	blend "move_y" -1 1 blend "move_x" 1 -1 \\
+  	{ event AE_FOOTSTEP_RIGHT $r1$ "" } \\
+  	{ event AE_FOOTSTEP_LEFT $l1$ "" } \\
+  	{ event AE_FOOTSTEP_RIGHT $r2$ "" } \\
+  	{ event AE_FOOTSTEP_LEFT $l2$ "" } \\
+  	fadein $fadein$ fadeout $fadeout$ \\
+  	blendlayer $filename$_layer 0 0 0 0 local \\
+  	addlayer $filename$_arms \\
+  	addlayer $addlayer$ \\
+  } \\

@@ -1,0 +1,21 @@
+/*
+  Viewmmodel Hands (GMod) macho
+Eu tive a lixosa ideia de fazer isso quando reparei que a uncia coisa que muda de c_arms pra c_arms do gmod são os bodygroups e texturegroups.
+Então pra isso eu tô fazendo o macro e por tudo numa linha só
+  Syntax:
+    $ViewModelhands "my_v_model" $_IN$ $c_arms$ $chest$ c_arms c_arms_skins
+*/
+$definemacro ViewModelhands Name _IN c_arms chest MeshIncludeFile SkinFamiliesIncludeFile \\
+$include $_IN$/c_arms_CBBfix.qci \\
+$modelname debiddo/$Name$/c_arm.mdl \\
+$include $_IN$/mat.qci \\
+$ambientboost \\
+$mostlyopaque \\
+$bbox -3 -33 40 3 33 61 \\
+$hboxset "default" \\
+$proceduralbones $_IN$/vrd_viewmodel.vrd \\
+$include includes/$MeshIncludeFile$.qci \\
+$root $chest$ \\
+$include includes/$SkinFamiliesIncludeFile$.qci \\
+$sequence "idle" { $c_arms$ hidden fps 1 } \\
+$includemodel "weapons/c_arms_animations.mdl" \\

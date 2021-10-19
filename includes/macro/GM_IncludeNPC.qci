@@ -1,0 +1,38 @@
+/*
+  Include male citizen NPC animations for Garry's Mod
+  Use it when you had based on a male armature/skeleton
+*/
+$definemacro IncludeNPCMale \\
+$includemodel "humans/male_ss.mdl" \\
+$includemodel "humans/male_shared.mdl" \\
+$includemodel "humans/male_gestures.mdl" \\
+$includemodel "humans/male_postures.mdl" \\
+
+
+/*
+  NPC male combine animations for Garry's Mod
+  Use it when you had based on a male armature/skeleton
+*/
+$definemacro IncludeNPCMaleCombine \\
+$includemodel "combine_soldier_anims.mdl" \\
+$IncludeNPCMale \\
+
+
+/*
+  Include female citizen NPC animations for Garry's Mod
+  Use it when you had based on a female armature/skeleton
+*/
+$definemacro IncludeNPCFemale \\
+$includemodel "humans/female_ss.mdl" \\
+$includemodel "humans/female_shared.mdl" \\
+$includemodel "humans/female_gestures.mdl" \\
+$includemodel "humans/female_postures.mdl" \\
+
+
+/*
+  Include female combine NPC animations for Garry's Mod
+  Use it when you had based on a female armature/skeleton
+*/
+$definemacro IncludeNPCFemaleCombine \\
+$includemodel "combine_soldier_anims.mdl" \\
+$IncludeNPCFemale \\

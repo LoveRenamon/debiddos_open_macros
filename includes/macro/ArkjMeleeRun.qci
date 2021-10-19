@@ -1,0 +1,26 @@
+// generic run
+$definemacro ArkjMeleeRun filename act weight fps fadein fadeout addlayer1 addlayer2 \\
+  $sequence $filename$ { \\
+    a_RunNW a_RunN_Rifle a_RunNE \\
+    a_RunW $filename$ a_RunE \\
+    a_RunSW a_RunS a_RunSE \\
+    activity $act$ 1 \\
+    blend "move_y" -1 1 blend "move_x" 1 -1 \\
+    fadein $fadein$ \\
+    fadeout $fadeout$ \\
+    addlayer $addlayer1$ \\
+    addlayer $addlayer2$ \\
+    weightlist $weight$ \\
+  } \\
+
+$definemacro ArkjMeleeRun1 filename act fps fadein fadeout addlayer1 \\
+  $sequence $filename$ { \\
+    a_RunNW a_RunN_Rifle a_RunNE \\
+    a_RunW $filename$ a_RunE \\
+    a_RunSW a_RunS a_RunSE \\
+    activity $act$ 1 \\
+    blend "move_y" -1 1 blend "move_x" 1 -1 \\
+    fadein $fadein$ \\
+    fadeout $fadeout$ \\
+    addlayer $addlayer1$ \\
+  } \\

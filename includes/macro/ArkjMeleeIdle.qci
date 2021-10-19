@@ -1,0 +1,24 @@
+// Idle sem IK
+$definemacro ArkjMeleeIdle filename act weight fps fadein fadeout addlayer1 addlayer2 \\
+  $sequence $filename$ { \\
+    activity ACT_$act$ 1 \\
+    fadein $fadein$ fadeout $fadeout$ \\
+    addlayer $addlayer1$ \\
+    addlayer $addlayer2$ \\
+    fps $fps$ \\
+    loop \\
+    weightlist $weight$ \\
+  } \\
+
+// Idle com IK
+$definemacro ArkjMeleeIdleIK filename act weight fps fadein fadeout addlayer1 addlayer2 \\
+  $sequence $filename$ { \\
+    activity ACT_$act$ 1 \\
+    fadein $fadein$ fadeout $fadeout$ \\
+    addlayer $addlayer1$ \\
+    addlayer $addlayer2$ \\
+    fps $fps$ \\
+    loop \\
+    weightlist $weight$ \\
+    ikrule "lhand" touch "ValveBiped.weapon_bone" \\
+  } \\

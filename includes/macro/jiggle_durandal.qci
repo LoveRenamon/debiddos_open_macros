@@ -1,0 +1,327 @@
+/*
+	Jigglebone Macros usados no addon da Bianka Ataegina (Durandal)
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+
+
+/*
+			FIXME: no Garry's Mod, ao andar para os lados causa um "efeito pinball"
+	Sintax:
+		$BreastDurandal Breast_L
+*/
+$definemacro BreastDurandal BoneName \\
+$jigglebone $Bonename$ { \\
+	has_base_spring	{ \\
+	base_mass 1 \\
+	stiffness 255 \\
+	damping 8 \\
+	left_constraint -0.15 0.2 \\
+	left_friction .1 \\
+	up_constraint -0.15 0.2 \\
+	up_friction .1 \\
+	forward_constraint -0.01 0.01 \\
+	forward_friction .05 \\
+	} \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 15 \\
+	tip_mass 2 \\
+	angle_constraint 10 \\
+	} \\
+} \\
+
+
+/*
+		Usado em diversos outros jiggles
+	Syntax:
+		$GenericDurandal Cloth_LP_1_R
+*/
+$definemacro GenericDurandal BoneName \\
+$jigglebone $BoneName$ { \\
+is_flexible { \\
+	yaw_stiffness 33 \\
+	yaw_damping 5 \\
+	pitch_stiffness 33 \\
+	pitch_damping 5 \\
+	length 16 \\
+	tip_mass 3 \\
+	angle_constraint 22 \\
+	} \\
+} \\
+
+
+/*
+		Usado em diversos outros jiggles
+	Syntax:
+		$GenericDurandal2 Hair_Pin_LP_0
+*/
+$definemacro GenericDurandal2 BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 14 \\
+	tip_mass 2 \\
+	angle_constraint 20 \\
+	} \\
+} \\
+
+
+/*
+		Usado em diversos outros jiggles que precisam de pitch e yaw constraints
+	Syntax:
+		$GenericDurandal3 QQ_2_2 -3 18 -7.5 7.5
+*/
+$definemacro GenericDurandal3 BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 16 \\
+	tip_mass 3 \\
+	pitch_constraint $PitchMin$ $PitchMax$ \\
+	yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Shared Long Hair (Root)
+		 "Faked Gravity" não influência nesse tipo de balanço
+	Sintax:
+		$HairDurandalRoot Hair_01 -10 10 -17 1
+*/
+$definemacro HairDurandalRoot BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 30 \\
+		tip_mass 0 \\
+		pitch_stiffness 50 \\
+		pitch_damping 7 \\
+		yaw_stiffness 50 \\
+		yaw_damping 7 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+}
+
+
+/*
+		Shared Long Hair
+	Sintax:
+		$HairDurandal Hair_01 -10 10 -17 1
+*/
+$definemacro HairDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 30 \\
+		tip_mass 0 \\
+		pitch_stiffness 50 \\
+		pitch_damping 7 \\
+		yaw_stiffness 50 \\
+		yaw_damping 7 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Valkyrie Gloria Ribbon
+	Sintax:
+		$CapeDurandal Ribbon_0 -15 15 -3 3
+*/
+$definemacro RibbonDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 0 \\
+		pitch_stiffness 100 \\
+		pitch_damping 10 \\
+		yaw_stiffness 100 \\
+		yaw_damping 10 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Valkyrie Gloria Cape
+	Syntax:
+		$CapeDurandal Cape_0 -10 10 -.5 29
+*/
+$definemacro CapeDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 10 \\
+		tip_mass 0 \\
+		pitch_stiffness 75 \\
+		pitch_damping 7 \\
+		yaw_stiffness 75 \\
+		yaw_damping 7 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Dae Anchor Ponytail (Root)
+	Sintax:
+		$HairPonytailRoot PT_00
+*/
+$definemacro HairPonytailRoot BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 15 \\
+	tip_mass 2 \\
+	angle_constraint 5 \\
+	} \\
+} \\
+
+
+/*
+		Dae Anchor Ponytail
+	Sintax:
+		$HairPonytail PT_01
+*/
+$definemacro HairPonytail BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 15 \\
+	tip_mass 2 \\
+	angle_constraint 15 \\
+	} \\
+} \\
+
+
+/*
+		Dae Anchor Ponytail
+	Syntax:
+		$CapeDurandal DA_Cloth_00 -30 1 -6 6
+*/
+$definemacro CapeDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 15 \\
+	tip_mass 2 \\
+	pitch_constraint $PitchMin$ $PitchMax$ \\
+	yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Purrfect Holiday Jacket
+	Syntax:
+		$JacketDurandal PH_Cloth00 -15 3 -15 15
+*/
+$definemacro JacketDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 44 \\
+	yaw_damping 7 \\
+	pitch_stiffness 44 \\
+	pitch_damping 7 \\
+	length 15 \\
+	tip_mass 2 \\
+	pitch_constraint $PitchMin$ $PitchMax$ \\
+	yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+/*
+		Purrfect Holiday Necktie
+	Syntax:
+		$NecktieDurandal Necktie_00 -2 20 -15 15
+*/
+$definemacro NecktieDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 64 \\
+	yaw_damping 5 \\
+	pitch_stiffness 64 \\
+	pitch_damping 5 \\
+	length 10 \\
+	tip_mass 2 \\
+	pitch_constraint $PitchMin$ $PitchMax$ \\
+	yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Purrfect Holiday Links
+	Syntax:
+		$LinkDurandal Link_00 -10 10 -10 10
+*/
+$definemacro LinkDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 50 \\
+	yaw_damping 8 \\
+	pitch_stiffness 50 \\
+	pitch_damping 8 \\
+	length 3 \\
+	tip_mass 3 \\
+	pitch_constraint $PitchMin$ $PitchMax$ \\
+	yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		Purrfect Holiday Rigs
+	Syntax:
+		$RigDurandal Rig_00 -30 4 -35 35
+*/
+$definemacro RigDurandal BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+	yaw_stiffness 64 \\
+	yaw_damping 5 \\
+	pitch_stiffness 64 \\
+	pitch_damping 5 \\
+	length 10 \\
+	tip_mass 2 \\
+	pitch_constraint $PitchMin$ $PitchMax$ \\
+	yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\

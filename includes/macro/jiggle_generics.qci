@@ -1,0 +1,73 @@
+/*
+  Jiggle Genéricos
+  Normalmente são usados em cabelos e peças que precisam de algum balanço, mesmo que seja mínimo.
+
+  Esse Jiggle tem movimentos moderados e balança até duas vezes antes de entrar em inércia
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro JiggleGeneric1 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 20 \\
+		tip_mass 20 \\
+		pitch_stiffness 85 \\
+		pitch_damping 6 \\
+		yaw_stiffness 60 \\
+		yaw_damping 6 \\
+		allow_length_flex \\
+		along_stiffness 50 \\
+		along_damping .001 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Almost a full modular macro for "is_flexible"
+
+	Syntax: 			Macro							BoneName			Mass		Lenght			Pitch				Yaw			Along			Angle
+						$IsFlexibleAngle			 Prop_0 			 50				40				100 8			 75 8			60	6			 20
+*/
+$definemacro IsFlexibleAngle BoneName Mass Lenght PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		angle_constraint $Angle$ \\
+		tip_mass $Mass$ \\
+		length $Lenght$ \\
+		pitch_stiffness $PitchStiff \\
+		pitch_damping $PitchDamp$ \\
+		yaw_stiffness $YawStiff \\
+		yaw_damping $YawDamp$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\
+
+
+/*
+		A full modular macro for "is_flexible"
+
+	Syntax: 			Macro								BoneName			Mass		Lenght			Pitch				Yaw			Along
+						$IsFlexiblePitchYaw			 Jiggle_0 		 50				40				100 8			 75 8			60	6			
+*/
+$definemacro IsFlexiblePitchYaw BoneName Mass Lenght PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		pitch_constraint $Angle$ \\
+		yaw_constraint $Angle$ \\
+		tip_mass $Mass$ \\
+		length $Lenght$ \\
+		pitch_stiffness $PitchStiff \\
+		pitch_damping $PitchDamp$ \\
+		yaw_stiffness $YawStiff \\
+		yaw_damping $YawDamp$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\

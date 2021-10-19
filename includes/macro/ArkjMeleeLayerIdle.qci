@@ -1,0 +1,24 @@
+/*
+  generic layer
+  Com IK
+  Só $sequence *_idle da blend com AimMatrix_*_Standing
+*/
+$definemacro ArkjMeleeLayerIdle filename act actweapon fps fadein fadeout AimMatrix weight \\
+  $sequence $filename$_layer $filename$ { \\
+		activity ACT_SHOOT_$act$_$actweapon$ 1 \\
+		fadein $fadein$ fadeout $fadeout$ \\
+		fps $fps$ \\
+		ikrule "rhand" release \\
+		ikrule "lhand" release \\
+		weightlist $weight$ \\
+  } \\
+  $sequence $filename$_idle { \\
+		a_RunNW a_RunN_Rifle a_RunNE \\
+		a_RunW $filename$ a_RunE \\
+		a_RunSW a_RunS a_RunSE \\
+		activity ACT_SHOOT_$act$_IDLE_$actweapon$ 1 \\
+		blend "move_y" -1 1 blend "move_x" 1 -1 \\
+		fadein $fadein$ fadeout $fadeout$ \\
+		addlayer $filename$_layer \\
+		addlayer AimMatrix_$AimMatrix$_Standing \\
+  } \\

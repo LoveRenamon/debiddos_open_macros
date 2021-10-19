@@ -1,0 +1,229 @@
+/*
+ 	Jigglebones can be a challenge when their words and valours doesn't match between blender and source engine we have a trick to pick all local relative rotations, nothing global To do this, in Blender i would recomend get values by rotate in individual origins and local space then check it XYZ amount in local/relative
+
+	A behavior trick: to make an jigglebone move all the time as a "live thing", we break the "along" (Z Source Axis) to make bones try to move more longer than it can, creating a moviment in other axis It is made by not define a "allow_length_flex" flex parameter
+	Note: My main issue with this jigglebone system was the Z-axis, the wont move much as I want to jiggle
+
+	Keed in mind that Source Engine doesn't deal with jiggle moviment calculations in negative numbers It exist only to bounce in a negative pulse of the initial moviment
+
+	here: https://developervalvesoftwarecom/wiki/$jigglebone we can find a little more about jigglebones, but some parameters like "up_constraint" and "left_constrait" cant be used as described, they should be "yaw_constraint" and "pitch_constraint" as well
+	bth, I've tested this with SourceFilmmaker compiler Since the Gmod compiler was removed for some reason in my linux gmod
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+
+
+/*
+		Mistakes have been made while riggin' Kyuukimon,
+		So I did a rigid bone to start a "keep moving" for their children bones.
+		"is_rigid" is a kind of jiggle that move without feedback response, so there is no "bounce effect"
+		Why? just to try keep it pointing downa bit without deal much with the faked gravity
+
+	Syntax: $KyuukiTailRoot Tail_0 -6 6 -2 8
+*/
+$definemacro KyuukiTailRoot BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_rigid \\
+	{ \\
+		tip_mass 4 \\
+		length 31 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+		This jiggle have a "jiggle all the time" behavior as attempt to mimic Kyukimon's Tail in Digimon World 2003
+
+	Syntax: $KyuukiTail Tail_2 22 33
+*/
+$definemacro KyuukiTail BoneName Pitch Yaw \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		tip_mass 2 \\
+		length 45 \\
+		pitch_stiffness 15 \\
+		yaw_stiffness 23 \\
+		yaw_damping 18 \\
+		yaw_friction 20 \\
+		along_stiffness 75 \\
+		along_damping 8 \\
+		pitch_constraint -$Pitch$ $Pitch$ \\
+		yaw_constraint -$Yaw$ $Yaw$ \\
+	}
+}
+
+
+/*
+		It move slow n' graciously
+
+	Syntax: $KyuukiEar Ear_L
+*/
+$definemacro KyuukiEar BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		tip_mass 1 \\
+		length 15 \\
+		yaw_stiffness 15 \\
+		yaw_damping 50 \\
+		pitch_stiffness 15 \\
+		pitch_damping 40 \\
+		angle_constraint 44 \\
+	} \\
+} \\
+
+
+/*
+		This jiggle specially have a "jiggle all the time" behavior
+
+	Syntax: $KyuukiFurNoRest Fur_00 30
+*/
+$definemacro KyuukiFurNoRest BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 10 \\
+		yaw_damping 6 \\
+		along_stiffness 40 \\
+		along_damping 8 \\
+		tip_mass 1 \\
+		length 44 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Description
+
+	Syntax: $KyuukiFur1 Fur_00 30
+*/
+$definemacro KyuukiFur1 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 8 \\
+		yaw_damping 2 \\
+		along_stiffness 80 \\
+		along_damping 12 \\
+		tip_mass 1 \\
+		length 40 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Description
+
+	Syntax: $KyuukiFur2 Fur_00 30
+*/
+$definemacro KyuukiFur2 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 40 \\
+		yaw_damping 14 \\
+		along_stiffness 40 \\
+		along_damping 14 \\
+		tip_mass 6 \\
+		length 30 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Description
+
+	Syntax: $KyuukiFur3 Fur_00 30
+*/
+$definemacro KyuukiFur3 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 5 \\
+		yaw_damping 20 \\
+		pitch_stiffness 19 \\
+		pitch_damping 17 \\
+		tip_mass 7 \\
+		length 30 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Description
+
+	Syntax: $KyuukiFur4 Fur_00 30
+*/
+$definemacro KyuukiFur4 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 17 \\
+		yaw_damping 6 \\
+		pitch_stiffness 18 \\
+		pitch_damping 3 \\
+		tip_mass 8 \\
+		length 35 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Description
+
+	Syntax: $KyuukiFur5 Fur_00 30
+*/
+$definemacro KyuukiFur5 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 5 \\
+		yaw_damping 12 \\
+		pitch_stiffness 22 \\
+		pitch_damping 7 \\
+		tip_mass 9 \\
+		length 25 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+		Description
+
+	Syntax: $KyuukiFur6 Fur_00 30
+*/
+$definemacro KyuukiFur6 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		yaw_stiffness 10 \\
+		yaw_damping 6 \\
+		along_stiffness 40 \\
+		along_damping 8 \\
+		tip_mass 1 \\
+		length 44 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\

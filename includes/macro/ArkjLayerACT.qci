@@ -1,0 +1,11 @@
+$definemacro ArkjLayerACT filename fps act weight \\
+  $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\
+  $sequence $filename$_layer a_$filename$ { \\
+  	fadein .256 fadeout .256 \\
+    activity $act$ \\
+  	iklock "lfoot" 1 0 iklock "rfoot" 1 0 \\
+  	worldspace hidden loop x y z \\
+    alignto Idle_Standing_Align \\
+  	fps $fps$ \\
+  	weightlist $weight$ \\
+  } \\

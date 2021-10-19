@@ -1,0 +1,30 @@
+/*
+  Much like SMoveAxeMacro.qci
+  I've removed a few parameters like "char" and "second_character" bc this macro is to allow
+  share Blender batched animations that will use a generic name without a survivor (or character) prefix
+	also everything here is a atempt to overcome CBB's proportion trick limitations;
+	so at end it make trivial focus on different directories
+*/
+$definemacro ArkjSMoveAxeMacro sequencename move NorthFilename N_fps N_loopstart N_lastframe SouthFilename S_fps S_loopstart S_lastframe NW_fps NW_loopstart NW_lastframe SW_fps SW_loopstart SW_lastframe fixloop ZeroMove Z_firstframe Z_lastframe Z_numframes BN_weight SouthBlend BS_lastframe BS_weight aimlayer activity Rfoot Lfoot Rfoot2 Lfoot2 fadein fadeout CalmAim \\
+	$animation a_$sequencename$N		$NorthFilename$		fps $N_fps$  startloop $N_loopstart$  frame 0 $N_lastframe$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto    0 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\
+	$animation a_$sequencename$S		$SouthFilename$		fps $S_fps$  startloop $S_loopstart$  frame 0 $S_lastframe$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto -180 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\
+	$animation a_$sequencename$SE		$move$SE_Rifle		fps $SW_fps$ startloop $SW_loopstart$ frame 0 $SW_lastframe$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto -135 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BS_weight$ worldspaceblendloop a_$sequencename$S 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+	$animation a_$sequencename$E		$move$E_Rifle			fps $NW_fps$ startloop $NW_loopstart$ frame 0 $NW_lastframe$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto  -90 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$sequencename$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+	$animation a_$sequencename$NE		$move$NE_Rifle		fps $NW_fps$ startloop $NW_loopstart$ frame 0 $NW_lastframe$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto  -45 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$sequencename$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+	$animation a_$sequencename$NW		$move$NW_Rifle		fps $NW_fps$ startloop $NW_loopstart$ frame 0 $NW_lastframe$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto   45 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$sequencename$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+	$animation a_$sequencename$W		$move$W_Rifle			fps $NW_fps$ startloop $NW_loopstart$ frame 0 $NW_lastframe$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto   90 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$sequencename$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+	$animation a_$sequencename$SW		$move$SW_Rifle		fps $SW_fps$ startloop $SW_loopstart$ frame 0 $SW_lastframe$ fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto  135 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BS_weight$ worldspaceblendloop a_$sequencename$S 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+	$animation a_$sequencename$Zero	$ZeroMove$ frame $Z_firstframe$ $Z_lastframe$ numframes $Z_numframes$ loop ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist AllUpperBody worldspaceblend a_$sequencename$N weightlist FULLBODY cmdlist IK_to_BBox \\
+	$sequence $sequencename$ { \\
+		a_$sequencename$NW  	a_$sequencename$N		a_$sequencename$NE \\
+		a_$sequencename$W   	a_$sequencename$Zero	a_$sequencename$E \\
+		a_$sequencename$SW  	a_$sequencename$S		a_$sequencename$SE \\
+		blendwidth 3 blend move_y -1 1 blend move_x 1 -1 loop \\
+		addlayer $aimlayer$ \\
+		fadein $fadein$ fadeout $fadeout$ \\
+		activity $activity$ 1 \\
+		{ event AE_FOOTSTEP_RIGHT $Rfoot$ } \\
+		{ event AE_FOOTSTEP_LEFT $Lfoot$ } \\
+		{ event AE_FOOTSTEP_RIGHT $Rfoot2$ } \\
+		{ event AE_FOOTSTEP_LEFT $Lfoot2$ } \\
+	} \\

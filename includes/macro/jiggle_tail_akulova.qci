@@ -1,0 +1,33 @@
+/*
+	Cauda originalmente usada na Nikoliya "Nika" Akulova (AKA.: Nika Sharkeh) que teve seu HWM released em meados de 2015
+  causa o efeito da cauda "cair" e ficar com o eixo Z apontando para o sentido da gravidade
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+
+	Sintax:
+		$TailAkulova tail_1 -20 65 -45 45
+*/
+$definemacro TailAkulova BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		length 12 \\
+		tip_mass 600 \\
+    pitch_stiffness 55 \\
+    pitch_damping 6 \\
+    pitch_constraint $PitchMin$ $PitchMax$ \\ \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+    yaw_stiffness 55 \\
+    yaw_damping 6 \\
+		yaw_constraint $YawMin$ $YawMax$ \\ \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+    along_stiffness 100 \\
+    along_damping 0 \\
+	} \\
+} \\

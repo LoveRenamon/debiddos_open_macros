@@ -1,0 +1,38 @@
+/*
+	Esse tipo de jiggle tem um movimento meio gelatinoso (purun purun / balança balança) de animes e jogos eroge,
+	o balanço pode ser muito distrativos, sendo indesejado seu uso.
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro ButtBouncy BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		length 10 \\
+		tip_mass 10 \\
+		pitch_stiffness 120 \\
+		pitch_damping 4 \\
+		yaw_stiffness 120 \\
+		yaw_damping 4 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint 15 \\
+	} \\
+	has_base_spring \\
+	{ \\
+		base_mass 0 \\
+		stiffness 100 \\
+		damping 3 \\
+		left_constraint -0.5 0.5 \\
+		left_friction 0 \\
+		up_constraint -0.5 0.5 \\
+		up_friction 0 \\
+		forward_constraint -0.5 0.5 \\
+		forward_friction 0 \\
+	} \\
+} \\

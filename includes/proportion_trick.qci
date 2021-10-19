@@ -1,0 +1,10 @@
+/* the proportion trick discovered by CaptainBigButt */
+
+// base pose, without any modifications
+$sequence "reference" $reference$ hidden fps 1
+
+// our rigged base mesh or alternative proportions to subtract "reference" sequence
+$animation "a_proportions" mesh/$proportion$ subtract "reference" 0
+
+// the magic, we run the result of "a_proportions" as base of every animation.
+$sequence "proportions" "a_proportions" predelta autoplay hidden

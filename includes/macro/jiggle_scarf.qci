@@ -1,0 +1,89 @@
+/*
+	Bandana, movimentos suaves composto de Root e Childs
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+
+
+/*
+	Sintax:
+		$ScarfRoot Scarf_00
+*/
+$definemacro ScarfRoot BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+    yaw_stiffness 60 \\
+    yaw_damping 9 \\
+    pitch_stiffness 60 \\
+    pitch_damping 5 \\
+    length 55 \\
+    tip_mass 1 \\
+    angle_constraint 13 \\
+	} \\
+} \\
+
+
+/*
+	Sintax:
+		$ScarfChild Scarf_01
+*/
+$definemacro ScarfChild BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+    yaw_stiffness 60 \\
+    yaw_damping 9 \\
+    pitch_stiffness 60 \\
+    pitch_damping 5 \\
+    length 55 \\
+    tip_mass 1 \\
+    angle_constraint 23 \\
+	} \\
+} \\
+
+
+
+/*
+	Sintax:
+		$ScarfRoot Scarf_00
+*/
+$definemacro ScarfRootAngle BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+    yaw_stiffness 60 \\
+    yaw_damping 9 \\
+    pitch_stiffness 60 \\
+    pitch_damping 5 \\
+    length 55 \\
+    tip_mass 1 \\
+    angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Sintax:
+		$ScarfChild Scarf_01
+*/
+$definemacro ScarfChildAngle BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+    yaw_stiffness 60 \\
+    yaw_damping 9 \\
+    pitch_stiffness 60 \\
+    pitch_damping 5 \\
+    length 55 \\
+    tip_mass 1 \\
+    angle_constraint $Angle$ \\
+	} \\
+} \\

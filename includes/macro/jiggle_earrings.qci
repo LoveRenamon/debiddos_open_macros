@@ -1,0 +1,26 @@
+/*
+  Brincos
+  Um mínimo detalhe que faz toda diferença.
+
+  Esse Jiggle tem movimentos rápidos e balança cerca de três à quatro vezes antes de entrar em inércia.
+  Foi escolhido "Earring" como nome do macro, pois o criei quando estava querendo um melhor movimento para brincos
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro Earring BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+  is_flexible \\
+  { \\
+    yaw_stiffness 100 \\
+    yaw_damping 4 \\
+    pitch_stiffness 100 \\
+    pitch_damping 4 \\
+    length 3 \\
+    tip_mass 1 \\
+    angle_constraint 33 \\
+  } \\
+} \\

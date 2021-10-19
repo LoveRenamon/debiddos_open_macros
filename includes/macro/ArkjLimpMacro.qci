@@ -1,0 +1,53 @@
+/*
+  Muito parecido com o SMoveMacro só que simplificado e não dependende de qual survivor estamos usando
+  cria $sequence Limp$Move$_$weapon$
+
+  $ArkjLimpMacro2 é uma versão com dois addlayer
+*/
+$definemacro ArkjLimpMacro SequenceName MoveType Weapon fadein fadeout activity aimlayer Rfoot Lfoot Rfoot2 Lfoot2 FPSN LoopStartN LastFrameN FPSS LoopStartS LastFrameS FPSSE LoopStartSE LastFrameSE FPSE LoopStartE LastFrameE FPSNE LoopStartNE LastFrameNE FPSNW LoopStartNW LastFrameNW FPSW LoopStartW LastFrameW FPSSW LoopStartSW LastFrameSW MoveZero FirstFrameZero LastFrameZero NumFramesZero FixupLoop BN_weight BS_weight \\
+$animation a_$SequenceName$N		$MoveType$_$Weapon$N		  fps $FPSN$    startloop   $LoopStartN$    frame 0 $lastframeN$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto    0 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\
+$animation a_$SequenceName$S		$MoveType$_$Weapon$S		 	fps $FPSS$    startloop   $LoopStartS$    frame 0 $lastframeS$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto -180 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\
+$animation a_$SequenceName$SE		$MoveType$_$Weapon$SE     fps $FPSSE$   startloop   $LoopStartSE$   frame 0 $lastframeSE$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto -135 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BS_weight$ worldspaceblendloop a_$SequenceName$S 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$E		$MoveType$_$Weapon$E      fps $FPSE$    startloop   $LoopStartE$    frame 0 $lastframeE$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto  -90 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$NE		$MoveType$_$Weapon$NE     fps $FPSNE$   startloop   $LoopStartNE$   frame 0 $lastframeNE$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto  -45 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$NW		$MoveType$_$Weapon$NW     fps $FPSNW$   startloop   $LoopStartNW$   frame 0 $lastframeNW$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto   45 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$W		$MoveType$_$Weapon$W      fps $FPSW$    startloop   $LoopStartW$    frame 0 $lastframeW$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto   90 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$SW		$MoveType$_$Weapon$SW     fps $FPSSW$   startloop   $LoopStartSW$   frame 0 $lastframeSW$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto  135 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BS_weight$ worldspaceblendloop a_$SequenceName$S 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$Zero	$MoveZero$   		          frame $FirstFrameZero$ $LastFrameZero$ numframes $NumFramesZero$ loop ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist AllUpperBody worldspaceblend a_$SequenceName$N weightlist FULLBODY cmdlist IK_to_BBox \\
+$sequence $SequenceName$ { \\
+  a_$SequenceName$NW  	a_$SequenceName$N		a_$SequenceName$NE \\
+  a_$SequenceName$W   	a_$SequenceName$Zero	a_$SequenceName$E \\
+  a_$SequenceName$SW  	a_$SequenceName$S		a_$SequenceName$SE \\
+  blendwidth 3 blend move_y -1 1 blend move_x 1 -1 loop \\
+  addlayer $aimlayer$ \\
+  fadein $fadein$ fadeout $fadeout$ \\
+  ACT_$activity$ -1 \\
+  { event AE_FOOTSTEP_RIGHT $Rfoot$ } \\
+  { event AE_FOOTSTEP_LEFT $Lfoot$ } \\
+  { event AE_FOOTSTEP_RIGHT $Rfoot2$ } \\
+  { event AE_FOOTSTEP_LEFT $Lfoot2$ } \\
+} \\
+
+$definemacro ArkjLimpMacro2 SequenceName MoveType Weapon fadein fadeout activity aimlayer addlayer Rfoot Lfoot Rfoot2 Lfoot2 FPSN LoopStartN LastFrameN FPSS LoopStartS LastFrameS FPSSE LoopStartSE LastFrameSE FPSE LoopStartE LastFrameE FPSNE LoopStartNE LastFrameNE FPSNW LoopStartNW LastFrameNW FPSW LoopStartW LastFrameW FPSSW LoopStartSW LastFrameSW MoveZero FirstFrameZero LastFrameZero NumFramesZero FixupLoop BN_weight BS_weight \\
+$animation a_$SequenceName$N		$MoveType$_$Weapon$N		  fps $FPSN$    startloop   $LoopStartN$    frame 0 $lastframeN$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto    0 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\
+$animation a_$SequenceName$S		$MoveType$_$Weapon$S		 	fps $FPSS$    startloop   $LoopStartS$    frame 0 $lastframeS$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto -180 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\
+$animation a_$SequenceName$SE		$MoveType$_$Weapon$SE     fps $FPSSE$   startloop   $LoopStartSE$   frame 0 $lastframeSE$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto -135 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BS_weight$ worldspaceblendloop a_$SequenceName$S 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$E		$MoveType$_$Weapon$E      fps $FPSE$    startloop   $LoopStartE$    frame 0 $lastframeE$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto  -90 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$NE		$MoveType$_$Weapon$NE     fps $FPSNE$   startloop   $LoopStartNE$   frame 0 $lastframeNE$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto  -45 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$NW		$MoveType$_$Weapon$NW     fps $FPSNW$   startloop   $LoopStartNW$   frame 0 $lastframeNW$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto   45 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$W		$MoveType$_$Weapon$W      fps $FPSW$    startloop   $LoopStartW$    frame 0 $lastframeW$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto   90 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BN_weight$ worldspaceblendloop a_$SequenceName$N 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$SW		$MoveType$_$Weapon$SW     fps $FPSSW$   startloop   $LoopStartSW$   frame 0 $lastframeSW$   fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto  135 ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist $BS_weight$ worldspaceblendloop a_$SequenceName$S 0 weightlist FULLBODY cmdlist IK_to_BBox \\
+$animation a_$SequenceName$Zero	$MoveZero$   		          frame $FirstFrameZero$ $LastFrameZero$ numframes $NumFramesZero$ loop ikrule lhand touch "ValveBiped.Bip01_R_Hand" weightlist AllUpperBody worldspaceblend a_$SequenceName$N weightlist FULLBODY cmdlist IK_to_BBox \\
+$sequence $SequenceName$ { \\
+  a_$SequenceName$NW  	a_$SequenceName$N		a_$SequenceName$NE \\
+  a_$SequenceName$W   	a_$SequenceName$Zero	a_$SequenceName$E \\
+  a_$SequenceName$SW  	a_$SequenceName$S		a_$SequenceName$SE \\
+  blendwidth 3 blend move_y -1 1 blend move_x 1 -1 loop \\
+  addlayer $aimlayer$ addlayer $addlayer$ \\
+  fadein $fadein$ fadeout $fadeout$ \\
+  ACT_$activity$ -1 \\
+  { event AE_FOOTSTEP_RIGHT $Rfoot$ } \\
+  { event AE_FOOTSTEP_LEFT $Lfoot$ } \\
+  { event AE_FOOTSTEP_RIGHT $Rfoot2$ } \\
+  { event AE_FOOTSTEP_LEFT $Lfoot2$ } \\
+} \\

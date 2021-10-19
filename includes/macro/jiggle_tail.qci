@@ -1,0 +1,24 @@
+/*
+	Cauda originalmente composta de 6 bones que movem-se de forma livre em 60°
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro TailType1 BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+	{ \\
+		length 300 \\
+		tip_mass 0 \\
+		pitch_stiffness 100 \\
+		pitch_damping 10 \\
+		yaw_stiffness 100 \\
+		yaw_damping 10 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\

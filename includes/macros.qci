@@ -1,0 +1,52 @@
+/*
+    MACRO INDEX
+  Afim de evitar repetições desnecessárias, temos um index de todos os macros,
+inclua esse arquivo para usar macros quando for fazer uso.
+
+Se o compilador do l4d2 não fosse tão estranho daria para deixar a biblioteca ser relativa à uma variável, mas esse não é o caso
+*/
+
+// Jigglebones
+$include ../debiddos_open_macros/includes/macro/jiggle_breast_large.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_breast_natural.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_breast_purun.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_butt_bouncy.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_durandal.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_earrings.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_generics.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_kyuuki.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_scarf.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_tail.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_tail_akulova.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_tail_fluffy.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_tiferet.qci
+
+// Sequences
+$include ../debiddos_open_macros/includes/macro/ProportionTrick.qci
+
+// My macro for gmod viewmodel hands (c_arms) (v_model) or ... whataever you wanna call it
+$include ../debiddos_open_macros/includes/macro/ViewModelhands.qci
+
+// My L4D2 macro research for the TLS Update
+$include ../debiddos_open_macros/includes/macro/ArkjArms.qci
+$include ../debiddos_open_macros/includes/macro/ArkjDLCMacro.qci
+$include ../debiddos_open_macros/includes/macro/ArkjIdleBlendAimMatrix.qci
+$include ../debiddos_open_macros/includes/macro/ArkjIdleNoise.qci
+$include ../debiddos_open_macros/includes/macro/ArkjJumpMacro.qci
+$include ../debiddos_open_macros/includes/macro/ArkjLayer.qci
+$include ../debiddos_open_macros/includes/macro/ArkjLayerACT.qci
+$include ../debiddos_open_macros/includes/macro/ArkjLayerArms.qci
+$include ../debiddos_open_macros/includes/macro/ArkjLimpMacro.qci
+$include ../debiddos_open_macros/includes/macro/ArkjLoopAnimation.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeAttack.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeIdle.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeLayerArms.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeLayerBlendIdle.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeLayerIdle.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeMoveMacro.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeRun.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeSwing.qci
+$include ../debiddos_open_macros/includes/macro/ArkjMeleeWalk.qci
+$include ../debiddos_open_macros/includes/macro/ArkjShovedMacro.qci
+$include ../debiddos_open_macros/includes/macro/ArkjSMoveAxeMacro.qci
+$include ../debiddos_open_macros/includes/macro/ArkjUnique.qci

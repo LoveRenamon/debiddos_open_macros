@@ -1,0 +1,23 @@
+/*
+	Cauda originalmente composta de 3 bones que movem-se de forma suave em 10°
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro TailFluffy BoneName Angle \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+    yaw_stiffness 64 \\
+    yaw_damping 8 \\
+    pitch_stiffness 64 \\
+    pitch_damping 8 \\
+    along_damping 10 \\
+    length 10 \\
+    tip_mass 1 \\
+    angle_constraint $Angle$ \\
+	} \\
+} \\

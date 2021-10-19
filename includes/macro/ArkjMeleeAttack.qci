@@ -1,0 +1,11 @@
+// generic attack
+$definemacro ArkjMeleeAttack filename act fps fadein fadeout range \\
+  $sequence $filename$ { \\
+    $filename$ \\
+    activity $act$ 1 \\
+    fadein $fadein$ fadeout $fadeout$ \\
+    fps $fps$ \\
+    ikrule "rhand" release range 0 0 $range$ $range$ \\
+    ikrule "lhand" release range 0 0 $range$ $range$ \\
+    weightlist CLAVICLES_ONLY \\
+  } \\

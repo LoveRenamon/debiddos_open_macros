@@ -1,0 +1,39 @@
+/*
+  De forma geral, esse é o tipo de seio que apresenta o melhor resultado para
+  quase todos os casos, entretanto, precisa-se de cuidados para posicionar os
+  bones de forma correta.
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+
+	  FIXME: Garry's Mod only, ao andar para os lados causa um "efeito pinball"
+*/
+// Seios (not so boing boing, no so purun purun)
+$definemacro BreastNatural BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+    length 15 \\
+    tip_mass 2 \\
+    pitch_stiffness 44 \\
+    pitch_damping 7 \\
+    yaw_stiffness 44 \\
+    yaw_damping 7 \\
+    angle_constraint 14 \\
+	} \\
+  has_base_spring \\
+  { \\
+    base_mass 1 \\
+    stiffness 255 \\
+    damping 8 \\
+    left_constraint -.15 .15 \\
+    left_friction .01 \\
+    up_constraint -.15 .15 \\
+    up_friction .01 \\
+    forward_constraint -.01 .01 \\
+    forward_friction .05 \\
+	} \\
+} \\

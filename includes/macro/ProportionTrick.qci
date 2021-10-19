@@ -1,0 +1,14 @@
+/*
+  Macro Proportion Trick
+  ele é opcional e uma alternativa para o método tradicional via $include que sempre usei;
+  tal método se mostra viável por permitir a porpotion trick opcional, mesmo sendo incluída por um index
+
+  WARNING: NÃO USE OS DOIS MÉTODOS SIMULATÂNEAMENTE, OU TERÁ UM MODELO COM DUAS SUBTRAÇÔES EM AUTOPLAY
+
+   Creditos:  proportion trick discovered by CaptainBigButt
+              Macro feito por Davi (Debiddo) Gooz para praticar
+*/
+$definemacro ProportionTrick ReferenceFile ProportionFile \\
+$sequence reference $ReferenceFile$ hidden fps 1 \\
+$animation a_proportions $ProportionFile$ subtract reference 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\

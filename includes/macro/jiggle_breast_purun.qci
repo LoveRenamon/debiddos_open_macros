@@ -1,0 +1,22 @@
+/*
+	Esse tipo de peito segue um tipo estilo purun purun (balança balança) de animes,
+	ele balança muito e são distrativos, muitas da vezes de forma indesejada.
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+$definemacro BreastPurun BoneName \\
+$jigglebone $BoneName$ \\
+{ \\
+	is_flexible \\
+  { \\
+		yaw_stiffness 200 \\
+		yaw_damping 9 \\
+		pitch_stiffness 200 \\
+		pitch_damping 9 \\
+		length 20 \\
+		angle_constraint 20 \\
+	} \\
+} \\

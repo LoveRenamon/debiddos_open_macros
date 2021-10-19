@@ -1,0 +1,37 @@
+/*
+  Thanks Valve, you guys did all Shoved Sequences into a single default/macro,
+  and made write it easier using a single macro for all four sequences
+*/
+$definemacro ArkjShovedMacro Weapon ACT FPS FadeInOut WalkFrameBack1 WalkFrameBack2 WalkFrameBack3 WalkFrameFront1 WalkFrameFront2 WalkFrameFront3 WalkFrameRight1 WalkFrameRight2 WalkFrameRight3 WalkFrameLeft1 WalkFramLeft2 WalkFrameLeft3 \\
+$sequence Shoved_Backward_$Weapon$ Shoved_Backward_$Weapon$ { \\
+	activity ACT_TERROR_SHOVED_BACKWARD_$ACT$ -1 \\
+	fadein $FadeInOut$ fadeout $FadeInOut$ \\
+	fps $FPS$ \\
+	walkframe $WalkFrameBack1$ LX LY \\
+	walkframe $WalkFrameBack2$ LX LY \\
+	walkframe $WalkFrameBack3$ LX LY \\
+} \\
+$sequence Shoved_Forward_$Weapon$ Shoved_Forward_$Weapon$ { \\
+	activity ACT_TERROR_SHOVED_FORWARD_$ACT$ -1 \\
+	fadein $FadeInOut$ fadeout $FadeInOut$ \\
+	fps $FPS$ \\
+  walkframe $WalkFrameFront1$ LX LY \\
+	walkframe $WalkFrameFront2$ LX LY \\
+	walkframe $WalkFrameFront3$ LX LY \\
+} \\
+$sequence Shoved_Rightward_$Weapon$ Shoved_Rightward_$Weapon$ { \\
+	activity ACT_TERROR_SHOVED_RIGHTWARD_$ACT$ -1 \\
+	fadein $FadeInOut$ fadeout $FadeInOut$ \\
+	fps $FPS$ \\
+	walkframe $WalkFrameRight1$ LX LY \\
+	walkframe $WalkFrameRight2$ LX LY \\
+	walkframe $WalkFrameRight3$ LX LY \\
+} \\
+$sequence Shoved_Leftward_$Weapon$ Shoved_Leftward_$Weapon$ { \\
+	activity ACT_TERROR_SHOVED_LEFTWARD_$ACT$ -1 \\
+	fadein $FadeInOut$ fadeout $FadeInOut$ \\
+	fps $FPS$ \\
+	walkframe $WalkFrameLeft1$ LX LY \\
+	walkframe $WalkFrameLeft2$ LX LY \\
+	walkframe $WalkFrameLeft3$ LX LY \\
+} \\
