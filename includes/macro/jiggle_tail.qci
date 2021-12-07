@@ -6,9 +6,8 @@
 				Y = Yaw/Up
 				Z = Along/Front
 */
-$definemacro TailType1 BoneName Angle { \\
+$definemacro TailType1 BoneName Angle \\
 $jigglebone $BoneName$ { \\
-{ \\
 	is_flexible \\
 	{ \\
 		length 300 \\
