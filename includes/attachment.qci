@@ -1,27 +1,36 @@
 /*
   Attachments
 
-  Esse método funciona apenas para a Source 2013 e TF2 branch
-  onde o Playermodel / NPC vão usar as animações através do $includemodel
+  This method works better for Source 2013 and TF2 branch based games
+  and where Playermodel / NPC will use the animations via $includemodel
 
-  Isso porque, para economizar bones, vamos forçar o uso dos bones:
+  That's because, to save bones, let's force the use of bones:
   ValveBiped.forward | ValveBiped.Animm_Attachment_LH | ValveBiped.Animm_Attachment_RH
-  em fallback possibilitando modelos mais complexos e custosos sem atingir o limite da engine.
+  in fallback, saving three bones for complex and costly models.
 
-  Existe uma hipótese de forçar os bones collapsarem e passar o atttachment para o bone pai (parent),
-  eu havia testado isso em meados de 2017, mas pelo que me lembro deu alguns problemas..
+  There is a chance to force the bones to collapse and pass the attachment to the parent bone,
+  I had tested this in mid 2017, but as I remember it gave some problems...
 
-  Usar esse método há um ponto negativo para addons onde o modder colocou explicitamente
-  que deverá usar algum desses bones removidos,
-  fazendo o objeto colapsar para o root (que é geralmente o bone ValveBiped.Bip01_Pelvis)
-  em outras palavras, se vai quer compatibilidade máxima, use o padrão da valve, e não o meu.
+  Using this method there is a downside to addons where the modder has explicitly placed
+  which should use one of these removed bones, causing the object to collapse to root (which is usually the ValveBiped.Bip01_Pelvis bone)
+  in other words, if you want maximum compatibility, use Valve's default, not this one.
 */
 // shared on all source games
 $attachment   forward   $head$     0     0        0         rotate 0 -77 -90
 $attachment   eyes      $head$     0   $eyey$   $eyez$      absolute
 $attachment   head      $head$     0     0        0         rotate -90 -90 0
 
+// SFM coverage
+$attachment  $leye$  $head$ $eyex$	$eyey$	$eyez$	absolute
+$attachment  $reye$  $head$ -$eyex$	$eyey$	$eyez$	absolute
+
 // gmod || hl2 (uncomment if you'll likey need by default)
 //$attachment anim_attachment_head $head$ 0 0 0 rotate -90 -90 0
-//$attachment anim_attachment_RH $handr$ 2.43 -1.55 -0.19 rotate 4.36 0.17 -179.99
-//$attachment anim_attachment_LH $handl$ 2.43 -1.55 0.19 rotate 4.36 -179.83 0.01
+//$attachment anim_attachment_RH $handr$ 2.43 -1.55 -0.19 rotate 4.36 0.17 -180
+//$attachment anim_attachment_LH $handl$ 2.43 -1.55 0.19 rotate 4.36 -179.83 0
+
+// Valve's Defaul (basic)
+//$attachment forward $head$ 0 0 0 rotate 0 -77 -90
+//$attachment anim_attachment_head $head$ 0 0 0 rotate -90 -90 0
+//$attachment anim_attachment_RH "ValveBiped.Anim_Attachment_RH" 0 0 0
+//$attachment anim_attachment_LH "ValveBiped.Anim_Attachment_LH" 0 0 0

@@ -1,34 +1,35 @@
 # Includes
-Aqui, uma espécie de biblioteca, onde a mágica acontece.
-Arquivos que são diretamente incluídos através do parâmetro `$include` e `$proceduralbone`.  
-Muitos dos arquivos tem seus nomes de forma autoexplicativa, e seus prefixos servem como identificadores.  
+Here, a kind of library, where magic happens.
+Files that are directly included via the `$include` and `$proceduralbone` parameters.
+Many of the files are self-explanatory, and their prefixes serve as identifiers.
 
 ## gm_
-	relacionado ao Garry's Mod
+related to Garry's Mod
 
 ## l4d_
-	relacionado ao Left 4 Dead
+Related to Left 4 Dead
 
 ## l4d2_
-	relacionado ao Left 4 Dead 2
+Related to Left 4 Dead 2
 
 ## lod_
-	relacionado a Level of Detail
+related to Level of Detail
 
 ## phys_
-	relacionado a Física
+related to physics
 
 ## sfm_
-	relacionado ao Source Filmmaker
+Related to Source Filmmaker
 
 ## macro
-	relacionado à automações
+automation-related
 
 ## .vrd
-	arquivos com a extensão `.vrd` são usados no parâmetro `$ProceduralBone`, que funcionam como `Helper Bones` para a Valve. Sua aplicação é muito similar aos **`Drivers`** do **Blender**.
-## vars.qci
-	contém variáveis para otimiar o tempo e criação de vProjects.
-	Cada variável pode ser sobreescritas por outra variável também, e diferente de muitas outras linguagens e scripts, só pode conter um único valor.
+files with the `.vrd` extension are used in the `$ProceduralBone` parameter, which works as `Helper Bones` for Valve. Its application is very similar to **`Drivers`** from **Blender**.
 
-### parâmetros
- Cada parâmetro _(QC Command)_ pode ser encontrado na [Valve Developers](https://developer.valvesoftware.com/wiki/Category:QC_Commands) para melhor apreendizado.
+## vars.qci
+contains variables to optimize time and creation of vProjects.
+The compiler will load just the first parameter for each variable, and unlike many other languages ​​and scripts, it can only contain a single value/string.
+
+### parameters
+ Each _(QC Command)_ parameter can be found in [Valve Developers](https://developer.valvesoftware.com/wiki/Category:QC_Commands) for better understanding.

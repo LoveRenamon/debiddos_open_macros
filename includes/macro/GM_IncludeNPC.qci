@@ -3,6 +3,7 @@
   Use it when you had based on a male armature/skeleton
 */
 $definemacro IncludeNPCMale \\
+$declaresequence "reference" \\
 $includemodel "humans/male_ss.mdl" \\
 $includemodel "humans/male_shared.mdl" \\
 $includemodel "humans/male_gestures.mdl" \\
@@ -23,6 +24,7 @@ $IncludeNPCMale \\
   Use it when you had based on a female armature/skeleton
 */
 $definemacro IncludeNPCFemale \\
+$declaresequence "reference" \\
 $includemodel "humans/female_ss.mdl" \\
 $includemodel "humans/female_shared.mdl" \\
 $includemodel "humans/female_gestures.mdl" \\
@@ -36,3 +38,30 @@ $includemodel "humans/female_postures.mdl" \\
 $definemacro IncludeNPCFemaleCombine \\
 $includemodel "combine_soldier_anims.mdl" \\
 $IncludeNPCFemale \\
+
+
+/*
+  Include female PM animations for Garry's Mod
+  Use it when you had based on a female armature/skeleton
+*/
+$definemacro Female \\
+$declaresequence "reference" \\
+$includemodel "f_anm.mdl" \\
+
+
+/*
+  Include female PM animations for Garry's Mod
+  Use it when you had based on a female armature/skeleton
+*/
+$definemacro Male \\
+$declaresequence "reference" \\
+$includemodel "m_anm.mdl" \\
+
+
+/*
+  Create a Ragdoll for Garry's Mod
+	Syntax:
+		$Ragdoll $proportion$
+*/
+$definemacro Ragdoll RagdollFile \\
+$sequence ragdoll $RagdollFile$ { activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 } \\

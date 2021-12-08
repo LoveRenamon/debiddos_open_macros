@@ -1,13 +1,13 @@
 /*
-  Esse fix serve para corrigir um problema criado pela posição dos braços em relação ao mundo.
-  Isso acontece devido à má posição do Bone "ValveBiped.Bip01_Spine4" que deveria estar em "0 0 0" ao invés de "0 3.33 58.3521"
+	This fix serves to correct a problem created by the position of the arms in relation to the world.
+  This happens due to the bad position of the Bone "ValveBiped.Bip01_Spine4" which should be at "0 0 0" instead of "0 3.33 58.3521" for some older c_arms based on CBB's arms
 
-  Sobre o problema:
-    é produto de todos que seguiram tutoriais baseados no que o CBB disse sobre viewmodel hands nos fóruns da facepunch, e por isso o fix se chama "CBBfix".
-        Quando a viewmodel hands executam alguma animação, muitas das vezes o pivot da iluminação vai ficar abaixo da terra, recebendo sombras (afinal, o chão está virtualmente sobre elas), escurecendo-as
+   About the problem:
+     it's the product of everyone who followed tutorials based on what the CBB said about viewmodel hands on the facepunch forums, and that's why the fix is called "CBBfix".
+         When the viewmodel hands perform some animation, often the lighting pivot will be below the ground, taking shadows (after all, the ground is virtually above them), darkening them
 
-  E como você chegou nesse valor*?* Isso é uma subtração do offset obtido pela viewport 3D 1:1 do Blender e Source
+   And how did you get to that value? This is a subtraction of the offset obtained by Blender and Source's 1:1 3D viewport
 
-  Posso arrumar direto pleo Blender? Sim, mas sei lá, optei em fazer desse jeito e manter as viewmodelhands naquela pose
+   Can I fix it directly with Blender? Yes, but idk, i chose to do it that way and keep the viewmodelhands in that pose if necessary
 */
 $origin 0 3.33 58.3521 0

@@ -1,21 +1,108 @@
 /*
-  Viewmmodel Hands (GMod) macho
+	Viewmmodel Hands (GMod) macho
 Eu tive a lixosa ideia de fazer isso quando reparei que a uncia coisa que muda de c_arms pra c_arms do gmod são os bodygroups e texturegroups.
 Então pra isso eu tô fazendo o macro e por tudo numa linha só
-  Syntax:
-    $ViewModelhands "my_v_model" $_IN$ $c_arms$ $chest$ c_arms c_arms_skins
-*/
-$definemacro ViewModelhands Name _IN c_arms chest MeshIncludeFile SkinFamiliesIncludeFile \\
+
+	TIP: você pode usar o $SkinFamiliesIncludeFile$ para editar o $lod e qualquer coisa que deva vir após a inclusão das malhas e demais objetos, ou, por tudo no $MeshIncludeFile$
+
+
+	Syntax:
+								Macro		        var      var	          var           var         qci file             qci file
+							Macro Name        path   Debiddos      idle anim     root bone    mesh includes        skins includes				*/
+$definemacro ViewModelHands  		Name     _IN          c_arms         chest    MeshIncludeFile     SkinFamiliesIncludeFile \\
 $include $_IN$/c_arms_CBBfix.qci \\
-$modelname debiddo/$Name$/c_arm.mdl \\
+$modelname debiddo/$Name$/c_arms.mdl \\
 $include $_IN$/mat.qci \\
+$surfaceprop "flesh" \\
+$contents "solid" \\
 $ambientboost \\
 $mostlyopaque \\
+$cbox 0 0 0 0 0 0 \\
+$bbox -10 -40 40 10 40 75 \\
+//$illumposition 0 -0.221 50.508 \\
+//$origin 0 0 0 0 \\
+$hboxset "default" \\
+$proceduralbones $_IN$/vrd_viewmodel.vrd \\
+$include includes/$MeshIncludeFile$.qci \\
+$root $chest$ \\
+$include includes/$SkinFamiliesIncludeFile$.qci \\
+$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$includemodel "weapons/c_arms_animations.mdl" \\
+
+
+/*
+	Same as $ViewModelhands except you can include a custom $cdmaterials qci that isn't shared with $_IN$
+	$bbox and $cbox are fixed
+
+	Syntax:
+									Macro         var      var	          var           var         qci file             qci file                    qci files
+									Macro         path   Debiddos      idle anim     root bone    mesh includes        skins includes              material path    */
+$definemacro ViewModelHandsMat  Name     _IN          c_arms         chest    MeshIncludeFile     SkinFamiliesIncludeFile   CDMaterialsIncludeFile \\
+$include $_IN$/c_arms_CBBfix.qci \\
+$modelname debiddo/$Name$/c_arms.mdl \\
+$include $CDMaterialsIncludeFile$ \\
+$surfaceprop "flesh" \\
+$ambientboost \\
+$mostlyopaque \\
+$cbox 0 0 0 0 0 0 \\
+$bbox -10 -40 40 10 40 75 \\
+$hboxset "default" \\
+$skipboneinbbox \\
+$include includes/$MeshIncludeFile$.qci \\
+$include includes/$SkinFamiliesIncludeFile$.qci \\
+$proceduralbones $_IN$/vrd_viewmodel.vrd \\
+$root $chest$ \\
+$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$includemodel "weapons/c_arms_animations.mdl" \\
+
+
+/*
+	Same as $ViewModelhandsMat except $Name$ is a full path
+	$bbox and $cbox are fixed
+
+	Syntax:
+									Macro          		path     var	          var           var         qci file             qci file                    qci files
+									Macro          		path   Debiddos      idle anim     root bone    mesh includes        skins includes              material path    */
+$definemacro ViewModelHandsMatFull	Name     _IN          c_arms         chest    MeshIncludeFile     SkinFamiliesIncludeFile   CDMaterialsIncludeFile \\
+$include $_IN$/c_arms_CBBfix.qci \\
+$modelname $Name$.mdl \\
+$include $CDMaterialsIncludeFile$ \\
+$surfaceprop "flesh" \\
+$ambientboost \\
+$mostlyopaque \\
+$cbox 0 0 0 0 0 0 \\
+$bbox -10 -40 40 10 40 75 \\
+$hboxset "default" \\
+$skipboneinbbox \\
+$include includes/$MeshIncludeFile$.qci \\
+$include includes/$SkinFamiliesIncludeFile$.qci \\
+$proceduralbones $_IN$/vrd_viewmodel.vrd \\
+$root $chest$ \\
+$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$includemodel "weapons/c_arms_animations.mdl" \\
+
+
+/*
+	Same as the $ViewModelhands except $Name$ is a full path
+	$bbox and $cbox are fixed
+
+	Syntax:
+									Macro           path       var	          var           var         qci file             qci file
+									Macro           path     Debiddos      idle anim     root bone    mesh includes        skins includes          */
+$definemacro ViewModelHandsFull		Name       _IN          c_arms         chest    MeshIncludeFile     SkinFamiliesIncludeFile \\
+$include $_IN$/c_arms_CBBfix.qci \\
+$modelname $Name$.mdl \\
+$include $_IN$/mat.qci \\
+$surfaceprop "flesh" \\
+$contents "solid" \\
+$ambientboost \\
+$mostlyopaque \\
+$cbox 0 0 0 0 0 0 \\
 $bbox -3 -33 40 3 33 61 \\
 $hboxset "default" \\
 $proceduralbones $_IN$/vrd_viewmodel.vrd \\
 $include includes/$MeshIncludeFile$.qci \\
 $root $chest$ \\
 $include includes/$SkinFamiliesIncludeFile$.qci \\
-$sequence "idle" { $c_arms$ hidden fps 1 } \\
+$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
 $includemodel "weapons/c_arms_animations.mdl" \\

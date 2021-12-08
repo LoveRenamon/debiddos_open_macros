@@ -51,7 +51,7 @@ $jigglebone $BoneName$ \\
 
 /*
 	Sintax:
-		$ScarfRoot Scarf_00
+		$ScarfRoot Scarf_00 15
 */
 $definemacro ScarfRootAngle BoneName Angle \\
 $jigglebone $BoneName$ \\
@@ -71,7 +71,7 @@ $jigglebone $BoneName$ \\
 
 /*
 	Sintax:
-		$ScarfChild Scarf_01
+		$ScarfChild Scarf_01 15
 */
 $definemacro ScarfChildAngle BoneName Angle \\
 $jigglebone $BoneName$ \\

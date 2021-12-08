@@ -66,8 +66,6 @@ $include "includes/attachment.qci"
 
 // Attachments adicionais, usados por addons e outros jogos;
 // Cada attachment "absolute" usa as coordenadas extraídas diretamente do Blender
-$attachment $leye$ $head$ $eyex$ $eyey$ $eyez$ absolute
-$attachment $reye$ $head$ -$eyex$ $eyey$ $eyez$ absolute
 //$attachment nose $head$ 0 -3 59 absolute
 //$attachment mouth $head$ 0 -2.50656 64.9419 absolute
 //$attachment chest $chest$ 4 3 0 rotate 0 90 90
