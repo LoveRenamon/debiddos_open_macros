@@ -1,0 +1,87 @@
+/*
+  Keychains
+  Um detalhe que pode ser um desafio, isso evido a falsa gravidade da Source.
+
+  Esse Jiggle tem movimentos rápidos e tenta sempre seguir a gravidade (Z Global)
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+*/
+
+
+/*
+  Aqui você pode definir quantos links forem necessários para o jiggle
+  Syntalx:
+    $Keychain jiggle0 -5 15 -15 15
+*/
+$definemacro Keychain BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+  is_rigid { \\
+    length 15 \\
+    tip_mass 1000 \\
+    pitch_friction 0 \\
+    pitch_bounce 0 \\
+    pitch_constraint $PitchMin$ $PitchMax$ \\
+    yaw_friction 0 \\
+    yaw_bounce 0 \\
+    yaw_constraint $YawMin$ $YawMax$ \\
+  } \\
+} \\
+
+
+/*
+  Splinks made his sample as 4 bone links
+  Syntalx:
+    $KeychainSplinks "ValveBiped.Jiggle_link"
+*/
+$definemacro KeychainSplinks BoneName \\
+$jigglebone $BoneName$1 { \\
+  is_flexible { \\
+    length 15 \\
+    tip_mass 1000 \\
+    pitch_constraint 5 15 \\
+    pitch_friction 0 \\
+    pitch_bounce 0 \\
+    yaw_constraint -15 15 \\
+    yaw_friction 0 \\
+    yaw_bounce 0 \\
+  } \\
+} \\
+$jigglebone $BoneName$2 { \\
+  is_flexible { \\
+    length 15 \\
+    tip_mass 1000 \\
+    pitch_constraint 0 20 \\
+    pitch_friction 0 \\
+    pitch_bounce 0 \\
+    yaw_constraint -10 10 \\
+    yaw_friction 0 \\
+    yaw_bounce 0 \\
+  } \\
+} \\
+$jigglebone $BoneName$3 { \\
+  is_flexible { \\
+    length 15 \\
+    tip_mass 1000 \\
+    pitch_constraint 0 25 \\
+    pitch_friction 0 \\
+    pitch_bounce 0 \\
+    yaw_constraint -5 5 \\
+    yaw_friction 0 \\
+    yaw_bounce 0 \\
+  } \\
+} \\
+$jigglebone $BoneName$4 { \\
+  is_flexible { \\
+    length 15 \\
+    tip_mass 1000 \\
+    pitch_constraint 0 30 \\
+    pitch_friction 0 \\
+    pitch_bounce 0 \\
+    yaw_constraint -5 5 \\
+    yaw_friction 0 \\
+    yaw_bounce 0 \\
+  } \\
+} \\

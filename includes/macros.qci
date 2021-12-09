@@ -14,6 +14,7 @@ $include ../debiddos_open_macros/includes/macro/jiggle_butt_bouncy.qci
 $include ../debiddos_open_macros/includes/macro/jiggle_durandal.qci
 $include ../debiddos_open_macros/includes/macro/jiggle_earrings.qci
 $include ../debiddos_open_macros/includes/macro/jiggle_generics.qci
+$include ../debiddos_open_macros/includes/macro/jiggle_keychain.qci
 $include ../debiddos_open_macros/includes/macro/jiggle_kyuuki.qci
 $include ../debiddos_open_macros/includes/macro/jiggle_scarf.qci
 $include ../debiddos_open_macros/includes/macro/jiggle_tail.qci
