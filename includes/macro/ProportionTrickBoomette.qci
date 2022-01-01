@@ -1,0 +1,57 @@
+/* Useful for Multiplayer (Boomette)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionBoomette ReferenceFile ProportionFile \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$declaresequence "Idle_Upper_KNIFE" \\
+$declaresequence "Idle_Standing" \\
+$declaresequence "Crouch_Idle_Upper_KNIFE" \\
+$declaresequence "BoomerVar_squat" \\
+$declaresequence "BoomerVar_squat_idle" \\
+$declaresequence "Run_Upper_KNIFE" \\
+$declaresequence "Run_Upper_KNIFE_Leaker" \\
+$declaresequence "Walk_Upper_Knife" \\
+$declaresequence "Crouch_Walk_Upper_KNIFE" \\
+$declaresequence "Boomer_AimMatrix_Idle_Standing" \\
+$declaresequence "Boomer_AimMatrix_Melee" \\
+$declaresequence "Boomer_AimMatrix_Idle_Crouching" \\
+$declaresequence "Melee" \\
+$declaresequence "Melee_01_Delta" \\
+$declaresequence "Melee_01_Layer" \\
+$declaresequence "Melee_01" \\
+$declaresequence "Melee_02_Delta" \\
+$declaresequence "Melee_02_Layer" \\
+$declaresequence "Melee_02" \\
+$declaresequence "Melee_03_Delta" \\
+$declaresequence "Melee_03_Layer" \\
+$declaresequence "Melee_03" \\
+$declaresequence "Run_Shoot_KNIFE" \\
+$declaresequence "Walk_Shoot_KNIFE" \\
+$declaresequence "Idle_Shoot_KNIFE" \\
+$declaresequence "Crouch_Idle_Shoot_KNIFE" \\
+$declaresequence "Crouch_Walk_Shoot_KNIFE" \\
+$declaresequence "Vomit_Attack" \\
+$declaresequence "Shoved_Backward_01" \\
+$declaresequence "Shoved_Forward" \\
+$declaresequence "Shoved_Leftward" \\
+$declaresequence "Shoved_Rightward" \\
+$declaresequence "Jump" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "Flinch_01" \\
+$declaresequence "Flinch_02" \\
+$declaresequence "Flinch_03" \\
+$declaresequence "deathpose_front" \\
+$declaresequence "deathpose_back" \\
+$declaresequence "deathpose_right" \\
+$declaresequence "deathpose_left" \\
+$declaresequence "deathpose_crouch_front" \\
+$declaresequence "deathpose_crouch_back" \\
+$declaresequence "deathpose_crouch_right" \\
+$declaresequence "deathpose_crouch_left" \\
+$sequence boomette $ReferenceFile$ \\
+$animation a_proportions $ProportionFile$ subtract boomette 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_boomer.mdl \\

@@ -1,0 +1,65 @@
+/* Useful for Multiplayer (Smoker) (Smoker l4d1)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionSmoker ReferenceFile ProportionFile \\
+$sequence smoker $ReferenceFile$ \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$declaresequence "Idle_Upper_KNIFE" \\
+$declaresequence "Idle_Upper_KNIFE_2" \\
+$declaresequence "Crouch_Idle_Upper_KNIFE" \\
+$declaresequence "Run_Upper_KNIFE" \\
+$declaresequence "Walk_Upper_KNIFE" \\
+$declaresequence "Crouch_Walk_Upper_KNIFE" \\
+$declaresequence "Smoker_AimMatrix_Idle_Standing" \\
+$declaresequence "Smoker_AimMatrix_Melee" \\
+$declaresequence "Melee_01_Delta" \\
+$declaresequence "Melee_01_Layer" \\
+$declaresequence "Melee_01" \\
+$declaresequence "Melee_02_Delta" \\
+$declaresequence "Melee_02_Layer" \\
+$declaresequence "Melee_02" \\
+$declaresequence "Melee_03_Delta" \\
+$declaresequence "Melee_03_Layer" \\
+$declaresequence "Melee_03" \\
+$declaresequence "Run_Shoot_KNIFE" \\
+$declaresequence "Walk_Shoot_KNIFE" \\
+$declaresequence "Idle_Shoot_KNIFE" \\
+$declaresequence "Crouch_Idle_Shoot_KNIFE" \\
+$declaresequence "Crouch_Walk_Shoot_KNIFE" \\
+$declaresequence "smoker_cough" \\
+$declaresequence "Cough_Attack" \\
+$declaresequence "tongue_attack_antic" \\
+$declaresequence "tongue_attack_grab_survivor" \\
+$declaresequence "tongue_attack_grab_survivor_idle" \\
+$declaresequence "tongue_attack_drag_survivor" \\
+$declaresequence "tongue_attack_drag_survivor_idle" \\
+$declaresequence "tongue_attack_incap_survivor_idle" \\
+$declaresequence "tongue_attack_to_idle" \\
+$declaresequence "Jump" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "Shoved_Backward" \\
+$declaresequence "Shoved_Forward" \\
+$declaresequence "Shoved_Leftward" \\
+$declaresequence "Shoved_Rightward" \\
+$declaresequence "Flinch_left" \\
+$declaresequence "Flinch_right" \\
+$declaresequence "Flinch_stomach" \\
+$declaresequence "Flinch_chest" \\
+$declaresequence "Flinch_head" \\
+$declaresequence "Flinch_back" \\
+$declaresequence "Flinch_leftleg" \\
+$declaresequence "Flinch_rightleg" \\
+$declaresequence "deathpose_front" \\
+$declaresequence "deathpose_back" \\
+$declaresequence "deathpose_right" \\
+$declaresequence "deathpose_left" \\
+$declaresequence "deathpose_crouch_front" \\
+$declaresequence "deathpose_crouch_back" \\
+$declaresequence "deathpose_crouch_right" \\
+$declaresequence "deathpose_crouch_left" \\
+$animation a_proportions $ProportionFile$ subtract smoker 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_smoker.mdl \\

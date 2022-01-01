@@ -1,0 +1,100 @@
+/* Useful for Multiplayer (Hunter) (Hunter l4d1)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionHunter ReferenceFile ProportionFile \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$sequence hunter $ReferenceFile$ \\
+$declaresequence "Idle_Upper_KNIFE" \\
+$declaresequence "Idle_Standing_01" \\
+$declaresequence "Idle_Standing_02" \\
+$declaresequence "Idle_Standing_03" \\
+$declaresequence "idle_crouch_pose" \\
+$declaresequence "layer_crouchIdleNoise" \\
+$declaresequence "Idle_Crouching_01" \\
+$declaresequence "Run_Upper_KNIFE" \\
+$declaresequence "Walk_Upper_Knife" \\
+$declaresequence "Crouch_Walk_Upper_KNIFE" \\
+$declaresequence "crouchWalkN_raw" \\
+$declaresequence "Hunter_AimMatrix_Idle_Standing" \\
+$declaresequence "Hunter_AimMatrix_Melee" \\
+$declaresequence "Hunter_AimMatrix_Idle_Crouching" \\
+$declaresequence "Hunter_AimMatrix_CrouchWalking" \\
+$declaresequence "Melee" \\
+$declaresequence "Melee_01_Delta" \\
+$declaresequence "Melee_01_Layer" \\
+$declaresequence "Melee_01" \\
+$declaresequence "Melee_02_Delta" \\
+$declaresequence "Melee_02_Layer" \\
+$declaresequence "Melee_02" \\
+$declaresequence "Melee_03_Delta" \\
+$declaresequence "Melee_03_Layer" \\
+$declaresequence "Melee_03" \\
+$declaresequence "Melee_04_Delta" \\
+$declaresequence "Melee_04_Layer" \\
+$declaresequence "Melee_04" \\
+$declaresequence "hunter_pummel" \\
+$declaresequence "hunter_pummel_Delta" \\
+$declaresequence "hunter_pummel_Layer" \\
+$declaresequence "Run_Shoot_KNIFE" \\
+$declaresequence "Walk_Shoot_KNIFE" \\
+$declaresequence "Idle_Shoot_KNIFE" \\
+$declaresequence "Crouch_Idle_Shoot_KNIFE" \\
+$declaresequence "Crouch_Walk_Shoot_KNIFE" \\
+$declaresequence "Melee_Pounce" \\
+$declaresequence "Melee_pounce_Knockoff_R" \\
+$declaresequence "layer_pounce_pose" \\
+$declaresequence "Melee_pounce_Knockoff_Backward" \\
+$declaresequence "Melee_pounce_Knockoff_Forward" \\
+$declaresequence "Melee_pounce_Knockoff_L" \\
+$declaresequence "Melee_Pounce_Broadcast_01" \\
+$declaresequence "Shoved_Backward_01" \\
+$declaresequence "Shoved_Backward_02" \\
+$declaresequence "Shoved_Forward" \\
+$declaresequence "Shoved_Leftward" \\
+$declaresequence "Shoved_Rightward" \\
+$declaresequence "a_Jump" \\
+$declaresequence "Jump" \\
+$declaresequence "Lunge_01" \\
+$declaresequence "Lunge_02" \\
+$declaresequence "Lunge_nav_01" \\
+$declaresequence "Lunge_While_Running_01" \\
+$declaresequence "Lunge_Into_Survivor_01" \\
+$declaresequence "lunge_nav_idle_high_02" \\
+$declaresequence "lunge_nav_idle_low_02" \\
+$declaresequence "lunge_nav_idle_01" \\
+$declaresequence "Lunge_Land_low_nav_01" \\
+$declaresequence "Lunge_Land_high_nav_01" \\
+$declaresequence "Land_gesture_01" \\
+$declaresequence "Pounce_01_blendlayer" \\
+$declaresequence "Pounce_01" \\
+$declaresequence "pounce_idle_high" \\
+$declaresequence "pounce_idle_low" \\
+$declaresequence "pounce_idle_01" \\
+$declaresequence "Lunge_OffWall_BacktoWall" \\
+$declaresequence "Lunge_OffWall_Left_R" \\
+$declaresequence "Lunge_OffWall_Right_R" \\
+$declaresequence "Idlenoise_01" \\
+$declaresequence "Idlenoise_02" \\
+$declaresequence "Idlenoise_03" \\
+$declaresequence "Fall_Idle" \\
+$declaresequence "Lunge_OntoWall_01" \\
+$declaresequence "Lunge_OntoWall_02" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "Flinch_left" \\
+$declaresequence "Flinch_right" \\
+$declaresequence "Flinch_stomach" \\
+$declaresequence "Flinch_chest" \\
+$declaresequence "Flinch_head" \\
+$declaresequence "Flinch_back" \\
+$declaresequence "Flinch_leftleg" \\
+$declaresequence "Flinch_rightleg" \\
+$declaresequence "Flinch_Crouch_left" \\
+$declaresequence "Flinch_Crouch_right" \\
+$declaresequence "Flinch_Crouch_Center" \\
+$declaresequence "Flinch_Crouch_Back" \\
+$animation a_proportions $ProportionFile$ subtract hunter 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_hunter.mdl \\

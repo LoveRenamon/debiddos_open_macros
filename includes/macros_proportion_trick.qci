@@ -1,0 +1,21 @@
+/*
+	This is a Index for all macros on this prefab
+		Made by Davi (Debiddo) Gooz
+*/
+$include ../debiddos_open_macros/includes/ProportionTrickBiker.qci
+$include ../debiddos_open_macros/includes/ProportionTrickBoomer.qci
+$include ../debiddos_open_macros/includes/ProportionTrickBoomette.qci
+$include ../debiddos_open_macros/includes/ProportionTrickCharger.qci
+$include ../debiddos_open_macros/includes/ProportionTrickCoach.qci
+$include ../debiddos_open_macros/includes/ProportionTrickGambler.qci
+$include ../debiddos_open_macros/includes/ProportionTrickHulk.qci
+$include ../debiddos_open_macros/includes/ProportionTrickHunter.qci
+$include ../debiddos_open_macros/includes/ProportionTrickJockey.qci
+$include ../debiddos_open_macros/includes/ProportionTrickManager.qci
+$include ../debiddos_open_macros/includes/ProportionTrickMechanic.qci
+$include ../debiddos_open_macros/includes/ProportionTrickNamVet.qci
+$include ../debiddos_open_macros/includes/ProportionTrickProducer.qci
+$include ../debiddos_open_macros/includes/ProportionTrickSmoker.qci
+$include ../debiddos_open_macros/includes/ProportionTrickSpitter.qci
+$include ../debiddos_open_macros/includes/ProportionTrickTeenAngst.qci
+$include ../debiddos_open_macros/includes/ProportionTrickWitch.qci

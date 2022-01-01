@@ -1,0 +1,88 @@
+/* Useful for Multiplayer (Tank) (Hulk)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionHulk ReferenceFile ProportionFile \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$declaresequence "Idle" \\
+$declaresequence "Idle_Yell" \\
+$declaresequence "Idle_Yell_short" \\
+$declaresequence "Idle_Rage" \\
+$declaresequence "Crouch_Idle" \\
+$declaresequence "Run_1" \\
+$declaresequence "Run_2b" \\
+$declaresequence "Run_3" \\
+$declaresequence "Run_4" \\
+$declaresequence "hulk_runMad" \\
+$declaresequence "Hulk_StumbleA" \\
+$declaresequence "Walk" \\
+$declaresequence "Crouch_Walk" \\
+$declaresequence "Jump_Land_gesture" \\
+$declaresequence "Jump" \\
+$declaresequence "Climb36_03_InPlace" \\
+$declaresequence "Jump_Climb38" \\
+$declaresequence "Jump_Climb50" \\
+$declaresequence "Jump_Climb70" \\
+$declaresequence "Jump_Climb115" \\
+$declaresequence "Jump_Climb130" \\
+$declaresequence "Jump_Climb150" \\
+$declaresequence "Jump_Climb166" \\
+$declaresequence "Wall_Mount" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "Ladder_Dismount1" \\
+$declaresequence "Shoved_Backward" \\
+$declaresequence "Shoved_Forward" \\
+$declaresequence "Shoved_Leftward" \\
+$declaresequence "Shoved_Rightward" \\
+$declaresequence "Hulk_AimMatrix_Idle_Standing" \\
+$declaresequence "Melee" \\
+$declaresequence "Melee01_layer" \\
+$declaresequence "Attack" \\
+$declaresequence "Wall_SmashA" \\
+$declaresequence "Wall_SmashB" \\
+$declaresequence "Melee01_Running_Delta" \\
+$declaresequence "Melee01_Running_layer" \\
+$declaresequence "Attack_Moving" \\
+$declaresequence "raw_Hulk_RunAttack1" \\
+$declaresequence "Hulk_RunAttack1_layer" \\
+$declaresequence "Hulk_RunAttack1_gesture" \\
+$declaresequence "Hulk_RunAttack2_layer" \\
+$declaresequence "Hulk_RunAttack2_gesture" \\
+$declaresequence "Attack_Incap" \\
+$declaresequence "Attack_Incap_03" \\
+$declaresequence "Throw" \\
+$declaresequence "Throw_02" \\
+$declaresequence "Throw_03" \\
+$declaresequence "Throw_04" \\
+$declaresequence "Victory" \\
+$declaresequence "VictoryB" \\
+$declaresequence "Rage_at_Enemy_01" \\
+$declaresequence "Rage_at_Enemy_02" \\
+$declaresequence "Rage_at_Enemy_03" \\
+$declaresequence "Rage_at_Enemy_04" \\
+$declaresequence "Rage_at_Knockdown_01" \\
+$declaresequence "Rage_at_Knockdown_02" \\
+$declaresequence "Rage_at_Knockdown_03" \\
+$declaresequence "Flinch_left" \\
+$declaresequence "Flinch_right" \\
+$declaresequence "Flinch_stomach" \\
+$declaresequence "Flinch_chest" \\
+$declaresequence "deathpose_front" \\
+$declaresequence "deathpose_back" \\
+$declaresequence "deathpose_right" \\
+$declaresequence "deathpose_left" \\
+$declaresequence "deathpose_crouch_front" \\
+$declaresequence "deathpose_crouch_back" \\
+$declaresequence "deathpose_crouch_right" \\
+$declaresequence "deathpose_crouch_left" \\
+$declaresequence "Death_11ab" \\
+$declaresequence "Death_Running_07" \\
+$declaresequence "Death" \\
+$declaresequence "Death_idle" \\
+$declaresequence "deathpose_incap" \\
+$sequence hulk $ReferenceFile$ \\
+$animation a_proportions $ProportionFile$ subtract hulk 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_hulk.mdl \\

@@ -1,12 +1,12 @@
 /*
   Macro Proportion Trick
-  ele é opcional e uma alternativa para o método tradicional via $include que sempre usei;
-  tal método se mostra viável por permitir a porpotion trick opcional, mesmo sendo incluída por um index
+    It's optional and an alternative to the traditional $include method I've always used;
+    such a method proves viable because it allows an optional optional trick, even included by an index.
 
-  WARNING: NÃO USE OS DOIS MÉTODOS SIMULATÂNEAMENTE, OU TERÁ UM MODELO COM DUAS SUBTRAÇÔES EM AUTOPLAY
+    WARNING: DO NOT USE THE TWO METHODS SIMULTANEOUSLY, OR YOU WILL HAVE A MODEL WITH TWO SUBTRACTIONS IN AUTOPLAY
 
-   Creditos:  proportion trick discovered by CaptainBigButt
-              Macro feito por Davi (Debiddo) Gooz para praticar
+     Credits: Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionTrick ReferenceFile ProportionFile \\
 $sequence ragdoll $ProportionFile$ { activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 } \\

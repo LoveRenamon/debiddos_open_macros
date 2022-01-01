@@ -1,0 +1,31 @@
+/* Useful for Multiplayer (Spitter)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionSpitter ReferenceFile ProportionFile \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$sequence spitter $ReferenceFile$ \\
+$declaresequence "Standing_Idle" \\
+$declaresequence "Crouch_Idle" \\
+$declaresequence "Run" \\
+$declaresequence "Walk" \\
+$declaresequence "crouchWalk" \\
+$declaresequence "Spitter_AimMatrix_Idle_Standing" \\
+$declaresequence "Spitter_AimMatrix_Melee" \\
+$declaresequence "Spitter_Aimmatrix_Spit" \\
+$declaresequence "raw_aim_idle_standing" \\
+$declaresequence "spitter_melee_01" \\
+$declaresequence "spitter_melee_02" \\
+$declaresequence "Jump" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "ladder_idle" \\
+$declaresequence "Shoved_Backward" \\
+$declaresequence "Shoved_Forward" \\
+$declaresequence "Shoved_Leftward" \\
+$declaresequence "Shoved_Rightward" \\
+$declaresequence "spitter_spitting" \\
+$animation a_proportions $ProportionFile$ subtract spitter 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_spitter.mdl \\

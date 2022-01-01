@@ -1,0 +1,28 @@
+/* Useful for Multiplayer (Jockey)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionJockey ReferenceFile ProportionFile \\
+$sequence jockey $ReferenceFile$ \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$declaresequence "Standing_Idle" \\
+$declaresequence "Crouch_Idle" \\
+$declaresequence "Run" \\
+$declaresequence "Walk" \\
+$declaresequence "crouchWalk" \\
+$declaresequence "jockey_aimmatrix_standing" \\
+$declaresequence "jockey_ride" \\
+$declaresequence "jockey_melee" \\
+$declaresequence "Jump" \\
+$declaresequence "Pounce" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "ladder_idle" \\
+$declaresequence "Shoved_Backward" \\
+$declaresequence "Shoved_Forward" \\
+$declaresequence "Shoved_Leftward" \\
+$declaresequence "Shoved_Rightward" \\
+$animation a_proportions $ProportionFile$ subtract jockey 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_jockey.mdl \\

@@ -1,0 +1,93 @@
+/* Useful for Multiplayer (Witch) (Witch Bride)
+
+Credits:	Proportion Trick discovered by CaptainBigButt
+				Macro made by Davi (Debiddo) Gooz
+*/
+$definemacro ProportionWitch ReferenceFile ProportionFile \\
+$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$declaresequence "Standing_Idle" \\
+$declaresequence "Idle_Standing_Crying" \\
+$declaresequence "Idle_Standing" \\
+$declaresequence "Idle_Sitting" \\
+$declaresequence "Idle_Pre_Retreat" \\
+$declaresequence "Run" \\
+$declaresequence "Run_On_Fire_Intense" \\
+$declaresequence "Run_Retreat" \\
+$declaresequence "Agitated_wander" \\
+$declaresequence "Walk_01" \\
+$declaresequence "Walk_02" \\
+$declaresequence "Witch_AimMatrix_Agitated" \\
+$declaresequence "Witch_AimMatrix_Melee" \\
+$declaresequence "Witch_AimMatrix_idle_standing" \\
+$declaresequence "witch_aimmatrix_walk01" \\
+$declaresequence "Melee_01_Layer" \\
+$declaresequence "Melee_01" \\
+$declaresequence "Melee_02_Layer" \\
+$declaresequence "Melee_02" \\
+$declaresequence "MovingMelee_01_Delta" \\
+$declaresequence "MovingMelee_01_Layer" \\
+$declaresequence "MovingMelee_01" \\
+$declaresequence "MovingMelee_02_Delta" \\
+$declaresequence "MovingMelee_02_Layer" \\
+$declaresequence "MovingMelee_02" \\
+$declaresequence "Agitated_Idlenoise" \\
+$declaresequence "Agitated" \\
+$declaresequence "Agitated_Idlenoise_02" \\
+$declaresequence "Agitated_02" \\
+$declaresequence "Wander_acquire" \\
+$declaresequence "killing_blow_display" \\
+$declaresequence "killing_blow_loop" \\
+$declaresequence "Turn_180" \\
+$declaresequence "Turn_Right" \\
+$declaresequence "Turn_Left" \\
+$declaresequence "Jump" \\
+$declaresequence "Idle" \\
+$declaresequence "CrouchWalk_03" \\
+$declaresequence "Run_OnFire" \\
+$declaresequence "Fire_Upperbody" \\
+$declaresequence "Retreat" \\
+$declaresequence "Flinch_01" \\
+$declaresequence "Flinch_02" \\
+$declaresequence "Shoved_Backward_03" \\
+$declaresequence "Shoved_Forward_01" \\
+$declaresequence "Shoved_Leftward_01" \\
+$declaresequence "Shoved_Rightward_01" \\
+$declaresequence "Shoved_Backward_IntoWall_03" \\
+$declaresequence "Shoved_Forward_IntoWall_02" \\
+$declaresequence "Shoved_Leftward_IntoWall_02" \\
+$declaresequence "Shoved_Rightward_IntoWall_01" \\
+$declaresequence "Jump_01" \\
+$declaresequence "Jump_Across_02" \\
+$declaresequence "Fall_05" \\
+$declaresequence "Landing03" \\
+$declaresequence "Landing_Hard05" \\
+$declaresequence "Climb24_02_InPlace" \\
+$declaresequence "Climb36_02_InPlace" \\
+$declaresequence "Climb48_01_InPlace" \\
+$declaresequence "Climb60_03_InPlace" \\
+$declaresequence "Climb72_04_InPlace" \\
+$declaresequence "Climb84_05_InPlace" \\
+$declaresequence "Climb96_04a_InPlace" \\
+$declaresequence "Climb108_01_InPlace" \\
+$declaresequence "Climb120_00_InPlace" \\
+$declaresequence "Climb132_00a_InPlace" \\
+$declaresequence "Climb144_03_InPlace" \\
+$declaresequence "Climb156_03a_InPlace" \\
+$declaresequence "Climb168_01_InPlace" \\
+$declaresequence "Ladder_Ascend" \\
+$declaresequence "Ladder_Descend" \\
+$declaresequence "Ladder_Dismount" \\
+$declaresequence "DeathRunning_10" \\
+$declaresequence "Death_02" \\
+$declaresequence "deathpose_front" \\
+$declaresequence "deathpose_back" \\
+$declaresequence "deathpose_right" \\
+$declaresequence "deathpose_left" \\
+$declaresequence "deathpose_crouch_front" \\
+$declaresequence "deathpose_crouch_back" \\
+$declaresequence "deathpose_crouch_right" \\
+$declaresequence "deathpose_crouch_left" \\
+$sequence witch $ReferenceFile$ \\
+$animation a_proportions $ProportionFile$ subtract witch 0 \\
+$sequence proportions a_proportions predelta autoplay hidden \\
+$includemodel infected/anim_witch.mdl \\
