@@ -1,6 +1,7 @@
 /*
-  Macro criado para adicionar delta animations para alguma idle
-  Esse macro foi criado com intuíto de recriar as animações corretivas de l4d e l4d2 para Francis (biker) e Zoey (teenangst)
+  Macro created to add delta animations to something. Much like a "self-delta sequence"
+	This macro was created with the intention of recreating as corrective animations of l4d and l4d2 for Francis (biker) and Zoey (teenangst)
 */
 $definemacro ArkjDLCMacro filename activity \\
 $sequence $filename$ $filename$ subtract $filename$ 0 delta activity ACT_$activity$ -1 \\
+$continue $filename$ \\

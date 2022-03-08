@@ -86,3 +86,4 @@ $sequence hulk $ReferenceFile$ \\
 $animation a_proportions $ProportionFile$ subtract hulk 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_hulk.mdl \\
+$continue proportions \\

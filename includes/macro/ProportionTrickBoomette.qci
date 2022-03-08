@@ -55,3 +55,4 @@ $sequence boomette $ReferenceFile$ \\
 $animation a_proportions $ProportionFile$ subtract boomette 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_boomer.mdl \\
+$continue proportions \\

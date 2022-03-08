@@ -960,3 +960,4 @@ $sequence proportions a_proportions predelta autoplay weightlist NoAttachments h
 $includemodel "survivors/anim_gambler.mdl" \\
 $includemodel "survivors/anim_gestures.mdl" \\
 $includemodel "survivors/gestures_gambler.mdl" \\
+$continue proportions \\

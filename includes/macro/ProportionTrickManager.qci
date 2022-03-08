@@ -1052,3 +1052,4 @@ $includemodel survivors/gestures_manager.mdl \\
 $includemodel survivors/anim_gestures.mdl \\
 $includemodel survivors/anim_biker.mdl \\
 $includemodel survivors/anim_namvet.mdl \\
+$continue proportions \\

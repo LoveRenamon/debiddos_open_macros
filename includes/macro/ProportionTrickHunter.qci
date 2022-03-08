@@ -98,3 +98,4 @@ $declaresequence "Flinch_Crouch_Back" \\
 $animation a_proportions $ProportionFile$ subtract hunter 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_hunter.mdl \\
+$continue proportions \\

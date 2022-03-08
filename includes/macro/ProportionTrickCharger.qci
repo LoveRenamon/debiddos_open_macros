@@ -58,3 +58,4 @@ $declaresequence "Flinch_rightleg" \\
 $animation a_proportions $ProportionFile$ subtract charger 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_charger.mdl \\
+$continue proportions \\

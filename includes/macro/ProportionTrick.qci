@@ -9,7 +9,8 @@
               Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionTrick ReferenceFile ProportionFile \\
-$sequence ragdoll $ProportionFile$ { activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 } \\
-$sequence ref $ReferenceFile$ hidden fps 1 \\
-$animation a_proportions $ProportionFile$ subtract ref 0 \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 \\
+$sequence ref $ReferenceFile$ frames 0 0 hidden fps 1 \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract ref 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
+$continue proportions \\

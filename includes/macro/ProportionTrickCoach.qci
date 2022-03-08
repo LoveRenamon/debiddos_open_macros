@@ -947,3 +947,4 @@ $sequence proportions a_proportions predelta autoplay weightlist NoAttachments h
 $includemodel "survivors/anim_coach.mdl" \\
 $includemodel "survivors/anim_gestures.mdl" \\
 $includemodel "survivors/gestures_coach.mdl" \\
+$continue proportions \\

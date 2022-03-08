@@ -55,3 +55,4 @@ $declaresequence "deathpose_crouch_left" \\
 $animation a_proportions $ProportionFile$ subtract boomer 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_boomer.mdl \\
+$continue proportions \\

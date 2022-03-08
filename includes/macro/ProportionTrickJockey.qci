@@ -26,3 +26,4 @@ $declaresequence "Shoved_Rightward" \\
 $animation a_proportions $ProportionFile$ subtract jockey 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_jockey.mdl \\
+$continue proportions \\

@@ -64,4 +64,5 @@ $includemodel "m_anm.mdl" \\
 		$Ragdoll $proportion$
 */
 $definemacro Ragdoll RagdollFile \\
-$sequence ragdoll $RagdollFile$ { activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 } \\
+$sequence ragdoll $RagdollFile$ fps 1 frames 0 0 activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 \\
+$continue ragdoll \\
