@@ -229,6 +229,30 @@ $jigglebone $BoneName$ { \\
 		angle_constraint $Angle$ \\
 		tip_mass $Mass$ \\
 		length $Lengh$ \\
+		pitch_stiffness $PitchStiff$ \\
+		pitch_damping $PitchDamp$ \\
+		yaw_stiffness $YawStiff$ \\
+		yaw_damping $YawDamp$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff$ \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\
+
+
+/*
+		A full modular macro for "is_flexible"
+
+	Syntax: 			Macro								BoneName			Mass		Lengh			Pitch				Yaw			Along
+						$IsFlexiblePitchYaw			 Jiggle_0 		 50				40				100 8			 75 8			60	6
+*/
+$definemacro IsFlexiblePitchYaw BoneName Mass Lengh PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		pitch_constraint -$Angle$ $Angle$ \\
+		yaw_constraint -$Angle$ $Angle$ \\
+		tip_mass $Mass$ \\
+		length $Lengh$ \\
 		pitch_stiffness $PitchStiff \\
 		pitch_damping $PitchDamp$ \\
 		yaw_stiffness $YawStiff \\
