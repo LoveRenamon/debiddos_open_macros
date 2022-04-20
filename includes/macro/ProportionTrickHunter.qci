@@ -1,11 +1,38 @@
-/* Useful for Multiplayer (Hunter) (Hunter l4d1)
+/*
+	Useful for Multiplayer (Hunter) (Hunter L4D1)
 
-Credits:	Proportion Trick discovered by CaptainBigButt
-				Macro made by Davi (Debiddo) Gooz
+	This method consists of a single thing:
+ 1. Arrange the animation sequence while apply the Proportion Trick
+
+Usage | Syntax:
+	1) Clone the entire prefab at: https://github.com/LoveRenamon/debiddos_open_macros
+	Or download this file by right click on the "Raw" button at GitHub page:
+https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/ProportionTrickHunter.qci
+
+	2) Remove any $includemodel, $declaresequence or $sequence (It include the ones that setup you ragdoll ACT_DIE_RAGDOLL) and any other file that may include it
+
+	3) Instance this file,
+	If you have downloaded just this file, put side your .qc
+		$include "ProportionTrickHunter.qci"
+
+	4) Then use the macro as you call a function, by `$Proportion` followed by Character Code. As example for this file:
+			$ProportionHunter "reference.smd" "proportion.smd"
+
+	5) Now you're done and can compile it as normal;
+
+	OBS1.:
+		Any access violation might be due missing bones or you have set the wrong path for the animations "Reference" or "Proportion" file
+
+	OBS2.:
+		If you want a creative way to use this macro, including it through a variable:
+			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+
+    Credits:  Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionHunter ReferenceFile ProportionFile \\
-$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
-$sequence hunter $ReferenceFile$ \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 ACT_DIERAGDOLL 1 \\
+$sequence hunter $ReferenceFile$ frames 0 0 \\
 $declaresequence "Idle_Upper_KNIFE" \\
 $declaresequence "Idle_Standing_01" \\
 $declaresequence "Idle_Standing_02" \\
@@ -95,7 +122,7 @@ $declaresequence "Flinch_Crouch_left" \\
 $declaresequence "Flinch_Crouch_right" \\
 $declaresequence "Flinch_Crouch_Center" \\
 $declaresequence "Flinch_Crouch_Back" \\
-$animation a_proportions $ProportionFile$ subtract hunter 0 \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract hunter 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_hunter.mdl \\
 $continue proportions \\

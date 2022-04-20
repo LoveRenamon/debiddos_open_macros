@@ -1,10 +1,39 @@
-/* Useful for Multiplayer (Tank) (Hulk)
+/*
+  Useful for Multiplayer (Tank) (Hulk) (Hulk DLC3) (Hulk L4D1)
 
-Credits:	Proportion Trick discovered by CaptainBigButt
-				Macro made by Davi (Debiddo) Gooz
+	All three Tanks use same sequence order
+
+	This method consists of a single thing:
+ 1. Arrange the animation sequence while apply the Proportion Trick
+
+Usage | Syntax:
+	1) Clone the entire prefab at: https://github.com/LoveRenamon/debiddos_open_macros
+	Or download this file by right click on the "Raw" button at GitHub page:
+https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/ProportionTrickHulk.qci
+
+	2) Remove any $includemodel, $declaresequence or $sequence (It include the ones that setup you ragdoll ACT_DIE_RAGDOLL) and any other file that may include it
+
+	3) Instance this file,
+	If you have downloaded just this file, put side your .qc
+		$include "ProportionTrickHulk.qci"
+
+	4) Then use the macro as you call a function, by `$Proportion` followed by Character Code. As example for this file:
+			$ProportionHulk "reference.smd" "proportion.smd"
+
+	5) Now you're done and can compile it as normal;
+
+	OBS1.:
+		Any access violation might be due missing bones or you have set the wrong path for the animations "Reference" or "Proportion" file
+
+	OBS2.:
+		If you want a creative way to use this macro, including it through a variable:
+			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+
+    Credits:  Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionHulk ReferenceFile ProportionFile \\
-$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 ACT_DIERAGDOLL 1 \\
 $declaresequence "Idle" \\
 $declaresequence "Idle_Yell" \\
 $declaresequence "Idle_Yell_short" \\
@@ -83,7 +112,7 @@ $declaresequence "Death" \\
 $declaresequence "Death_idle" \\
 $declaresequence "deathpose_incap" \\
 $sequence hulk $ReferenceFile$ \\
-$animation a_proportions $ProportionFile$ subtract hulk 0 \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract hulk 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_hulk.mdl \\
 $continue proportions \\

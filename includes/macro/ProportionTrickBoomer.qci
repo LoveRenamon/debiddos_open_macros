@@ -1,11 +1,41 @@
-/* Useful for Multiplayer (Boomer) (Boomer l4d1)
+/*
+	Useful for Multiplayer (Boomer) (Boomer L4D1)
 
-Credits:	Proportion Trick discovered by CaptainBigButt
-				Macro made by Davi (Debiddo) Gooz
+	This file is valid for both Boomers-kind
+Keep in mind "Bomette" have a slight different sequence order
+
+	This method consists of a single thing:
+ 1. Arrange the animation sequence while apply the Proportion Trick
+
+Usage | Syntax:
+	1) Clone the entire prefab at: https://github.com/LoveRenamon/debiddos_open_macros
+	Or download this file by right click on the "Raw" button at GitHub page:
+https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/ProportionTrickBoomer.qci
+
+	2) Remove any $includemodel, $declaresequence or $sequence (It include the ones that setup you ragdoll ACT_DIE_RAGDOLL) and any other file that may include it
+
+	3) Instance this file,
+	If you have downloaded just this file, put side your .qc
+		$include "ProportionTrickBoomer.qci"
+
+	4) Then use the macro as you call a function, by $Proportion followed by Character Code. As example for this file:
+			$ProportionBoomer "reference.smd" "proportion.smd"
+
+	5) Now you're done and can compile it as normal;
+
+	OBS1.:
+		Any access violation might be due missing bones or you have set the wrong path for the animations "Reference" or "Proportion" file
+
+	OBS2.:
+		If you want a creative way to use this macro, including it through a variable:
+			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+
+    Credits:  Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionBoomer ReferenceFile ProportionFile \\
-$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
-$sequence boomer $ReferenceFile$ \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 ACT_DIERAGDOLL 1 \\
+$sequence boomer $ReferenceFile$ frames 0 0 \\
 $declaresequence "Idle_Upper_KNIFE" \\
 $declaresequence "Idle_Standing" \\
 $declaresequence "Crouch_Idle_Upper_KNIFE" \\
@@ -52,7 +82,7 @@ $declaresequence "deathpose_crouch_front" \\
 $declaresequence "deathpose_crouch_back" \\
 $declaresequence "deathpose_crouch_right" \\
 $declaresequence "deathpose_crouch_left" \\
-$animation a_proportions $ProportionFile$ subtract boomer 0 \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract boomer 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_boomer.mdl \\
 $continue proportions \\

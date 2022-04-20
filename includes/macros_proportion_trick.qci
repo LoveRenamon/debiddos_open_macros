@@ -1,7 +1,8 @@
 /*
-	This is a Index for all macros on this prefab
+	This is a index for all Proportion Trick related macros on this prefab
 		Made by Davi (Debiddo) Gooz
 */
+$include ../debiddos_open_macros/includes/ProportionTrick.qci
 $include ../debiddos_open_macros/includes/ProportionTrickBiker.qci
 $include ../debiddos_open_macros/includes/ProportionTrickBoomer.qci
 $include ../debiddos_open_macros/includes/ProportionTrickBoomette.qci

@@ -1,11 +1,38 @@
-/* Useful for Multiplayer (Charger)
+/*
+  Useful for Multiplayer (Charger)
 
-Credits:	Proportion Trick discovered by CaptainBigButt
-				Macro made by Davi (Debiddo) Gooz
+	This method consists of a single thing:
+ 1. Arrange the animation sequence while apply the Proportion Trick
+
+Usage | Syntax:
+	1) Clone the entire prefab at: https://github.com/LoveRenamon/debiddos_open_macros
+	Or download this file by right click on the "Raw" button at GitHub page:
+https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/ProportionTrickCharger.qci
+
+	2) Remove any $includemodel, $declaresequence or $sequence (It include the ones that setup you ragdoll ACT_DIE_RAGDOLL) and any other file that may include it
+
+	3) Instance this file,
+	If you have downloaded just this file, put side your .qc
+		$include "ProportionTrickCharger.qci"
+
+	4) Then use the macro as you call a function, by `$Proportion` followed by Character Code. As example for this file:
+			$ProportionCharger "reference.smd" "proportion.smd"
+
+	5) Now you're done and can compile it as normal;
+
+	OBS1.:
+		Any access violation might be due missing bones or you have set the wrong path for the animations "Reference" or "Proportion" file
+
+	OBS2.:
+		If you want a creative way to use this macro, including it through a variable:
+			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+
+    Credits:  Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
-$definemacro Proportioncharger ReferenceFile ProportionFile \\
-$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
-$sequence charger $ReferenceFile$ \\
+$definemacro ProportionCharger ReferenceFile ProportionFile \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 ACT_DIERAGDOLL 1 \\
+$sequence charger $ReferenceFile$ frames 0 0 \\
 $declaresequence "Idle_Upper_KNIFE" \\
 $declaresequence "Crouch_Idle_Upper_KNIFE" \\
 $declaresequence "Charger_Run" \\
@@ -55,7 +82,7 @@ $declaresequence "Flinch_head" \\
 $declaresequence "Flinch_back" \\
 $declaresequence "Flinch_leftleg" \\
 $declaresequence "Flinch_rightleg" \\
-$animation a_proportions $ProportionFile$ subtract charger 0 \\
-$sequence proportions a_proportions predelta autoplay hidden \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract charger 0 \\
+$sequence proportions a_proportions frames 0 0 predelta autoplay hidden \\
 $includemodel infected/anim_charger.mdl \\
 $continue proportions \\

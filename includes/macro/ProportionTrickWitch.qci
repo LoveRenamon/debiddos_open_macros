@@ -1,10 +1,39 @@
-/* Useful for Multiplayer (Witch) (Witch Bride)
+/*
+	Useful for Multiplayer (Witch) (Witch Bride)
 
-Credits:	Proportion Trick discovered by CaptainBigButt
-				Macro made by Davi (Debiddo) Gooz
+	Both Witches uses same animation set
+
+	This method consists of a single thing:
+ 1. Arrange the animation sequence while apply the Proportion Trick
+
+Usage | Syntax:
+	1) Clone the entire prefab at: https://github.com/LoveRenamon/debiddos_open_macros
+	Or download this file by right click on the "Raw" button at GitHub page:
+https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/ProportionTrickWitch.qci
+
+	2) Remove any $includemodel, $declaresequence or $sequence (It include the ones that setup you ragdoll ACT_DIE_RAGDOLL) and any other file that may include it
+
+	3) Instance this file,
+	If you have downloaded just this file, put side your .qc
+		$include "ProportionTrickWitch.qci"
+
+	4) Then use the macro as you call a function, by `$Proportion` followed by Character Code. As example for this file:
+			$ProportionWitch "reference.smd" "proportion.smd"
+
+	5) Now you're done and can compile it as normal;
+
+	OBS1.:
+		Any access violation might be due missing bones or you have set the wrong path for the animations "Reference" or "Proportion" file
+
+	OBS2.:
+		If you want a creative way to use this macro, including it through a variable:
+			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+
+    Credits:  Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionWitch ReferenceFile ProportionFile \\
-$sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 ACT_DIERAGDOLL 1 \\
 $declaresequence "Standing_Idle" \\
 $declaresequence "Idle_Standing_Crying" \\
 $declaresequence "Idle_Standing" \\
@@ -88,6 +117,6 @@ $declaresequence "deathpose_crouch_back" \\
 $declaresequence "deathpose_crouch_right" \\
 $declaresequence "deathpose_crouch_left" \\
 $sequence witch $ReferenceFile$ \\
-$animation a_proportions $ProportionFile$ subtract witch 0 \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract witch 0 \\
 $sequence proportions a_proportions predelta autoplay hidden \\
 $includemodel infected/anim_witch.mdl \\

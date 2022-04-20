@@ -1,9 +1,12 @@
 /*
   Macro Proportion Trick
-    It's optional and an alternative to the traditional $include method I've always used;
+    Intended to use on Garry's Mod, It's optional and an alternative to the traditional $include method I've always used;
     such a method proves viable because it allows an optional optional trick, even included by an index.
 
     WARNING: DO NOT USE THE TWO METHODS SIMULTANEOUSLY, OR YOU WILL HAVE A MODEL WITH TWO SUBTRACTIONS IN AUTOPLAY
+
+Syntax | Example:
+	$Proportion "anims/reference.smd" "anims/proportion.smd"
 
      Credits: Proportion Trick discovered by CaptainBigButt
               Macro made by Davi (Debiddo) Gooz

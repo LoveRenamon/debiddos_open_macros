@@ -1,22 +1,40 @@
 /*
 	Useful for Multiplayer (Coach)
-		Esse macro serve para adicionar a proportion trick com todos os necessários fixes para suporte ao Multiplayer
-		Minimizando a chance de erro no QC para zero
 
-	Isso consiste de:
-		Organizar a sequencia de animações, e, Incluir uma sugestão feita por xdShot para excluir uma lista de bones da ProportionTrick.
-		Eu então montei isso numa lista de bones contidos em "NoAttachments" que podem ser editados por Survivor
-		Se viável, adicionar nos Special Infected
+  	This method consists of two things:
+   1. Arrange the animation sequence, while applying the Proportion Trick at same time.
+   2. Include a suggestion made by xdShot to exclude a list of bones from the ProportionTrick, by assemble a list of bones contained in "NoAttachments" that can be edited by Survivor at very end of this file.
+  So if you Survivor don't have that bones, please comment it out.
 
-	Se quer uma forma craitiva de usar isse macro, incluindo-o atraves duma variável:
-		$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+Usage | Syntax:
+	1) Clone the entire prefab at: https://github.com/LoveRenamon/debiddos_open_macros
+	Or download this file by right click on the "Raw" button at GitHub page:
+https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/ProportionTrickCoach.qci
 
-		Credits:	Proportion Trick discovered by CaptainBigButt
-						Macro made by Davi (Debiddo) Gooz
+	2) Remove any $includemodel, $declaresequence or $sequence (It include the ones that setup you ragdoll ACT_DIE_RAGDOLL) and any other file that may include it
+
+  3) Instance this file,
+  If you have downloaded just this file, put side your .qc
+		$include "ProportionTrickCoach.qci"
+
+	4) Then use the macro as you call a function, by $Proportion followed by Character Code. As example for this file:
+			$ProportionCoach "reference.smd" "proportion.smd"
+
+	5) Now you're done and can compile it as normal;
+
+	OBS1.:
+		Any access violation might be due missing bones or you have set the wrong path for the animations "Reference" or "Proportion" file
+
+	OBS2.:
+		If you want a creative way to use this macro, including it through a variable:
+			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
+
+    Credits:  Proportion Trick discovered by CaptainBigButt
+              Macro made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionCoach ReferenceFile ProportionFile \\
-$sequence coach $ReferenceFile$ fps 30 \\
-$sequence ragdoll $ReferenceFile$ fps 30 ACT_DIERAGDOLL 1 \\
+$sequence coach $ReferenceFile$ frames 0 0 \\
+$sequence ragdoll $ReferenceFile$ frames 0 0 ACT_DIERAGDOLL 1 \\
 $declaresequence "Idle_Standing_Align" \\
 $declaresequence "raw_coach_walkSE_rifle" \\
 $declaresequence "Idlenoise" \\
@@ -942,7 +960,7 @@ $weightlist NoAttachments { \\
 	"ValveBiped.weapon_bone_Clip2" 0 \\
 	"ValveBiped.weapon_bolt_l" 0 \\
 } \\
-$animation a_proportions $ProportionFile$ subtract coach 0 \\
+$animation a_proportions $ProportionFile$ frames 0 0 subtract coach 0 \\
 $sequence proportions a_proportions predelta autoplay weightlist NoAttachments hidden \\
 $includemodel "survivors/anim_coach.mdl" \\
 $includemodel "survivors/anim_gestures.mdl" \\
