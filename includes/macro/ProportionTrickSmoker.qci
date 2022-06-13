@@ -30,7 +30,7 @@ https://github.com/LoveRenamon/debiddos_open_macros/blob/source/includes/macro/P
 			$include ../debiddos_open_macros/includes/macro/ProportionTrick$SURVIVOR$.qci
 
     Credits:  Proportion Trick discovered by CaptainBigButt
-              Macro made by Davi (Debiddo) Gooz
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionSmoker ReferenceFile ProportionFile \\
 $sequence smoker $ReferenceFile$ frames 0 0 \\

@@ -2,6 +2,8 @@
   generic layer
   Com IK
   Só $sequence *_idle da blend com AimMatrix_*_Standing
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjMeleeLayerIdle filename act actweapon fps fadein fadeout AimMatrix weight \\
   $sequence $filename$_layer $filename$ { \\

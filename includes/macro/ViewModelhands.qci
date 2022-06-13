@@ -17,7 +17,6 @@ $surfaceprop "flesh" \\
 $contents "solid" \\
 $ambientboost \\
 $mostlyopaque \\
-$cbox 0 0 0 0 0 0 \\
 $bbox -10 -40 40 10 40 75 \\
 //$illumposition 0 -0.221 50.508 \\
 //$origin 0 0 0 0 \\
@@ -26,7 +25,7 @@ $proceduralbones $_IN$/vrd_viewmodel.vrd \\
 $include includes/$MeshIncludeFile$.qci \\
 $root $chest$ \\
 $include includes/$SkinFamiliesIncludeFile$.qci \\
-$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$sequence "idle" mesh/$c_arms$ hidden fps 1 frames 0 0 \\
 $includemodel "weapons/c_arms_animations.mdl" \\
 
 
@@ -44,7 +43,6 @@ $include $CDMaterialsIncludeFile$ \\
 $surfaceprop "flesh" \\
 $ambientboost \\
 $mostlyopaque \\
-$cbox 0 0 0 0 0 0 \\
 $bbox -10 -40 40 10 40 75 \\
 $hboxset "default" \\
 $skipboneinbbox \\
@@ -52,7 +50,7 @@ $include includes/$MeshIncludeFile$.qci \\
 $include includes/$SkinFamiliesIncludeFile$.qci \\
 $proceduralbones $_IN$/vrd_viewmodel.vrd \\
 $root $chest$ \\
-$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$sequence "idle" mesh/$c_arms$ hidden fps 1 frames 0 0 \\
 $includemodel "weapons/c_arms_animations.mdl" \\
 
 
@@ -70,7 +68,6 @@ $include $CDMaterialsIncludeFile$ \\
 $surfaceprop "flesh" \\
 $ambientboost \\
 $mostlyopaque \\
-$cbox 0 0 0 0 0 0 \\
 $bbox -10 -40 40 10 40 75 \\
 $hboxset "default" \\
 $skipboneinbbox \\
@@ -78,7 +75,7 @@ $include includes/$MeshIncludeFile$.qci \\
 $include includes/$SkinFamiliesIncludeFile$.qci \\
 $proceduralbones $_IN$/vrd_viewmodel.vrd \\
 $root $chest$ \\
-$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$sequence "idle" mesh/$c_arms$ hidden fps 1 frames 0 0 \\
 $includemodel "weapons/c_arms_animations.mdl" \\
 
 
@@ -97,12 +94,11 @@ $surfaceprop "flesh" \\
 $contents "solid" \\
 $ambientboost \\
 $mostlyopaque \\
-$cbox 0 0 0 0 0 0 \\
 $bbox -3 -33 40 3 33 61 \\
 $hboxset "default" \\
 $proceduralbones $_IN$/vrd_viewmodel.vrd \\
 $include includes/$MeshIncludeFile$.qci \\
 $root $chest$ \\
 $include includes/$SkinFamiliesIncludeFile$.qci \\
-$sequence "idle" mesh/$c_arms$ { hidden fps 1 } \\
+$sequence "idle" mesh/$c_arms$ hidden fps 1 frames 0 0 \\
 $includemodel "weapons/c_arms_animations.mdl" \\

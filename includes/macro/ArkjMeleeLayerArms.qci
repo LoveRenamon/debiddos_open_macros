@@ -1,6 +1,8 @@
 /*
   Muito parecido com o IdleMoveMacro_NoIK só que mais modular
   cria genéricos *_layer *_arms
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjMeleeLayerArms filename pose act fps fadein fadeout range addlayer r1 l1 r2 l2 weapon \\
   $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\

@@ -1,6 +1,8 @@
 /*
   Macro criado para adicionar IdleNoise idle animation
   no l4d e l4d2, para adicionar as animações Idle que usam alguma ACT_* e AimMatrix com IK
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjIdleBlendAimMatrix sequence filename activity FPS AimMatrix \\
 $sequence $sequence$ $filename$ { \\

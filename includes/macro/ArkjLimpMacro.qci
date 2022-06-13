@@ -3,6 +3,8 @@
   cria $sequence Limp$Move$_$weapon$
 
   $ArkjLimpMacro2 é uma versão com dois addlayer
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjLimpMacro SequenceName MoveType Weapon fadein fadeout activity aimlayer Rfoot Lfoot Rfoot2 Lfoot2 FPSN LoopStartN LastFrameN FPSS LoopStartS LastFrameS FPSSE LoopStartSE LastFrameSE FPSE LoopStartE LastFrameE FPSNE LoopStartNE LastFrameNE FPSNW LoopStartNW LastFrameNW FPSW LoopStartW LastFrameW FPSSW LoopStartSW LastFrameSW MoveZero FirstFrameZero LastFrameZero NumFramesZero FixupLoop BN_weight BS_weight \\
 $animation a_$SequenceName$N		$MoveType$_$Weapon$N		  fps $FPSN$    startloop   $LoopStartN$    frame 0 $lastframeN$    fixuploop -$FixupLoop$ $FixupLoop$ LX LY loop alignto Idle_Standing_Align rotateto    0 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\

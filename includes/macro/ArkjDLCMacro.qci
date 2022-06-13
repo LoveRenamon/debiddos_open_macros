@@ -1,6 +1,8 @@
 /*
   Macro created to add delta animations to something. Much like a "self-delta sequence"
 	This macro was created with the intention of recreating as corrective animations of l4d and l4d2 for Francis (biker) and Zoey (teenangst)
+
+  Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjDLCMacro filename activity \\
 $sequence $filename$ $filename$ subtract $filename$ 0 delta activity ACT_$activity$ -1 \\

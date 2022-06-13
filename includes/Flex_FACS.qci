@@ -33,8 +33,7 @@ flexcontroller mouth		range 0 1 right_sneer left_sneer
 //flexcontroller mouth	range -1 1 jaw_sideways      // FIXME: FUCK YOU GMOD FACEPOSER
 
 // dummyshit
-flexcontroller eyes			range -$eyedeflection$ $eyedeflection$ eyes_updown
-flexcontroller eyes			range -$eyedeflection$ $eyedeflection$ eyes_rightleft
+flexcontroller eyes			range -$eyedeflection$ $eyedeflection$ eyes_updown eyes_rightleft
 
 // inútil para 9-way
 flexcontroller head			range -60 60 head_rightleft
@@ -77,7 +76,8 @@ flexcontroller gesture	range -45 45 gesture_rightleft
 %AU44R = right_lid_squinter*(1-right_lid_closer)*(1-blink)*(1-half_closed*0.5)*(1-right_lid_droop*0.2)*(1-right_lid_tightener*0.2)*(1-right_lid_raiser*0.2)
 %AU44L = left_lid_squinter*(1-left_lid_closer)*(1-blink)*(1-half_closed*0.5)*(1-left_lid_droop*0.2)*(1-left_lid_tightener*0.2)*(1-left_lid_raiser*0.2)
 
-/*// FIXME (?) com DMXEyelid não preciso disso ... LULz
+/* FIXME (?) with DMXEyelid I don't need it... LULz
+However, You can use it for modulate EyeLid or DMXEyelid
 %lower_right_raiser = right_lid_closer
 %lower_right_neutral = (1-right_lid_closer)*(1-right_lid_tightener*0.5)*(1-right_cheek_raiser*0.25)
 %lower_right_lowerer = 0

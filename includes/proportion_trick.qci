@@ -1,16 +1,18 @@
 /*
-  the proportion trick discovered by CaptainBigButt
+  The proportion trick discovered by CaptainBigButt
 
   WARNING: Easier/Better use it by macro
 
-  Syntax:
+  Macro Syntax:
     $ProportionTrick "ReferenceFile" "ProportionFile"
 */
 
-// base pose, without any modifications
+// base and original pose, without any modifications
 $sequence "ref" $reference$ hidden fps 1 frames 0 0
 
-// our rigged base mesh or alternative proportions to subtract "reference" sequence
+/* our rigged base mesh (character) or alternative proportions to subtract "reference" sequence
+This MUST be posed same as or closer as the above ref $refrerence$ by differnces being the bone location
+SO ROTATIONS MUST BE THE SAME! */ 
 $animation "a_proportions" mesh/$proportion$ fps 1 frames 0 0 subtract "ref" 0
 
 // the magic, we run the result of "a_proportions" as base of every animation.

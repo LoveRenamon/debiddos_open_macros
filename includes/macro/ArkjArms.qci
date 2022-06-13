@@ -1,3 +1,6 @@
+/*
+              Macros made by Davi (Debiddo) Gooz
+*/
 $definemacro ArkjArms filename fps \\
   $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\
   $sequence $filename$_arms a_$filename$ { \\

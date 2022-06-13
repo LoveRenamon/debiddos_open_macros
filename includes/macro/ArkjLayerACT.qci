@@ -1,3 +1,8 @@
+/*
+Create a _layer $sequence with a custom activity with any given name
+
+              Macros made by Davi (Debiddo) Gooz
+*/
 $definemacro ArkjLayerACT filename fps act weight \\
   $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\
   $sequence $filename$_layer a_$filename$ { \\

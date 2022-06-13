@@ -8,6 +8,8 @@
 				Z = Along/Front
 
 	  FIXME: Garry's Mod only, sidewalk causes a "pinball" effect
+
+              Macros made by Davi (Debiddo) Gooz
 */
 // Seios (not so boing boing, no so purun purun)
 $definemacro BreastNatural BoneName \\

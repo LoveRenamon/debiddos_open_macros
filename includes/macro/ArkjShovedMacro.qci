@@ -1,6 +1,8 @@
 /*
   Thanks Valve, you guys did all Shoved Sequences into a single default/macro,
   and made write it easier using a single macro for all four sequences
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjShovedMacro Weapon ACT FPS FadeInOut WalkFrameBack1 WalkFrameBack2 WalkFrameBack3 WalkFrameFront1 WalkFrameFront2 WalkFrameFront3 WalkFrameRight1 WalkFrameRight2 WalkFrameRight3 WalkFrameLeft1 WalkFramLeft2 WalkFrameLeft3 \\
 $sequence Shoved_Backward_$Weapon$ Shoved_Backward_$Weapon$ { \\

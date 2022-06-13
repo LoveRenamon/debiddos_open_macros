@@ -2,6 +2,8 @@
   generic layer
   Sem IK
   Ambas tem AimMatrix_*_Standing addlayer
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjMeleeLayerBlendIdle filename act actweapon fps fadein fadeout AimMatrix weight \\
   $sequence $filename$_layer $filename$ { \\

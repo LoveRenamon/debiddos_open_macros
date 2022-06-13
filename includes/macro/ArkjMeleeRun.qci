@@ -1,3 +1,7 @@
+/*
+              Macros made by Davi (Debiddo) Gooz
+*/
+
 // generic run
 $definemacro ArkjMeleeRun filename act weight fps fadein fadeout addlayer1 addlayer2 \\
   $sequence $filename$ { \\

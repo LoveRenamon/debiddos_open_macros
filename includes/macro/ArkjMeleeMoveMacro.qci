@@ -1,3 +1,7 @@
+/*
+              Macros made by Davi (Debiddo) Gooz
+*/
+
 // Para Melees terem sequências próprias
 $definemacro ArkjMeleeSequenceMacro sequence weapon aimlayer act r1 l1 r2 l2 \\
   $sequence $sequence$_$weapon$ { \\

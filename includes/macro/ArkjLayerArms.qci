@@ -1,6 +1,8 @@
 /*
-  Muito parecido com o ArkjMeleeLayerArms só que sem a AimMatrix based $sequence
-  cria somente os genéricos *_layer *_arms com IK para *_arms
+  Very similar to ArkjMeleeLayerArms without a AimMatrix $sequence
+  create only generic _layer _arms with IK for _arms
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjLayerArms filename fps weight \\
   $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\

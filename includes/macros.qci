@@ -1,9 +1,9 @@
 /*
     MACRO INDEX
-  Afim de evitar repetições desnecessárias, temos um index de todos os macros,
-inclua esse arquivo para usar macros quando for fazer uso.
+  In order to avoid unnecessary repetitions, we have an index of all macros,
+include this file to use macros when you are going to use it.
 
-Se o compilador do l4d2 não fosse tão estranho daria para deixar a biblioteca ser relativa à uma variável, mas esse não é o caso
+If the l4d2 compiler wasn't so weird, you could let the library be relative to a variable, but that's not the case
 */
 
 // Jigglebones

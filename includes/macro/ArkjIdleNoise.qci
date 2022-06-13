@@ -1,5 +1,7 @@
 /*
-  feito para adicionar Idle animation que da adiciona três "addlayer" e um blendlayer
+  Made to add "Idle" animation which adds three "addlayer" and a "blendlayer"
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjIdleNoise SequenceName filename act fadein fadeout addlayer NoiseLayer \\
   $sequence $SequenceName$ { \\

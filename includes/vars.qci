@@ -36,27 +36,30 @@ $definevariable IKHandLoc ".4"
 $definevariable IKFootLoc ".5"
 $definevariable IKHandFootRot ".05"
 
-// Define que essa pasta é nossa biblioteca de introdução. O nome _IN foi escolhido por ser uma abreviação de INclude
+// Defines that bellow folder is our initial/init/intro library. The name _IN was chosen because it is an abbreviation of INclude
 $definevariable _IN "../debiddos_open_macros/includes"
 
-// Nomes simplificados da Valve (Mude somente se for usar outro padrão)
+// alias names for ValveBiped skeleton (might be removed on later versions, too many unnecessary variables)
 $include $_IN$/var_valvebones.qci
 
-// Nome da nossa primeira mesh a ser lida pelo QC. Relativo à "mesh" por padrão
-// Como regra de polegar, use a cabeça do seu personagem como base para a proportion trick e para a $sequence "ragdoll"
+// Name of our first mesh to be read by QC. We assume its relative to "your.qc_folder/mesh" by default
+// As a thumb rule, use your character's head as the basis for the proportion trick and $sequence "ragdoll"
 $definevariable proportion "SMD_or_DMX_file"
 
-// Esqueleto de referência para a proportion_trick
-//$definevariable reference $_IN$/../anims/male_reference
+// proportion_trick's reference skeleton/armature/animation file
+$definevariable reference $_IN$/../anims/male_reference
 
-// Esqueleto do ragdoll, sendo em T-Pose ou A-Pose. Por isso pode ser o mesmo arquivo de $proportion$
+// Skeleton/Armature for the ragdoll sequence;
+//  TIP.:
+//        Use a T-Pose or A-Pose.
+//        Can be the same files as the $proportion$
 $definevariable ragdoll "anims/ragdoll"
 
 // c_arms (viewmodel hands) mesh
-//$definevariable c_arms "mesh/c_arms"
+$definevariable c_arms "mesh/c_arms"
 
-// Collision / Physics model/mesh
+// Collision / Physics model/mesh (they MUST have a file extension)
 //$definevariable physics "mesh/physics.dmx"
 
-// Massa em Kg do Ragdoll
-//$definevariable mass "45"
+// Ragdoll Mass in Kilograms
+$definevariable mass "45"

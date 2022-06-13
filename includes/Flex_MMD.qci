@@ -18,8 +18,7 @@ flexcontroller gesture range -45 45 gesture_rightleft		// inútil para 9-way
 flexcontroller eye range 0 1 hide_iris
 flexcontroller eye range -1 1 pupil_size eye_bright  		// FIXME: FUCK YOU GMOD FACEPOSER
 flexcontroller eye range -0.25 1 right_iris left_iris  	// FIXME: FUCK YOU GMOD FACEPOSER
-flexcontroller eye range -$eyedeflection$ $eyedeflection$ eyes_updown
-flexcontroller eye range -$eyedeflection$ $eyedeflection$ eyes_rightleft
+flexcontroller eye range -$eyedeflection$ $eyedeflection$ eyes_updown eyes_rightleft
 
 flexcontroller fx range 0 1 star love blush lol shock droplet angry pinch tears close calm hachu salted
 

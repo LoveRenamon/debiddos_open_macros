@@ -9,6 +9,8 @@
 
 	Sintax:
 		$TailAkulova tail_1 -20 65 -45 45
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro TailAkulova BoneName PitchMin PitchMax YawMin YawMax \\
 $jigglebone $BoneName$ \\

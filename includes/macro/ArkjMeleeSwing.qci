@@ -1,3 +1,6 @@
+/*
+              Macros made by Davi (Debiddo) Gooz
+*/
 // Swing
 $definemacro ArkjMeleeSwing filename act fps fadein fadeout range \\
   $sequence $filename$_layer { \\

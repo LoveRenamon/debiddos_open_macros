@@ -9,7 +9,7 @@ Syntax | Example:
 	$Proportion "anims/reference.smd" "anims/proportion.smd"
 
      Credits: Proportion Trick discovered by CaptainBigButt
-              Macro made by Davi (Debiddo) Gooz
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ProportionTrick ReferenceFile ProportionFile \\
 $sequence ragdoll $ReferenceFile$ frames 0 0 activity "ACT_DIERAGDOLL" 1 fadein .337 fadeout .256 \\

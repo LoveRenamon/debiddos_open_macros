@@ -1,5 +1,7 @@
 /*
   Feito para adicionar animações do Charger, mas devem ter outros usos
+
+              Macros made by Davi (Debiddo) Gooz
 */
 
 $definemacro ArkjLoopAnimation sequence weight \\

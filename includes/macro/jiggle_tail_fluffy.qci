@@ -5,6 +5,8 @@
 				X = Pitch/Left
 				Y = Yaw/Up
 				Z = Along/Front
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro TailFluffy BoneName Angle \\
 $jigglebone $BoneName$ \\

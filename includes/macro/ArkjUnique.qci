@@ -4,6 +4,8 @@
   Created for Melees and the Jockey that need a special controler
 
 	Syntax:	$uniqueLower <move> <weapon> <fps> <loopstart> <lastframe> <fixloop> <rotate>
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjUniqueUpper move weapon fps loopstart lastframe fixloop rotate weight \\
 $animation a_$move$_$weapon$ $move$_$weapon$ { \\

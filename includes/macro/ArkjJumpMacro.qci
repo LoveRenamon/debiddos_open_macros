@@ -1,6 +1,8 @@
 /*
-  Macro criado para adicionar delta animations para alguma idle
-  Esse macro foi criado com intuíto de recriar as animações corretivas de l4d e l4d2
+  Macro created to add delta animations for some idle
+  This macro was created with the intention of recreating the corrective animations of l4d and l4d2
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjJumpMacro SequenceName weapon activity \\
 $ArkjLayer $SequenceName$_layer 30 GASCAN \\

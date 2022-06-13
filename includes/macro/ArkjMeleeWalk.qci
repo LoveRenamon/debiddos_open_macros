@@ -1,5 +1,7 @@
 /*
   generic walk for l4d'2 melees
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjMeleeWalk filename act weight fps fadein fadeout addlayer1 addlayer2 \\
   $sequence $filename$ { \\

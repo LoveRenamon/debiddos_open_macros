@@ -1,5 +1,5 @@
 # Debiddos Open Macros
-
+A bunch of presets and macros writen by [Debiddo](https://github.com/LoveRenamon) to aid my own workflow by create playermodel, custom animations and file replacements
 
 ## Dependencies
 To use this repository, you will need:

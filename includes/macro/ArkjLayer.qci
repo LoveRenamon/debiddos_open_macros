@@ -1,3 +1,8 @@
+/*
+Create a _layer $sequence based on l4d2 default cmdlist with any custom weightlist
+
+              Macros made by Davi (Debiddo) Gooz
+*/
 $definemacro ArkjLayer filename fps weight \\
   $animation a_$filename$ $filename$ noautoik fixuploop -15 15 loop cmdlist IK_to_BBox alignto Idle_Standing_Align \\
   $sequence $filename$_layer a_$filename$ { \\

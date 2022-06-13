@@ -4,6 +4,8 @@
   share Blender batched animations that will use a generic name without a survivor (or character) prefix
 	also everything here is a atempt to overcome CBB's proportion trick limitations;
 	so at end it make trivial focus on different directories
+
+              Macros made by Davi (Debiddo) Gooz
 */
 $definemacro ArkjSMoveAxeMacro sequencename move NorthFilename N_fps N_loopstart N_lastframe SouthFilename S_fps S_loopstart S_lastframe NW_fps NW_loopstart NW_lastframe SW_fps SW_loopstart SW_lastframe fixloop ZeroMove Z_firstframe Z_lastframe Z_numframes BN_weight SouthBlend BS_lastframe BS_weight aimlayer activity Rfoot Lfoot Rfoot2 Lfoot2 fadein fadeout CalmAim \\
 	$animation a_$sequencename$N		$NorthFilename$		fps $N_fps$  startloop $N_loopstart$  frame 0 $N_lastframe$  fixuploop -$fixloop$ $fixloop$ LX LY loop alignto Idle_Standing_Align rotateto    0 ikrule lhand touch "ValveBiped.Bip01_R_Hand" cmdlist IK_to_BBox \\

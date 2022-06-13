@@ -1,11 +1,16 @@
 /*
-	Cauda originalmente composta de 6 bones que movem-se de forma livre em 60°
 
 	TIP:
 				X = Pitch/Left
 				Y = Yaw/Up
 				Z = Along/Front
+
+				Macros made by Davi (Debiddo) Gooz
 */
+
+/*
+	Cauda originalmente composta de 6 bones que movem-se de forma livre em 60°
+*/ 
 $definemacro TailType1 BoneName Angle \\
 $jigglebone $BoneName$ { \\
 	is_flexible \\

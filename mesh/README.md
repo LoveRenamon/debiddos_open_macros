@@ -1,10 +1,10 @@
 # mesh
-  Atenção que **[FACS.dmx]()** e **[HWM.dmx]()** são arquivos que contém apenas regras de expressões facias.
+   Note that **[FACS.dmx]()** and **[HWM.dmx]()** are files that contain only facial expression rules.
 
 
 ### FACS.dmx
-  Segue o sistema de **[Facial Action Coding System]()** para mapear as expressões facis. esse é o método mais rápido de se fazer expressões facias na Source, e o mais difícil de customizar. 
+   It follows the system of **[Facial Action Coding System]()** to map the easy expressions. this is the fastest method of making facial expressions in Source, and the most difficult to customize.
 
 ### HWM.dmx
-  Segue o padrão novo de **[Hardware Morph]()** para movimentar partes da malha, isso o deixa mais próximo dos padrões atuais de de animação. É super versátil e permite **[normals]()** serem realinhadas, melhor suporte a **[wrinkle maps]()**, **[corrective shapes]()**.
-  Super fácil de customizar, porém exige bastante tempo posicionando cada shape/flex.
+   It follows the new **[Hardware Morph]()** pattern for moving parts of the mesh, this brings it closer to current animation standards. It's super versatile and allows **[normals]()** to be realigned, better support for **[wrinkle maps]()**, **[corrective shapes]()**.  
+   Super easy to customize, but it takes a lot of time positioning each shape/flex.

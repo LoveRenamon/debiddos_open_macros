@@ -1,4 +1,7 @@
-// generic attack
+/* Generic Attack
+
+              Macros made by Davi (Debiddo) Gooz
+*/
 $definemacro ArkjMeleeAttack filename act fps fadein fadeout range \\
   $sequence $filename$ { \\
     $filename$ \\
