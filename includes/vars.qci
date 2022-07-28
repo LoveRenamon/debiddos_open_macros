@@ -11,8 +11,8 @@
 //$definevariable mat "models/debiddo"
 
 // Nome dos attachments para os olhos, não recomendo trocar (segue o padrão do Left 4 Dead)
-$definevariable reye "righteye"
-$definevariable leye "lefteye"
+//$definevariable reye "righteye"
+//$definevariable leye "lefteye"
 
 // Posição dos olhos X Y Z esquerdo, o direito é espelhado por padrão
 $definevariable eyex "1.77897"

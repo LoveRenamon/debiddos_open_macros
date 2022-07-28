@@ -21,8 +21,8 @@ $attachment   eyes      $head$     0   $eyey$   $eyez$      absolute
 $attachment   head      $head$     0     0        0         rotate -90 -90 0
 
 // SFM coverage
-$attachment  $leye$  $head$ $eyex$	$eyey$	$eyez$	absolute
-$attachment  $reye$  $head$ -$eyex$	$eyey$	$eyez$	absolute
+$attachment  lefteye  $head$  $eyex$  $eyey$  $eyez$  absolute
+$attachment  righteye $head$ -$eyex$  $eyey$  $eyez$  absolute
 
 // gmod || hl2 (uncomment if you'll likey need by default)
 //$attachment anim_attachment_head $head$ 0 0 0 rotate -90 -90 0
