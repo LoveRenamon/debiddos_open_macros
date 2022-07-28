@@ -1,0 +1,99 @@
+/////////////////////////////////////////////////////////////////
+// Start Facerules (Eyes) Version 1
+/////////////////////////////////////////////////////////////////
+
+/* Required Shapes: */
+// Since 麻辣香锅 uses VTA, nest the eyeflexes
+//defaultflex                    frame  0 // AU0 (internal)
+//flex     "Eye_Default"         frame  1 // AU0 baseline
+//flex     "Eye_WinkA_L"         frame  2 // AU46R right_wink
+//flex     "Eye_WinkA_R"         frame  3 // AU46L left_wink
+//flex     "Eye_WinkB_L"         frame  4 // AU45R right_lid_closer / blink
+//flex     "Eye_WinkB_R"         frame  5 // AU45L left_lid_closer  / blink
+//flex     "Eye_WinkC_L"         frame  6 // AU43R right_lid_closer
+//flex     "Eye_WinkC_R"         frame  7 // AU43L left_lid_closer
+//flexpair "Eye_Ha"          1.0 frame  8 // AU5   upper_lid_raiser
+//flexpair "Eye_Jito"        1.0 frame  9 // AU41  lid_droop
+//flexpair "Eye_Wail"        1.0 frame 10 // AU44  lid_squint
+//flexpair "Eye_Hostility"   1.0 frame 11 // AU7   lid_tightener
+//flexpair "Eye_Tired"       1.0 frame 12 // AU42  lid_slit
+//flexpair "Eye_WUp"         1.0 frame 13 // EM63  eye_turn_up
+//flexpair "Eye_WDown"       1.0 frame 14 // EM64  eye_turn_down
+//flexpair "Eye_Lowereyelid" 1.0 frame 15 // AU6   cheek_raiser
+
+
+// Note: Declare necessary flexcontrollers after this block
+// TODO: Move all this controllers to the first entry, so it become "cleaner" somehow
+/////////////////////////////////////////////////////////////////
+// Required Facerules for this block
+/////////////////////////////////////////////////////////////////
+flexcontroller eyes range -30 30 eyes_updown eyes_rightleft
+
+flexcontroller eyelid range 0 1 blink half_closed
+flexcontroller eyelid range 0 1 right_lid_raiser    left_lid_raiser 
+flexcontroller eyelid range 0 1 right_lid_tightener left_lid_tightener
+flexcontroller eyelid range 0 1 right_lid_droop     left_lid_droop
+flexcontroller eyelid range 0 1 right_lid_closer    left_lid_closer
+flexcontroller eyelid range 0 1 right_lid_squinter  left_lid_squinter
+
+flexcontroller nose   range 0 1 right_cheek_raiser left_cheek_raiser
+flexcontroller nose   range 0 1 dilator
+
+
+// TODO: missing shapes
+// IDEA: sculp/model by ourselves
+
+/////////////////////////////////////////////////////////////////
+// EyeLid System
+/////////////////////////////////////////////////////////////////
+// Baseline AU0
+// NOTE: Enabled with no eye shape is active. This should do nothing unless the character use some uncommon expression by default, so a active Baseline will fix it
+/////////////////////////////////////////////////////////////////
+%Eye_Default = ( 1 - blink ) * ( 1 - half_closed ) * ( 1 - right_lid_raiser ) * ( 1 - left_lid_raiser )* ( 1 - right_lid_tightener ) * ( 1 - left_lid_tightener )* ( 1 - right_lid_droop ) * ( 1 - left_lid_droop )* ( 1 - right_lid_closer ) * ( 1 - left_lid_closer )* ( 1 - right_lid_squinter ) * ( 1 - left_lid_squinter )
+
+/////////////////////////////////////////////////////////////////
+// Eye Upper EM63
+/////////////////////////////////////////////////////////////////
+%upper_right_raiser = right_lid_raiser * ( 1 - right_lid_droop * 0.8 ) * ( 1 - right_lid_closer ) * ( 1 - blink ) * ( 1 - half_closed * 0.5 )
+%upper_left_raiser  = left_lid_raiser  * ( 1 - left_lid_droop  * 0.8 ) * ( 1 - left_lid_closer  ) * ( 1 - blink ) * ( 1 - half_closed * 0.5 )
+
+%upper_right_neutral = ( 1 - right_lid_droop * 0.8 ) * ( 1 - right_lid_raiser ) * ( 1 - right_lid_closer ) * ( 1 - blink )
+%upper_left_neutral  = ( 1 - left_lid_droop  * 0.8 ) * ( 1 - left_lid_raiser  ) * ( 1 - left_lid_closer  ) * ( 1 - blink )
+
+%upper_right_lowerer = right_lid_closer + blink * ( 1 - right_lid_closer )
+%upper_left_lowerer  = left_lid_closer  + blink * ( 1 - left_lid_closer  )
+
+/////////////////////////////////////////////////////////////////
+// Eye Lower EM64
+/////////////////////////////////////////////////////////////////
+%lower_right_raiser = right_lid_closer + blink * 0.5 * ( 1 - right_lid_closer )
+%lower_left_raiser  = left_lid_closer  + blink * 0.5 * ( 1 - left_lid_closer  )
+
+%lower_right_neutral = ( 1 - right_lid_closer ) * ( 1 - 0.5 * blink ) * ( 1 - right_lid_tightener * 0.5 ) * ( 1 - right_cheek_raiser * 0.25 )
+%lower_left_neutral  = ( 1 - left_lid_closer  ) * ( 1 - 0.5 * blink ) * ( 1 - left_lid_tightener  * 0.5 ) * ( 1 - left_cheek_raiser  * 0.25 )
+
+%lower_right_lowerer = 0
+%lower_left_lowerer  = 0
+
+/////////////////////////////////////////////////////////////////
+// Cheek Raiser AU6
+/////////////////////////////////////////////////////////////////
+%AU6R = right_cheek_raiser
+%AU6L = left_cheek_raiser
+
+// Hack: AU6 = Eye_Lowereyelid
+localvar AU6R AU6L
+%Eye_LowereyelidR = %AU6R
+%Eye_LowereyelidL = %AU6L
+
+/////////////////////////////////////////////////////////////////
+// Lid Squinter AU7
+/////////////////////////////////////////////////////////////////
+%Eye_WailR = right_lid_squinter * ( 1 - blink ) * ( 1 - right_lid_closer )
+%Eye_WailL = left_lid_squinter  * ( 1 - blink ) * ( 1 - left_lid_closer  )
+
+/////////////////////////////////////////////////////////////////
+// Half Closed AU43
+/////////////////////////////////////////////////////////////////
+%Eye_JitoR = half_closed * ( 1 - blink ) * ( 1 - right_lid_closer )
+%Eye_JitoL = half_closed * ( 1 - blink ) * ( 1 - left_lid_closer  )

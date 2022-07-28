@@ -1,0 +1,102 @@
+/////////////////////////////////////////////////////////////////
+// Start Facerules (Brow) Version 1
+/////////////////////////////////////////////////////////////////
+
+/* Required Shapes: */
+// Since 麻辣香锅 uses VTA, nest the browflexes
+//defaultflex           frame  0 // AU0 (internal)
+//flex "Brow_Default"   frame  1 // AU0 baseline
+//flex "Brow_Trouble_L" frame  2 // AU1R right_inner_raiser
+//flex "Brow_Trouble_R" frame  3 // AU1L left_inner_raiser
+//flex "Brow_Smily_L"   frame  4 // AU1AU2R right_inner_raiser + right_outer_raiser
+//flex "Brow_Smily_R"   frame  5 // AU1AU2L left_inner_raiser + left_outer_raiser
+//flex "Brow_Angry_L"   frame  6 // AU4R right_lowerer
+//flex "Brow_Angry_R"   frame  7 // AU4L left_lowerer
+//flex "Brow_Shy_L"     frame  8 // AU2R right_outer_raiser
+//flex "Brow_Shy_R"     frame  9 // AU2L left_outer_raiser
+//flex "Brow_Up_L"      frame 10 // Unknow Actor
+//flex "Brow_Up_R"      frame 11 // Unknow Actor
+//flex "Brow_Down_L"    frame 12 // AU1AU4R right_inner_raiser + right_lowerer
+//flex "Brow_Down_R"    frame 13 // AU1AU4L left_inner_raiser + left_lowerer
+//flex "Brow_Squeeze_L" frame 14 // Unknow Actor
+//flex "Brow_Squeeze_R" frame 15 // Unknow Actor
+
+
+// Note: Declare necessary flexcontrollers after this block
+// TODO: Move all this controllers to the first entry, so it become "cleaner" somehow
+/////////////////////////////////////////////////////////////////
+// Required Facerules for this block
+/////////////////////////////////////////////////////////////////
+flexcontroller brow range 0 1 right_inner_raiser left_inner_raiser
+flexcontroller brow range 0 1 right_outer_raiser left_outer_raiser
+flexcontroller brow range 0 1 right_lowerer      left_lowerer
+
+// NOTE: eyes_updown and eyes_rightleft inherited from Flex_Eye.qci
+
+// TODO: missing shapes
+// IDEA: sculp/model by ourselves
+//localvar AU2AU4R AU2AU4L
+
+/////////////////////////////////////////////////////////////////
+// Brow System
+/////////////////////////////////////////////////////////////////
+// Baseline AU0
+// NOTE: Enabled with no brow shape is active. This should do nothing unless the character use some uncommon expression by default, so a active Baseline will fix it
+/////////////////////////////////////////////////////////////////
+%Brow_Default = ( 1 - right_inner_raiser ) * ( 1 - left_inner_raiser ) * ( 1 - right_outer_raiser ) * ( 1 - left_outer_raiser ) * ( 1 - right_lowerer ) * ( 1 - left_lowerer )
+
+/////////////////////////////////////////////////////////////////
+// Sensors
+// NOTE: "30" comes from $MaxEyeDeflection
+/////////////////////////////////////////////////////////////////
+localvar EyesU EyesD EyesL EyesR
+%EyesU = min( max(-eyes_updown    / 60 , 0 ) * 2 , 1 )
+%EyesD = min( max( eyes_updown    / 60 , 0 ) * 2 , 1 )
+%EyesL = min( max( eyes_rightleft / 30 , 0 ) * 2 , 1 )
+%EyesR = min( max(-eyes_rightleft / 30 , 0 ) * 2 , 1 )
+
+/////////////////////////////////////////////////////////////////
+// Inner Brow Raiser AU1
+/////////////////////////////////////////////////////////////////
+%Brow_Trouble_R = right_inner_raiser * ( 1 - right_outer_raiser ) * ( 1 - right_lowerer )
+%Brow_Trouble_L = left_inner_raiser  * ( 1 - left_outer_raiser )  * ( 1 - left_lowerer )
+
+/////////////////////////////////////////////////////////////////
+// Outer Brow Raiser AU2
+/////////////////////////////////////////////////////////////////
+%Brow_Shy_R = right_outer_raiser * ( 1 - right_inner_raiser ) * ( 1 - right_lowerer )
+%Brow_Shy_L = left_outer_raiser  * ( 1 - left_inner_raiser )  * ( 1 - left_lowerer )
+
+/////////////////////////////////////////////////////////////////
+// Inner Brow Raiser + Outer Brow Raiser AU1 + AU2
+/////////////////////////////////////////////////////////////////
+%Brow_Smily_R = right_inner_raiser * right_outer_raiser * ( 1 - right_lowerer )
+%Brow_Smily_L = left_inner_raiser  * left_outer_raiser  * ( 1 - left_lowerer )
+
+/////////////////////////////////////////////////////////////////
+// Lowerer Brow AU4
+/////////////////////////////////////////////////////////////////
+%Brow_Angry_R = right_lowerer * ( 1 - %EyesD * 0.5 )
+%Brow_Angry_L = left_lowerer  * ( 1 - %EyesD * 0.5 )
+
+/////////////////////////////////////////////////////////////////
+// Unknow Actor
+// IDEA: bind to EM63
+/////////////////////////////////////////////////////////////////
+%Brow_Up_L = %EyesU
+%Brow_Up_R = %EyesU
+
+/////////////////////////////////////////////////////////////////
+// Lowerer Brow AU1 + AU4
+// IDEA: bind to EM64 as well
+/////////////////////////////////////////////////////////////////
+%Brow_Down_L = ( right_inner_raiser + right_lowerer ) / 2 * ( 1 - %EyesD ) + %EyesD
+%Brow_Down_R = ( left_inner_raiser  + left_lowerer  ) / 2 * ( 1 - %EyesD ) + %EyesD
+
+/////////////////////////////////////////////////////////////////
+// Unknow Actor
+// IDEA: bind to EM61 and EM62
+// BUG: VTA can't negative pulse
+/////////////////////////////////////////////////////////////////
+%Brow_Squeeze_L = %EyesL
+%Brow_Squeeze_R = %EyesR

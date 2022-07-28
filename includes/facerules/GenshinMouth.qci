@@ -1,0 +1,296 @@
+/////////////////////////////////////////////////////////////////
+// Start Facerules (Mouth) Version 1
+/////////////////////////////////////////////////////////////////
+
+/* Required Shapes: */
+// Since 麻辣香锅 uses VTA, here is required shapes
+defaultflex                      frame  0 // AU0 (internal)
+flex     "Mouth_Default"         frame  1 // AU0 baseline
+flexpair "Mouth_A01"         1.0 frame  2 // AU26Z jaw_drop_extreme
+flexpair "AU26"              1.0 frame  3 // AU26 jaw_drop
+flexpair "Mouth_Open01"      1.0 frame  3 // AU18 pucker
+flexpair "Mouth_Smile01"     1.0 frame  4 // AU12 lip_corner_puller
+flexpair "Mouth_Smile02"     1.0 frame  5 // AU27 mouth_stretch
+flexpair "Mouth_Angry01"     1.0 frame  6 // AU15 lip_depressor
+flexpair "Mouth_Angry02"     1.0 frame  7 // AU25 lip_part
+flexpair "AU10"              1.0 frame  7 // AU10 sneer lip_upper_raiser_part
+flex     "Mouth_Angry03"         frame  8 // AD32 bite
+flexpair "Mouth_Fury01"      1.0 frame  9 // AU27Z mouth_stretch_extreme
+flex     "Mouth_Doya01"          frame 10 // AU12 lip_corner_puller
+flexpair "Mouth_Doya02"      1.0 frame 11 // AU12AU25 lip_corner_puller + lip_part
+flex     "Mouth_Neko01"          frame 12 // Unknow Actor use (?)
+flex     "Mouth_Pero01"          frame 13 // TM103
+flex     "Mouth_Pero02"          frame 14 // TM106
+flexpair "Mouth_Line01"      1.0 frame 15 // AU20 lip_stretcher
+flexpair "Mouth_Line02"      1.0 frame 16 // AU22 lip_funneler
+flexpair "Mouth_BigTongue01" 1.0 frame 17 // AU101 tongue_flattening
+
+
+// Note: Declare necessary flexcontrollers after this block
+// TODO: Move all this controllers to the first entry, so it become "cleaner" somehow
+/////////////////////////////////////////////////////////////////
+// Required Facerules for this block
+/////////////////////////////////////////////////////////////////
+flexcontroller mouth   range 0 1 right_upper_raiser     left_upper_raiser
+flexcontroller mouth   range 0 1 right_corner_puller    left_corner_puller
+flexcontroller mouth   range 0 1 right_corner_depressor left_corner_depressor
+flexcontroller mouth   range 0 1 chin_raiser
+flexcontroller mouth   range 0 1 smile
+flexcontroller mouth   range 0 1 right_cheek_puffer left_cheek_puffer
+flexcontroller mouth   range 0 1 right_lip_suck left_lip_suck
+flexcontroller mouth   range 0 1 right_sneer left_sneer
+
+flexcontroller nose range 0 1 right_wrinkler left_wrinkler wrinkler
+
+flexcontroller mouth range -1 1 mouth_sideways jaw_sideways
+
+flexcontroller phoneme range 0 1 right_part      left_part
+flexcontroller phoneme range 0 1 right_puckerer  left_puckerer
+flexcontroller phoneme range 0 1 right_funneler  left_funneler
+flexcontroller phoneme range 0 1 right_stretcher left_stretcher
+flexcontroller phoneme range 0 2 jaw_drop
+flexcontroller phoneme range 0 1 right_mouth_drop left_mouth_drop
+flexcontroller phoneme range 0 1 wide_open    lower_lip
+flexcontroller phoneme range 0 1 bite presser tightener jaw_clencher
+
+flexcontroller tongue range  0 1 lick right_tongue_flattening left_tongue_flattening
+
+// NOTE: the bellow controlles aren't used by Left 4 Dead 2:
+// right_lip_suck
+// left_lip_suck
+// lick
+// right_tongue_flattening
+// left_tongue_flattening
+
+/////////////////////////////////////////////////////////////////
+// Mouth System
+/////////////////////////////////////////////////////////////////
+// Baseline AU0
+// NOTE: Enabled with no mouth shape is active. This should do nothing unless the character use some uncommon expression by default, so a active Baseline will fix it
+/////////////////////////////////////////////////////////////////
+%Mouth_Default = ( 1 - right_upper_raiser ) * ( 1 - left_upper_raiser ) * ( 1 - right_corner_puller ) * ( 1 - left_corner_puller ) * ( 1 - right_corner_depressor ) * ( 1 - left_corner_depressor ) * ( 1 - chin_raiser ) * ( 1 - ( ) * 1 - smile ) * ( 1 - ( ) * 1 - right_sneer ) * ( 1 - left_sneer ) * ( 1 - right_part ) * ( 1 - left_part ) * ( 1 - right_puckerer ) * ( 1 - left_puckerer ) * ( 1 - right_funneler ) * ( 1 - left_funneler ) * ( 1 - right_stretcher ) * ( 1 - left_stretcher ) * ( 1 - right_mouth_drop ) * ( 1 - left_mouth_drop ) * ( 1 - jaw_drop ) * ( 1 - bite ) * presser tightener jaw_clencher * ( 1 - wide_open ) * ( 1 - lower_lip )
+
+
+// TODO: missing shapes
+// IDEA: sculp/model by ourselves
+localvar AU9R  AU9L  // nose_wrinkler
+localvar AU16L AU16R // lower_lip
+localvar AU13L AU13R // cheek_puffer
+localvar AU17R AU17L // chin_raiser (currently hacked as AU15)
+localvar AU28R AU28L // lip_suck
+localvar AD30L AD30R // jaw_sideways
+localvar AD96L AD96R // mouth_sideways
+
+
+/////////////////////////////////////////////////////////////////
+// Sensors
+// Valve already use flexcontroller names here, so we can reuse in another models
+//   NOTE: Debiddo had fine tuned to make then compatible with builtin shapes for Genshin Imapct characters (possibily compatible with other miHoYo games)
+/////////////////////////////////////////////////////////////////
+
+localvar lower_lip_active
+%lower_lip_active = lower_lip * ( 1 - min( jaw_drop / 2 , 1 )
+
+// open action unit
+localvar right_au_open left_au_open
+%right_au_open = min( %Mouth_Open01R + %Mouth_Angry02R + %Mouth_Doya02R + 0.5 * %Mouth_Line02R + %Mouth_Line02R + %Mouth_Smile01R , 1 )
+%left_au_open  = min( %Mouth_Open01L + %Mouth_Angry02L + %Mouth_Doya02L + 0.5 * %Mouth_Line02L + %Mouth_Line02L + %Mouth_Smile01L , 1 )
+
+// open mouth amount
+localvar right_open left_open
+%right_open = right_part* ( 1 - smile ) + right_puckerer + right_funneler + right_upper_raiser * 0.5 + lower_lip * 0.5
+%left_open  = left_part * ( 1 - smile ) + left_puckerer  + left_funneler  + left_upper_raiser  * 0.5 + lower_lip * 0.5
+
+localvar lip_suppressor right_lip_suppressor left_lip_suppressor
+%lip_suppressor = ( 1 - presser ) * ( 1 - bite )
+%right_lip_suppressor = %lip_suppressor
+%left_lip_suppressor  = %lip_suppressor
+
+// blend between part and smile
+localvar right_scaled_part left_scaled_part
+%right_scaled_part = right_part * ( 1 - right_puckerer * (( 1 / 2 ) - right_funneler * ( 1 / 6 )) - right_funneler * ( 1 / 4 )) * %right_lip_suppressor
+%left_scaled_part  = left_part  * ( 1 - left_puckerer  * (( 1 / 2 ) - left_funneler  * ( 1 / 6 )) - left_funneler  * ( 1 / 4 )) * %left_lip_suppressor
+
+// drop_suppressor
+localvar right_drop_suppressor left_drop_suppressor
+%right_drop_suppressor = ( 1 / ( 0.5 * %right_open + right_mouth_drop )) * %right_lip_suppressor
+%left_drop_suppressor  = ( 1 / ( 0.5 * %left_open  + left_mouth_drop  )) * %left_lip_suppressor
+
+// drop
+localvar right_drop left_drop
+%right_drop = right_mouth_drop * ( right_mouth_drop * %right_drop_suppressor )
+%left_drop  = left_mouth_drop  * ( left_mouth_drop  * %left_drop_suppressor )
+
+// pick the upper raiser based on the lips being parted or not
+localvar right_raiser_suppressor left_raiser_suppressor
+%right_raiser_suppressor = ( 1 - 0.3 * %Mouth_Line02R ) * ( 1 - 0.5 * %Mouth_Open01R ) * %right_lip_suppressor * ( 1 - right_corner_puller ) * ( 1 - 0.5 * jaw_drop )
+%left_raiser_suppressor  = ( 1 - 0.3 * %Mouth_Line02L ) * ( 1 - 0.5 * %Mouth_Open01L ) * %left_lip_suppressor  * ( 1 - left_corner_puller  ) * ( 1 - 0.5 * jaw_drop )
+
+// suppressor for depressor
+localvar right_depressor_suppressor left_depressor_suppressor
+%right_depressor_suppressor = ( 1 / ( %Mouth_Open01R * 0.8 + %Mouth_Line02R * 0.8 + %AU17R + bite + right_corner_puller + right_stretcher + right_corner_depressor ))
+%left_depressor_suppressor  = ( 1 / ( %Mouth_Open01L * 0.8 + %Mouth_Line02L * 0.8 + %AU17L + bite + left_corner_puller  + left_stretcher  + left_corner_depressor  ))
+
+// corner_suppressor
+localvar right_corner_suppressor left_corner_suppressor
+%right_corner_suppressor = ( 1 / (%Mouth_Open01R * 0.8 + %Mouth_Line02R * 0.8 + %AU17R + bite + right_corner_puller + right_stretcher + right_corner_depressor )) * ( 1 - jaw_drop * 0.25 )
+%left_corner_suppressor  = ( 1 / (%Mouth_Open01L * 0.8 + %Mouth_Line02L * 0.8 + %AU17L + bite + left_corner_puller  + left_stretcher  + left_corner_depressor  )) * ( 1 - jaw_drop * 0.25 )
+
+// blend two tongue lick shapes through "A" phoneme style
+// See: https://steamcommunity.com/sharedfiles/filedetails/?id=2831588552
+localvar phoneme_a phoneme_a_overage phoneme_a_underage
+localvar lick_overage lick_underage
+
+%phoneme_a = ( jaw_drop + wide_open ) * 0.5
+%phoneme_a_overage  = max( 0 , ( %phoneme_a - 0.5 ) * ( 1 - 0.5 * max( %right_au_open , %left_au_open )))
+%phoneme_a_underage = min( %phoneme_a , 0.5 ) - %phoneme_a_overage
+
+%lick_overage  = max( 0 , ( lick - 0.5 )) * ( 1 - bite )
+%lick_underage = min( lick , 0.5 ) - %lick_overage
+
+/////////////////////////////////////////////////////////////////
+// Wrinkler AU9
+/////////////////////////////////////////////////////////////////
+%AU9R = right_wrinkler * %right_raiser_suppressor * ( 1 - right_upper_raiser ) + ( wrinkler * 0.5 )
+%AU9L = left_wrinkler  * %left_raiser_suppressor  * ( 1 - left_upper_raiser )  + ( wrinkler * 0.5 )
+
+/////////////////////////////////////////////////////////////////
+// Upper Raiser / Sneer AU10
+/////////////////////////////////////////////////////////////////
+%AU10R = right_upper_raiser * %right_raiser_suppressor + right_sneer * ( 1 - bite * 0.5 )
+%AU10L = left_upper_raiser  * %left_raiser_suppressor  + left_sneer  * ( 1 - bite * 0.5 )
+
+/////////////////////////////////////////////////////////////////
+// Corner Depressor AU15
+/////////////////////////////////////////////////////////////////
+%Mouth_Angry01R = right_corner_depressor * ( right_corner_depressor * %right_depressor_suppressor )
+%Mouth_Angry01L = left_corner_depressor  * ( left_corner_depressor  * %left_depressor_suppressor  )
+
+/////////////////////////////////////////////////////////////////
+// Lower Lip AU16
+/////////////////////////////////////////////////////////////////
+%AU16L = %lower_lip_active * %left_lip_suppressor
+%AU16R = %lower_lip_active * %right_lip_suppressor
+
+/////////////////////////////////////////////////////////////////
+// Chin Raiser AU17
+/////////////////////////////////////////////////////////////////
+%AU17R = chin_raiser * ( 1 - jaw_drop * 0.5 ) * ( 1 - bite ) * max( 0 , ( 1 - 2 * ( %Mouth_Angry02R + %Mouth_Doya02R + %Mouth_Open01R + %Mouth_Line02R + %AU10R )))
+%AU17L = chin_raiser * ( 1 - jaw_drop * 0.5 ) * ( 1 - bite ) * max( 0 , ( 1 - 2 * ( %Mouth_Angry02L + %Mouth_Doya02L + %Mouth_Open01L + %Mouth_Line02L + %AU10L )))
+
+// HACK: make AU17 = AU15
+%Mouth_Angry01R = %Mouth_Angry01R + %AU17R
+%Mouth_Angry01L = %Mouth_Angry01L + %AU17L
+
+/////////////////////////////////////////////////////////////////
+// Lip Corner Puller AU12
+/////////////////////////////////////////////////////////////////
+%Mouth_Smile01R = right_corner_puller*(right_corner_puller*%right_corner_suppressor)*(1-right_part)+smile
+%Mouth_Smile01L = left_corner_puller*(left_corner_puller*%left_corner_suppressor)*(1-left_part)+smile
+
+/////////////////////////////////////////////////////////////////
+// Lip Corner Puller + Lip Part AU12 + AU25
+/////////////////////////////////////////////////////////////////
+%Mouth_Doya02R = %right_scaled_part * right_corner_puller * ( 1 - %AU10R ) * ( 1 - %AU9R )
+%Mouth_Doya02L = %left_scaled_part  * left_corner_puller  * ( 1 - %AU10L ) * ( 1 - %AU9L )
+
+/////////////////////////////////////////////////////////////////
+// Cheek Puffer AU13
+/////////////////////////////////////////////////////////////////
+%AU13R = right_cheek_puffer - ( right_corner_puller + right_stretcher ) * 0.5
+%AU13L = left_cheek_puffer  - ( left_corner_puller  + left_stretcher  ) * 0.5
+
+/////////////////////////////////////////////////////////////////
+// Puckerer AU18
+/////////////////////////////////////////////////////////////////
+%Mouth_Open01R = right_puckerer * ( 1 - right_part * (( 1 / 2 ) - right_funneler * ( 1 / 6 )) - right_funneler * ( 1 / 4 )) * %right_lip_suppressor
+%Mouth_Open01L = left_puckerer  * ( 1 - left_part  * (( 1 / 2 ) - left_funneler  * ( 1 / 6 )) - left_funneler  * ( 1 / 4 )) * %left_lip_suppressor
+
+/////////////////////////////////////////////////////////////////
+// Lip Stretcher AU20
+/////////////////////////////////////////////////////////////////
+%Mouth_Line01R = right_stretcher * ( right_stretcher * %right_corner_suppressor )
+%Mouth_Line01L = left_stretcher  * ( left_stretcher  * %left_corner_suppressor  )
+
+/////////////////////////////////////////////////////////////////
+// Funneler AU22
+/////////////////////////////////////////////////////////////////
+%Mouth_Line02R = right_funneler *( 1 - right_part * (( 1 / 2 ) - right_puckerer * ( 1 / 3 )) - right_puckerer * ( 1 / 2 )) * %right_lip_suppressor
+%Mouth_Line02L = left_funneler  *( 1 - left_part  * (( 1 / 2 ) - left_puckerer  * ( 1 / 3 )) - left_puckerer  * ( 1 / 2 )) * %left_lip_suppressor
+
+/////////////////////////////////////////////////////////////////
+// Lip Part AU25
+/////////////////////////////////////////////////////////////////
+%Mouth_Angry02R = %right_scaled_part * ( 1 - right_corner_puller )
+%Mouth_Angry02L = %left_scaled_part  * ( 1 - left_corner_puller )
+
+/////////////////////////////////////////////////////////////////
+// Jaw Drop      AU26
+// Mouth Stretch AU27
+// Wide Open     AU27Z
+//   Note: upgraded from Valve's at: https://github.com/LoveRenamon/debiddos_open_macros/blob/029d593d99823d9c92651574849d6dd9dcaaea90/includes/Flex_FACS.qci#L261
+/////////////////////////////////////////////////////////////////
+localvar jaw_overage jaw_underage jaw_blend bite_active
+%jaw_overage  = max( 0 , ( jaw_drop - 1 ) * %lip_suppressor * ( 1 - 0.5 * max( %right_au_open , %left_au_open )))
+%jaw_underage = min( jaw_drop , 1 ) - %jaw_overage
+%jaw_blend    = ( jaw_drop / ( jaw_clencher + jaw_drop ))
+%bite_active  = ( 1 - bite ) * ( 1 - wide_open )
+
+// AU26 + AU26Z
+%AU26R      = %jaw_underage * ( 1 - %right_drop ) * %jaw_blend * %bite_active 
+%AU26L      = %jaw_underage * ( 1 - %left_drop  ) * %jaw_blend * %bite_active 
+%Mouth_A01R = %jaw_overage  * ( 1 - %right_drop ) * %jaw_blend * %bite_active
+%Mouth_A01L = %jaw_overage  * ( 1 - %left_drop  ) * %jaw_blend * %bite_active
+
+// AU27 + AU27Z
+%Mouth_Smile02R = %jaw_underage * %right_drop * %jaw_blend * %bite_active 
+%Mouth_Smile02L = %jaw_underage * %left_drop  * %jaw_blend * %bite_active 
+%Mouth_Fury01R  = %jaw_overage  * %right_drop * %jaw_blend * ( 1 - wide_open ) + ( wide_open * 1.128 * ( 1 - bite ))
+%Mouth_Fury01L  = %jaw_overage  * %left_drop  * %jaw_blend * ( 1 - wide_open ) + ( wide_open * 1.128 * ( 1 - bite ))
+
+/////////////////////////////////////////////////////////////////
+// Lip Suck AU28
+/////////////////////////////////////////////////////////////////
+%AU28R = right_lip_suck * ( 1 - bite )
+%AU28L = left_lip_suck  * ( 1 - bite )
+
+/////////////////////////////////////////////////////////////////
+// Bite AD32
+/////////////////////////////////////////////////////////////////
+%Mouth_Angry03 = bite
+
+/////////////////////////////////////////////////////////////////
+// mouth Sideways AD96
+/////////////////////////////////////////////////////////////////
+%AD96L = max(-mouth_sideways , 0 ) * ( 1 - 0.5 * %right_au_open ) * ( 1 - %right_drop * jaw_drop * 0.25 ) * ( 1 - 0.5 * bite )
+%AD96R = max( mouth_sideways , 0 ) * ( 1 - 0.5 * %left_au_open  ) * ( 1 - %right_drop * jaw_drop * 0.25 ) * ( 1 - 0.5 * bite )
+
+/////////////////////////////////////////////////////////////////
+// jaw Sideways AD30
+/////////////////////////////////////////////////////////////////
+%AD30L = max(-jaw_sideways , 0 )
+%AD30R = max( jaw_sideways , 0 )
+
+/////////////////////////////////////////////////////////////////
+// Tongue Flattening AU101
+/////////////////////////////////////////////////////////////////
+%Mouth_BigTongue01R = right_tongue_flattening
+%Mouth_BigTongue01L = left_tongue_flattening
+
+/////////////////////////////////////////////////////////////////
+// blend tongue in two flexes
+/////////////////////////////////////////////////////////////////
+// TM103
+/////////////////////////////////////////////////////////////////
+%Mouth_Pero01 = %lick_underage * 1.5 * ( 1 - bite )
+/////////////////////////////////////////////////////////////////
+// TM106
+/////////////////////////////////////////////////////////////////
+%Mouth_Pero02 = %lick_overage  * 1.5 * ( 1 - bite )
+
+/////////////////////////////////////////////////////////////////
+// %mouth variable
+/////////////////////////////////////////////////////////////////
+%mouth = %Mouth_A01R * 0.5 + %Mouth_A01L * 0.5 \\
+       + %Mouth_Fury01R * 0.5 + %Mouth_Fury01L * 0.5 \\
+       + %phoneme_a * 0.25 + %Mouth_Angry03 * 0.3

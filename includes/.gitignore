@@ -9,6 +9,7 @@ macro/*
 !base.qci
 !c_arms_CBBfix.qci
 !Flex*
+!facerules/*
 !macros.qci
 !proportion_trick.qci
 !var_valvebones.qci

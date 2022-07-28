@@ -1,0 +1,4 @@
+// everything by default is here
+$include $_IN$/facerules/GenshinEye.qci
+$include $_IN$/facerules/GenshinBrow.qci
+$include $_IN$/facerules/GenshinMouth.qci
