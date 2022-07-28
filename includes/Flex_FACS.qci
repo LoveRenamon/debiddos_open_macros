@@ -33,7 +33,7 @@ flexcontroller mouth		range 0 1 right_sneer left_sneer
 //flexcontroller mouth	range -1 1 jaw_sideways      // FIXME: FUCK YOU GMOD FACEPOSER
 
 // dummyshit
-flexcontroller eyes			range -$eyedeflection$ $eyedeflection$ eyes_updown eyes_rightleft
+flexcontroller eyes			range -45 45 eyes_updown eyes_rightleft
 
 // inútil para 9-way
 flexcontroller head			range -60 60 head_rightleft
