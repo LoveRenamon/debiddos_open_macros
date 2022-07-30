@@ -1,21 +1,18 @@
 /////////////////////////////////////////////////////////////////
-// Start Facerules (Mouth) Version 2 (phoneme playground)
+// Start Facerules (Mouth) Version 3 (phoneme playground)
 //   Writen by: Davi (Debiddo) Gooz
 /////////////////////////////////////////////////////////////////
 
 /* Required Shapes: */
-
 // Since 麻辣香锅 uses VTA, here is required shapes
 defaultflex                       frame  0 // AU0 (internal)
 flex     "Mouth_Default"          frame  1 // AU0 baseline
-flexpair "Mouth_A01"         1.0  frame  2 // AU26Z jaw_drop_extreme
-flexpair "AU26"              1.0  frame  3 // AU26 jaw_drop
+flexpair "Mouth_A01"         1.0  frame  2 // AU26 jaw_drop & AU26Z jaw_drop_extreme
 flexpair "Mouth_Open01"      1.0  frame  3 // AU18 pucker
 flexpair "Mouth_Smile01"     1.0  frame  4 // AU12 lip_corner_puller
 flexpair "Mouth_Smile02"     1.0  frame  5 // AU27 mouth_stretch
 flexpair "Mouth_Angry01"     1.0  frame  6 // AU15 lip_depressor
-flexpair "Mouth_Angry02"     1.0  frame  7 // AU25 lip_part
-flexpair "AU10"              1.0  frame  7 // AU10 sneer lip_upper_raiser_part
+flexpair "Mouth_Angry02"     1.0  frame  7 // AU10 sneer lip_upper_raiser_part & AU25 lip_part
 flex     "Mouth_Angry03"          frame  8 // AD32 bite
 flexpair "Mouth_Fury01"      1.0  frame  9 // AU27Z mouth_stretch_extreme
 flexpair "Mouth_Doya01"      1.0  frame 10 // AU12 lip_corner_puller
@@ -26,6 +23,7 @@ flex     "Mouth_Pero02"           frame 14 // TM106
 flexpair "Mouth_Line01"      1.0  frame 15 // AU20 lip_stretcher
 flexpair "Mouth_Line02"      1.0  frame 16 // AU22 lip_funneler
 flexpair "Mouth_BigTongue01" 1.0  frame 17 // AU101 tongue_flattening
+
 
 // Note: Declare necessary flexcontrollers after this block
 // TODO: Move all this controllers to the first entry, so it become "cleaner" somehow
@@ -72,7 +70,7 @@ flexcontroller phoneme range 0 1 w
 // Baseline AU0
 // NOTE: Enabled if no mouth shape is active. This should do nothing unless the character use some uncommon expression by default, so a active Baseline will fix it
 /////////////////////////////////////////////////////////////////
-%Mouth_Default = ( 1 - right_upper_raiser ) * ( 1 - left_upper_raiser ) * ( 1 - right_corner_puller ) * ( 1 - left_corner_puller ) * ( 1 - right_corner_depressor ) * ( 1 - left_corner_depressor ) * ( 1 - chin_raiser ) * ( 1 - ( ) * 1 - smile ) * ( 1 - ( ) * 1 - right_sneer ) * ( 1 - left_sneer ) * ( 1 - right_part ) * ( 1 - left_part ) * ( 1 - right_puckerer ) * ( 1 - left_puckerer ) * ( 1 - right_funneler ) * ( 1 - left_funneler ) * ( 1 - right_stretcher ) * ( 1 - left_stretcher ) * ( 1 - right_mouth_drop ) * ( 1 - left_mouth_drop ) * ( 1 - jaw_drop ) * ( 1 - bite ) * presser tightener jaw_clencher * ( 1 - wide_open ) * ( 1 - lower_lip )
+%Mouth_Default = ( 1 - right_upper_raiser ) * ( 1 - left_upper_raiser ) * ( 1 - right_corner_puller ) * ( 1 - left_corner_puller ) * ( 1 - right_corner_depressor ) * ( 1 - left_corner_depressor ) * ( 1 - chin_raiser ) * ( 1 - smile ) * ( 1 - right_sneer ) * ( 1 - left_sneer ) * ( 1 - right_part ) * ( 1 - left_part ) * ( 1 - right_puckerer ) * ( 1 - left_puckerer ) * ( 1 - right_funneler ) * ( 1 - left_funneler ) * ( 1 - right_stretcher ) * ( 1 - left_stretcher ) * ( 1 - right_mouth_drop ) * ( 1 - left_mouth_drop ) * ( 1 - jaw_drop ) * ( 1 - bite ) * presser tightener jaw_clencher * ( 1 - wide_open ) * ( 1 - lower_lip ) * ( 1 - w ) * ( 1 lick ) * ( 1 right_tongue_flattening ) * ( 1 left_tongue_flattening )
 
 
 // TODO: missing shapes
@@ -87,7 +85,7 @@ localvar AD96L  AD96R  // mouth_sideways
 
 // NOTE: This are existent shapes but as requested by 麻辣香锅, changed to allow blend shapes by actors and avoid a recursive and circular logic
 //   at end of this qc is placed the variables, and why? due the sequential needed order
-localvar AU12R AU12L AU12AU25R AU12AU25L AU15R AU15L AU18L AU18R AU20R AU20L AU22R AU22L AU25R AU25L AU26ZL AU26ZR AU27R AU27L AU27ZR AU27ZL AD32
+localvar AU10R AU10L AU12R AU12L AU12AU25R AU12AU25L AU15R AU15L AU18L AU18R AU20R AU20L AU22R AU22L AU24 AU25R AU25L AU26L AU26R AU26ZL AU26ZR AU27R AU27L AU27ZR AU27ZL AU31 AD32
 
 
 /////////////////////////////////////////////////////////////////
@@ -227,6 +225,11 @@ localvar lick_overage lick_underage
 %AU22L = left_funneler  *( 1 - left_part  * (( 1 / 2 ) - left_puckerer  * ( 1 / 3 )) - left_puckerer  * ( 1 / 2 )) * %left_lip_suppressor
 
 /////////////////////////////////////////////////////////////////
+// Lip Pressor AU24
+/////////////////////////////////////////////////////////////////
+%AU24 = presser + ( 1 - presser ) * tightener
+
+/////////////////////////////////////////////////////////////////
 // Lip Part AU25
 /////////////////////////////////////////////////////////////////
 %AU25R = %right_scaled_part * ( 1 - right_corner_puller )
@@ -268,6 +271,17 @@ localvar jaw_overage jaw_underage jaw_blend bite_active
 %AU28L = left_lip_suck  * ( 1 - bite )
 
 /////////////////////////////////////////////////////////////////
+// jaw Sideways AD30
+/////////////////////////////////////////////////////////////////
+%AD30L = max(-jaw_sideways , 0 )
+%AD30R = max( jaw_sideways , 0 )
+
+/////////////////////////////////////////////////////////////////
+// Jaw Clencher AU31
+/////////////////////////////////////////////////////////////////
+%AU31 = jaw_clencher * ( jaw_clencher / ( jaw_clencher + min( jaw_drop , 1 )))
+
+/////////////////////////////////////////////////////////////////
 // Bite AD32
 /////////////////////////////////////////////////////////////////
 %AD32 = bite
@@ -277,12 +291,6 @@ localvar jaw_overage jaw_underage jaw_blend bite_active
 /////////////////////////////////////////////////////////////////
 %AD96L = max(-mouth_sideways , 0 ) * ( 1 - 0.5 * %right_au_open ) * ( 1 - %right_drop * jaw_drop * 0.25 ) * ( 1 - 0.5 * bite )
 %AD96R = max( mouth_sideways , 0 ) * ( 1 - 0.5 * %left_au_open  ) * ( 1 - %right_drop * jaw_drop * 0.25 ) * ( 1 - 0.5 * bite )
-
-/////////////////////////////////////////////////////////////////
-// jaw Sideways AD30
-/////////////////////////////////////////////////////////////////
-%AD30L = max(-jaw_sideways , 0 )
-%AD30R = max( jaw_sideways , 0 )
 
 /////////////////////////////////////////////////////////////////
 // Tongue Flattening AU101
@@ -311,11 +319,11 @@ localvar jaw_overage jaw_underage jaw_blend bite_active
 
 // NOTE: This work/act like a playground, you can blend any Actor to this flexes, You should avoid call the same flex again to make less likey to make a circular behaviour
 
-%Mouth_A01R = %AU26ZR
-%Mouth_A01L = %AU26ZL
+%Mouth_A01R = ( %AU26R * 0.5 ) + %AU26ZR
+%Mouth_A01L = ( %AU26L * 0.5 ) + %AU26ZL
 
-%Mouth_Open01R = ( %AU18R * 0.363636 ) + %Mouth_Line02R
-%Mouth_Open01L = ( %AU18L * 0.363636 ) + %Mouth_Line02L
+%Mouth_Open01R = ( %AU18R * 0.363636 ) + %AU22R
+%Mouth_Open01L = ( %AU18L * 0.363636 ) + %AU22L
 
 %Mouth_Smile01R = %AU12R
 %Mouth_Smile01L = %AU12L
@@ -326,8 +334,8 @@ localvar jaw_overage jaw_underage jaw_blend bite_active
 %Mouth_Angry01R = %AU15R
 %Mouth_Angry01L = %AU15L
 
-%Mouth_Angry02R = %AU25R
-%Mouth_Angry02L = %AU25L
+%Mouth_Angry02R = %AU25R + %AU10R
+%Mouth_Angry02L = %AU25L + %AU10L
 
 %Mouth_Angry03 = %AD32
 
@@ -340,10 +348,10 @@ localvar jaw_overage jaw_underage jaw_blend bite_active
 %Mouth_Doya02R = %AU12AU25R
 %Mouth_Doya02L = %AU12AU25L
 
-%Mouth_Neko01 = w
+%Mouth_Neko01 = w + ( %AU26R + %AU26L ) * 0.25
 
-%Mouth_Line01R = %AU20R
-%Mouth_Line01L = %AU20L
+%Mouth_Line01R = %AU20R + %AU26R * 0.25
+%Mouth_Line01L = %AU20L + %AU26L * 0.25
 
 %Mouth_Line02R = %AU22R
 %Mouth_Line02L = %AU22L
