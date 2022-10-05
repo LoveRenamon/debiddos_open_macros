@@ -117,6 +117,5 @@ $declaresequence "deathpose_crouch_back" \\
 $declaresequence "deathpose_crouch_right" \\
 $declaresequence "deathpose_crouch_left" \\
 $sequence witch $ReferenceFile$ \\
-$animation a_proportions $ProportionFile$ frames 0 0 subtract witch 0 \\
-$sequence proportions a_proportions predelta autoplay hidden \\
+$sequence proportions $ProportionFile$ delta frames 0 0 subtract witch 0 autoplay hidden \\
 $includemodel infected/anim_witch.mdl \\
