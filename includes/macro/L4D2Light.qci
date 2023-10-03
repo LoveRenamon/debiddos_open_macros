@@ -1,6 +1,6 @@
 /*
   Macros for create your own survivor_biker|teenangst_light.mdl
-    Everything here was tested and work in multiplater.
+    Everything here was tested and work in multiplayer.
 
   NOTE: You need ArkjDLCMacro be included previously,
         otherwise the macro will throw a EXCEPTION_VIOLATION due missing file.
@@ -14,14 +14,16 @@
 $definemacro IntroIdleNoise FileName \\
 $sequence INTROIDLENOISE $FileName$ { \\
   subtract INTROIDLENOISE 0 \\
-  weightlist IDLENOISE \\
-  iklock "lfoot" 1 0 \\
-  iklock "rfoot" 1 0 \\
-  iklock "lhand" .5 0 \\
-  iklock "rhand" .5 0 \\
+  weightlist NOISE \\
+  iklock "rfoot" 1.0 0.0 \\
+  iklock "lfoot" 1.0 0.0 \\
+  iklock "rhand" 0.5 0.0 \\
+  iklock "lhand" 0.5 0.0 \\
+  ikrule "rfoot" footstep \\
+  ikrule "lfoot" footstep \\
   fixuploop -15 15 \\
   hidden delta realtime loop \\
-  x y z \\
+  //x y z \\
 } \\
 
 /*
@@ -29,7 +31,7 @@ $sequence INTROIDLENOISE $FileName$ { \\
 */
 $definemacro BikerLight ReferenceFile \\
 $sequence Biker $ReferenceFile$ frame 0 0 \\
-$sequence animHack "attachAnim" \\
+$sequence animHack attachAnim numframes 10 subtract animHack 0 delta \\
 $sequence DLC1_Intro_Male_Idle "DLC1_Intro_Male_Idle" loop \\
 $ArkjDLCMacro DLC1_Intro_Male_LeanUp    DLCINTRO_01 \\
 $ArkjDLCMacro DLC1_Intro_Male_LeanLeft  DLCINTRO_02 \\
@@ -38,9 +40,16 @@ $ArkjDLCMacro DLC1_Intro_Male_HandFlipR DLCINTRO_04 \\
 $sequence ragdoll $ReferenceFile$ ACT_DIERAGDOLL 1 \\
 $continue DLC1_Intro_Male_Idle \\
 
+/*
+  makes survivor_biker_light.mdl animations with noise layer and without proportion trick
+*/
 $definemacro BikerLightNoise ReferenceFile \\
 $BikerLight $ReferenceFile$ addlayer INTROIDLENOISE \\
 $IntroIdleNoise "NamVet_Idle_Standing_01" \\
+$continue DLC1_Intro_Male_LeanUp    cmdlist releasehand \\
+$continue DLC1_Intro_Male_LeanLeft  cmdlist releasehand \\
+$continue DLC1_Intro_Male_HeadNod   cmdlist releasehand \\
+$continue DLC1_Intro_Male_HandFlipR cmdlist releasehand \\
 $continue DLC1_Intro_Male_Idle \\
 
 /*
@@ -58,7 +67,16 @@ $ArkjDLCMacro DLC1_Intro_Zoey_Head_Gesture    DLCINTRO_ZOEY_05 \\
 $ArkjDLCMacro DLC1_Intro_Zoey_Generator_Point DLCINTRO_ZOEY_06 \\
 $continue DLC1_Intro_Zoey_Idle \\
 
+/*
+  makes survivor_teenangst_light.mdl animations with noise layer and without proportion trick
+*/
 $definemacro TeenAngstLightNoise ReferenceFile \\
 $TeenAngstLight $ReferenceFile$ addlayer INTROIDLENOISE \\
 $IntroIdleNoise "NamVet_Idle_Standing_01" \\
+$continue DLC1_Intro_Zoey_Shrug           cmdlist releasehand iklock lhand 1 0 \\
+$continue DLC1_Intro_Zoey_Shout           cmdlist releasehand iklock rhand 1 0 \\
+$continue DLC1_Intro_Zoey_HeadShake       iklock rhand 1 0 iklock lhand 1 0 \\
+$continue DLC1_Intro_Zoey_HandFlipR       cmdlist releasehand iklock lhand 1 0 \\
+$continue DLC1_Intro_Zoey_Head_Gesture    cmdlist releasehand iklock rhand 1 0 iklock lhand 1 0 \\
+$continue DLC1_Intro_Zoey_Generator_Point cmdlist releasehand iklock rhand 1 0 \\
 $continue DLC1_Intro_Zoey_Idle \\
