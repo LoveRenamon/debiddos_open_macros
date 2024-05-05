@@ -17,14 +17,15 @@ A minimum knowledge of:
   * Euler Rotation
   * Gimbal Rotation
   * Quaternion Rotation
-  * Rotations & Location Relative/Absolute Positions
+  * Rotations & Location Relative and Absolute Positions
 
 
-> That is, if you are a **beginner**, you will basically don't understand what is here
+> That means, if you are a **beginner**, you will basically don't understand what is here
 
 
 
 ## References for this project
+[Source Engine Toolkit](https://github.com/LoveRenamon/Source-Engine-Toolkit)
 [Facepunch's official gmod repo](https://github.com/robotboy655/gmod-animations)  
 [HWMToolkit](https://github.com/revzin/HWMToolkit)  
 [reanims_helpers-l4d2](https://github.com/xDShot/reanims_helpers-l4d2)  
