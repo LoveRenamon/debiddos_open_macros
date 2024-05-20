@@ -94,7 +94,7 @@ localvar biting
 %biting = ( 1 - bite )
 
 localvar lower_lip_active
-%lower_lip_active = lower_lip * ( 1 - min( jaw_drop / 2 , 1 )
+%lower_lip_active = lower_lip * ( 1 - min( jaw_drop / 2 , 1 ) )
 
 localvar right_lip_suppressor lip_suppressor left_lip_suppressor
 %lip_suppressor       = ( 1 - presser ) * %biting
@@ -226,7 +226,6 @@ localvar AU45R AU45L
 localvar AU1R AU1L
 %AU1R = right_inner_raiser
 %AU1L = left_inner_raiser
-
 // Uncomment to suppress lid_inner_raiser while blinking
 //%AU1R = %AU1R * %right_blink
 //%AU1L = %AU1L * %left_blink
@@ -239,7 +238,6 @@ localvar AU1R AU1L
 localvar AU2R AU2L
 %AU2R = right_outer_raiser
 %AU2L = left_outer_raiser
-
 // Uncomment to suppress lid_outer_raiser while blinking
 //%AU2R = %AU2R * %right_blink
 //%AU2L = %AU2L * %left_blink
