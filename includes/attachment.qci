@@ -16,21 +16,21 @@
   in other words, if you want maximum compatibility, use Valve's default, not this one.
 */
 // shared on all source games
-$attachment   forward   $head$     0     0        0         rotate 0 -77 -90
-$attachment   eyes      $head$     0   $eyey$   $eyez$      absolute
-$attachment   head      $head$     0     0        0         rotate -90 -90 0
+$attachment   forward   $Bone$Head1     0     0        0         rotate 0 -77 -90
+$attachment   eyes      $Bone$Head1     0   $eyey$   $eyez$      absolute
+$attachment   head      $Bone$Head1     0     0        0         rotate -90 -90 0
 
 // SFM coverage
-$attachment  lefteye  $head$  $eyex$  $eyey$  $eyez$  absolute
-$attachment  righteye $head$ -$eyex$  $eyey$  $eyez$  absolute
+$attachment  lefteye  $Bone$Head1  $eyex$  $eyey$  $eyez$  absolute
+$attachment  righteye $Bone$Head1 -$eyex$  $eyey$  $eyez$  absolute
 
 // gmod || hl2 (uncomment if you'll likey need by default)
-//$attachment anim_attachment_head $head$ 0 0 0 rotate -90 -90 0
-//$attachment anim_attachment_RH $handr$ 2.43 -1.55 -0.19 rotate 4.36 0.17 -180
-//$attachment anim_attachment_LH $handl$ 2.43 -1.55 0.19 rotate 4.36 -179.83 0
+//$attachment anim_attachment_head $Bone$Head1 0 0 0 rotate -90 -90 0
+//$attachment anim_attachment_RH $Bone$R_Hand 2.43 -1.55 -0.19 rotate 4.36 0.17 -180
+//$attachment anim_attachment_LH $Bone$L_Hand 2.43 -1.55 0.19 rotate 4.36 -179.83 0
 
 // Valve's Defaul (basic)
-//$attachment forward $head$ 0 0 0 rotate 0 -77 -90
-//$attachment anim_attachment_head $head$ 0 0 0 rotate -90 -90 0
+//$attachment forward $Bone$Head1 0 0 0 rotate 0 -77 -90
+//$attachment anim_attachment_head $Bone$Head1 0 0 0 rotate -90 -90 0
 //$attachment anim_attachment_RH "ValveBiped.Anim_Attachment_RH" 0 0 0
 //$attachment anim_attachment_LH "ValveBiped.Anim_Attachment_LH" 0 0 0

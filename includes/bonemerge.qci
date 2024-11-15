@@ -1,15 +1,20 @@
-/* São Bones mínimos usados pela Valve */
-$bonemerge $pelvis$
-$bonemerge $spine$
-$bonemerge $stomach$
-$bonemerge $rib$
-$bonemerge $chest$
-$bonemerge $claviclel$
-$bonemerge $upperl$
-$bonemerge $forel$
-$bonemerge $ulnal$
-$bonemerge $wristl$
-$bonemerge $handl$
+/*
+  São Bones usados por default at l4d2, hl2 and gmod
+
+OBS.: Left 4 Dead's StudioMDL don't like too many variables
+*/
+$bonemerge $Bone$Pelvis
+$bonemerge $Bone$Spine
+$bonemerge $Bone$Spine1
+$bonemerge $Bone$Spine2
+$bonemerge $Bone$Spine3
+$bonemerge $Bone$Spine4
+$bonemerge $Bone$L_Clavicle
+$bonemerge $Bone$L_UpperArm
+$bonemerge $Bone$L_Forearm
+$bonemerge $Bone$L_Ulna
+$bonemerge $Bone$L_Wrist
+$bonemerge $Bone$L_Hand
 $bonemerge $Bone$L_Finger0
 $bonemerge $Bone$L_Finger01
 $bonemerge $Bone$L_Finger02
@@ -25,12 +30,12 @@ $bonemerge $Bone$L_Finger32
 $bonemerge $Bone$L_Finger4
 $bonemerge $Bone$L_Finger41
 $bonemerge $Bone$L_Finger42
-$bonemerge $clavicler$
-$bonemerge $upperr$
-$bonemerge $forer$
-$bonemerge $ulnar$
-$bonemerge $wristr$
-$bonemerge $handr$
+$bonemerge $Bone$R_Clavicle
+$bonemerge $Bone$R_UpperArm
+$bonemerge $Bone$R_Forearm
+$bonemerge $Bone$R_Ulna
+$bonemerge $Bone$R_Wrist
+$bonemerge $Bone$R_Hand
 $bonemerge $Bone$R_Finger0
 $bonemerge $Bone$R_Finger01
 $bonemerge $Bone$R_Finger02
@@ -46,11 +51,88 @@ $bonemerge $Bone$R_Finger32
 $bonemerge $Bone$R_Finger4
 $bonemerge $Bone$R_Finger41
 $bonemerge $Bone$R_Finger42
-$bonemerge $thighr$
-$bonemerge $calfr$
-$bonemerge $footr$
-$bonemerge $toer$
-$bonemerge $thighl$
-$bonemerge $calfl$
-$bonemerge $footl$
-$bonemerge $toel$
+
+// Add legs
+$bonemerge $Bone$L_Thigh
+$bonemerge $Bone$L_Calf
+$bonemerge $Bone$L_Foot
+$bonemerge $Bone$L_Toe0
+$bonemerge $Bone$R_Thigh
+$bonemerge $Bone$R_Calf
+$bonemerge $Bone$R_Foot
+$bonemerge $Bone$R_Toe0
+
+// Add Tank Parts
+$bonemerge $Bone$Spine0
+$bonemerge $Bone$Spine3
+$bonemerge $Bone$Neck0
+$bonemerge $Bone$Head
+$bonemerge $Bone$L_Toe
+$bonemerge $Bone$R_Toe
+$bonemerge "ValveBiped.debris_bone"
+
+// Procedurals (no need bonemerge)
+//$bonemerge $Bone$L_Latt
+//$bonemerge $Bone$R_Latt
+//$bonemerge $Bone$L_Pectoral
+//$bonemerge $Bone$R_Pectoral
+//$bonemerge $Bone$L_Trapezius
+//$bonemerge $Bone$R_Trapezius
+//$bonemerge $Bone$L_Shoulder
+//$bonemerge $Bone$R_Shoulder
+//$bonemerge $Bone$L_Bicep
+//$bonemerge $Bone$R_Bicep
+//$bonemerge $Bone$L_UpperArm_Twist
+//$bonemerge $Bone$R_UpperArm_Twist
+//$bonemerge $Bone$L_Elbow
+//$bonemerge $Bone$R_Elbow
+//$bonemerge $Bone$L_Ulna
+//$bonemerge $Bone$R_Ulna
+//$bonemerge $Bone$L_Wrist
+//$bonemerge $Bone$R_Wrist
+//$bonemerge $Bone$L_Hip
+//$bonemerge $Bone$R_Hip
+//$bonemerge $Bone$L_Sartorius
+//$bonemerge $Bone$R_Sartorius
+//$bonemerge $Bone$L_Thigh_Twist
+//$bonemerge $Bone$R_Thigh_Twist
+//$bonemerge $Bone$L_Quadriceps
+//$bonemerge $Bone$R_Quadriceps
+//$bonemerge $Bone$L_Knee
+//$bonemerge $Bone$R_Knee
+//$bonemerge $Bone$L_Shin
+//$bonemerge $Bone$R_Shin
+//$bonemerge $Bone$L_Ankle
+//$bonemerge $Bone$R_Ankle
+
+// Left 4 Dead 2 weapons and particle attachments
+$bonemerge "ValveBiped.weapon_bone"
+$bonemerge "ValveBiped.weapon_bone_Clip"
+$bonemerge "ValveBiped.weapon_bone_Clip_Bullets"
+$bonemerge "ValveBiped.weapon_bone_Clip2"
+$bonemerge "ValveBiped.weapon_bone_Clip2_Bullets"
+$bonemerge "ValveBiped.weapon_bone_extra"
+$bonemerge "ValveBiped.weapon_bolt_l"
+$bonemerge "ValveBiped.weapon_bolt"
+$bonemerge "ValveBiped.weapon_bolt_opposite"
+$bonemerge "ValveBiped.weapon_charger"
+$bonemerge "ValveBiped.L_weapon_bone"
+
+// There's some SourceMod which uses it
+$bonemerge "ValveBiped.Anim_Attachment_RH"
+$bonemerge "ValveBiped.Anim_Attachment_LH"
+$bonemerge "ValveBiped.attachment_bandage_armL"
+$bonemerge "ValveBiped.attachment_bandage_legL"
+$bonemerge "ValveBiped.attachment_bandage_legR"
+$bonemerge "ValveBiped.attachment_armL_T"
+$bonemerge "ValveBiped.attachment_armR_T"
+
+// holster attachments
+//$bonemerge "eholster"
+//$bonemerge "grenade"
+//$bonemerge "molotov"
+//$bonemerge "medkit"
+//$bonemerge "melee"
+//$bonemerge "pills"
+//$bonemerge "pistol"
+//$bonemerge "primary"
