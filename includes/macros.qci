@@ -15,9 +15,10 @@ $include $_IN$/macro/jiggle_kyuuki.qci
 
 // Sequences
 $include $_IN$/macro/ProportionTrick.qci
+//$include $_IN$/macros_proportion_trick.qci // NOTE: should this be enabled?
 
 // My macro for gmod viewmodel hands (c_arms) (v_model) or ... whataever you wanna call it
-$include $_IN$/macro/ViewModelhands.qci
+//$include $_IN$/macro/ViewModelhands.qci // TODO: remove it
 $include $_IN$/macro/GM_IncludeNPC.qci
 
 // My L4D2 macro research for the TLS Update
@@ -43,3 +44,6 @@ $include $_IN$/macro/ArkjMeleeWalk.qci
 $include $_IN$/macro/ArkjShovedMacro.qci
 $include $_IN$/macro/ArkjSMoveAxeMacro.qci
 $include $_IN$/macro/ArkjUnique.qci
+
+// other useful macros
+$include $_IN$/macro/MODaMOD.qci

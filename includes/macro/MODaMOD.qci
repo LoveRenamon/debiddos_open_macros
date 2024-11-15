@@ -1,0 +1,9 @@
+/*
+  "MOD a MOD" é uma gambiarra ciada originalmente por Ellie Willians para "material overrides".
+
+  Writen By Davi (Debiddo) Gooz
+*/
+$definemacro MODaMOD PFX Name \\
+$cdmaterials $PFX$$Name$/reskins \\
+$cdmaterials $PFX$$Name$/skins \\
+$cdmaterials $PFX$$Name$ \\

@@ -23,7 +23,8 @@ $definevariable IKFootLoc ".5"
 $definevariable IKHandFootRot ".05"
 
 // Aqui está nossos diretórios para os materiais ($cdmaterial)
-//$include $_IN$/mat.qci
+$MODaMOD "" $Name$
+$cdmaterials "shared"
 
 $surfaceprop "flesh"
 $contents "solid"
