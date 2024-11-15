@@ -27,8 +27,8 @@ $definevariable eyez "68.5638"
 //$definevariable eyer "1.5"
 //$definevariable eyed "3"
 
-// Limite de movimento para esquerda, direita, cima e baixo
-//$definevariable eyedeflection "45"
+// Limit eye movements
+$definevariable eyedeflection "45"
 
 // Kinmáticas para $ikautoplaylock
 // Isso edita e trava as Kinemáticas das mãos e pés nesse offset para todas as animações que a usam:
@@ -38,9 +38,6 @@ $definevariable IKHandFootRot ".05"
 
 // Defines that bellow folder is our initial/init/intro library. The name _IN was chosen because it is an abbreviation of INclude
 $definevariable _IN "../debiddos_open_macros/includes"
-
-// alias names for ValveBiped skeleton (might be removed on later versions, too many unnecessary variables)
-$include $_IN$/var_valvebones.qci
 
 // Name of our first mesh to be read by QC. We assume its relative to "your.qc_folder/mesh" by default
 // As a thumb rule, use your character's head as the basis for the proportion trick and $sequence "ragdoll"
