@@ -16,6 +16,7 @@ macro/*
 !vars.qci
 !macro/
 !macro/Arkj*.qci
-!macro/jiggle_*.qci
+!macro/jiggle*.qci
+!macro/MOD*
 !macro/GM_IncludeNPC.qci
 !macro/ViewModelhands.qci
