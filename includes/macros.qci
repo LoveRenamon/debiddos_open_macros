@@ -5,50 +5,41 @@ include this file to use macros when you are going to use it.
 
 If the l4d2 compiler wasn't so weird, you could let the library be relative to a variable, but that's not the case
 */
+//if not defined use this:
+$definevariable _IN "../debiddos_open_macros/includes"
 
 // Jigglebones
-$include ../debiddos_open_macros/includes/macro/jiggle_breast_large.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_breast_natural.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_breast_purun.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_butt_bouncy.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_durandal.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_earrings.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_generics.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_keychain.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_kyuuki.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_scarf.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_tail.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_tail_akulova.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_tail_fluffy.qci
-$include ../debiddos_open_macros/includes/macro/jiggle_tiferet.qci
+$include $_IN$/macro/jigglebones.qci
+$include $_IN$/macro/jiggle_durandal.qci
+$include $_IN$/macro/jiggle_kyuuki.qci
 
 // Sequences
-$include ../debiddos_open_macros/includes/macro/ProportionTrick.qci
+$include $_IN$/macro/ProportionTrick.qci
 
 // My macro for gmod viewmodel hands (c_arms) (v_model) or ... whataever you wanna call it
-$include ../debiddos_open_macros/includes/macro/ViewModelhands.qci
-$include ../debiddos_open_macros/includes/macro/GM_IncludeNPC.qci
+$include $_IN$/macro/ViewModelhands.qci
+$include $_IN$/macro/GM_IncludeNPC.qci
 
 // My L4D2 macro research for the TLS Update
-$include ../debiddos_open_macros/includes/macro/ArkjArms.qci
-$include ../debiddos_open_macros/includes/macro/ArkjDLCMacro.qci
-$include ../debiddos_open_macros/includes/macro/ArkjIdleBlendAimMatrix.qci
-$include ../debiddos_open_macros/includes/macro/ArkjIdleNoise.qci
-$include ../debiddos_open_macros/includes/macro/ArkjJumpMacro.qci
-$include ../debiddos_open_macros/includes/macro/ArkjLayer.qci
-$include ../debiddos_open_macros/includes/macro/ArkjLayerACT.qci
-$include ../debiddos_open_macros/includes/macro/ArkjLayerArms.qci
-$include ../debiddos_open_macros/includes/macro/ArkjLimpMacro.qci
-$include ../debiddos_open_macros/includes/macro/ArkjLoopAnimation.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeAttack.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeIdle.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeLayerArms.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeLayerBlendIdle.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeLayerIdle.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeMoveMacro.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeRun.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeSwing.qci
-$include ../debiddos_open_macros/includes/macro/ArkjMeleeWalk.qci
-$include ../debiddos_open_macros/includes/macro/ArkjShovedMacro.qci
-$include ../debiddos_open_macros/includes/macro/ArkjSMoveAxeMacro.qci
-$include ../debiddos_open_macros/includes/macro/ArkjUnique.qci
+$include $_IN$/macro/ArkjArms.qci
+$include $_IN$/macro/ArkjDLCMacro.qci
+$include $_IN$/macro/ArkjIdleBlendAimMatrix.qci
+$include $_IN$/macro/ArkjIdleNoise.qci
+$include $_IN$/macro/ArkjJumpMacro.qci
+$include $_IN$/macro/ArkjLayer.qci
+$include $_IN$/macro/ArkjLayerACT.qci
+$include $_IN$/macro/ArkjLayerArms.qci
+$include $_IN$/macro/ArkjLimpMacro.qci
+$include $_IN$/macro/ArkjLoopAnimation.qci
+$include $_IN$/macro/ArkjMeleeAttack.qci
+$include $_IN$/macro/ArkjMeleeIdle.qci
+$include $_IN$/macro/ArkjMeleeLayerArms.qci
+$include $_IN$/macro/ArkjMeleeLayerBlendIdle.qci
+$include $_IN$/macro/ArkjMeleeLayerIdle.qci
+$include $_IN$/macro/ArkjMeleeMoveMacro.qci
+$include $_IN$/macro/ArkjMeleeRun.qci
+$include $_IN$/macro/ArkjMeleeSwing.qci
+$include $_IN$/macro/ArkjMeleeWalk.qci
+$include $_IN$/macro/ArkjShovedMacro.qci
+$include $_IN$/macro/ArkjSMoveAxeMacro.qci
+$include $_IN$/macro/ArkjUnique.qci

@@ -1,0 +1,1001 @@
+/*
+	Bellow jigglebones are designed to use at breasts, butts and other often bouncy jiggles.
+	Unless stated, all jigglebone properties have been made and checked by Debiddo.
+
+	TIP:
+				X = Pitch/Left
+				Y = Yaw/Up
+				Z = Along/Front
+
+		Macros made by Davi (Debiddo) Gooz
+*/
+
+
+/*
+	This kind of jiggle follows a purun-purun-like type of anime jiggle,
+  not as distracting as $BreastPurun
+	made in Nikolya's private commission "Nika" Akulova and Nataliya.
+
+	TIP:
+	 X-axis makes the up/down
+	 Y-axis point forward the character
+	 Z-axis must almost point to the ground, the more heavy it is, the more you align to character ribs
+
+	Syntax:
+*/
+$definemacro BreastLarge BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 0 \\
+		pitch_stiffness 50 \\
+		pitch_damping 5 \\
+		yaw_stiffness 50 \\
+		yaw_damping 5 \\
+		along_stiffness 50 \\
+		along_damping 0 \\
+		angle_constraint 15 \\
+	} \\
+} \\
+
+/*
+	In general, this is the type of breast that presents the best result for almost all cases,
+	Not so "boing boing", not so "purun purun", however, correct positions is a must.
+
+	TIP:
+	 X-axis makes the up/down
+	 Y-axis point forward the character
+	 Z-axis must almost point to the ground, the more heavy it is, the more you align to character ribs
+
+	Syntax:
+*/
+$definemacro BreastNatural BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 2 \\
+		pitch_stiffness 44 \\
+		pitch_damping 7 \\
+		yaw_stiffness 44 \\
+		yaw_damping 7 \\
+		angle_constraint 14 \\
+	} \\
+	has_base_spring { \\
+		base_mass 1 \\
+		stiffness 255 \\
+		damping 8 \\
+		left_constraint -.15 .15 \\
+		left_friction .01 \\
+		up_constraint -.15 .15 \\
+		up_friction .01 \\
+		forward_constraint -.01 .01 \\
+		forward_friction .05 \\
+	} \\
+} \\
+
+
+/*
+	This type of chest follows a purun purun (scales a scale) type of anime,
+	it bouce/sways a lot and are distracting, often in an unwanted way.
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro BreastPurun BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 200 \\
+		yaw_damping 9 \\
+		pitch_stiffness 200 \\
+		pitch_damping 9 \\
+		length 20 \\
+		angle_constraint 20 \\
+	} \\
+} \\
+
+
+/*
+	This type of jiggle has a kind of gelatinous movement (purun purun) from anime and eroge games,
+	the bounce/swing can be very distracting and likey undesirable for most cases.
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro ButtBouncy BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 10 \\
+		tip_mass 10 \\
+		pitch_stiffness 120 \\
+		pitch_damping 4 \\
+		yaw_stiffness 120 \\
+		yaw_damping 4 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint 15 \\
+	} \\
+	has_base_spring { \\
+		base_mass 0 \\
+		stiffness 100 \\
+		damping 3 \\
+		left_constraint -0.5 0.5 \\
+		left_friction 0 \\
+		up_constraint -0.5 0.5 \\
+		up_friction 0 \\
+		forward_constraint -0.5 0.5 \\
+		forward_friction 0 \\
+	} \\
+} \\
+
+
+/*
+  Brincos
+  Um mínimo detalhe que faz toda diferença.
+
+  Esse Jiggle tem movimentos rápidos e balança cerca de três à quatro vezes antes de entrar em inércia.
+  Foi escolhido "Earring" como nome do macro, pois o criei quando estava querendo um melhor movimento para brincos
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro Earring BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 100 \\
+		yaw_damping 4 \\
+		pitch_stiffness 100 \\
+		pitch_damping 4 \\
+		length 3 \\
+		tip_mass 1 \\
+		angle_constraint 33 \\
+	} \\
+} \\
+
+
+/*
+	Cauda originalmente composta de 3 bones que movem-se de forma suave em 10°
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro Fluffy BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 64 \\
+		yaw_damping 8 \\
+		pitch_stiffness 64 \\
+		pitch_damping 8 \\
+		along_damping 10 \\
+		length 10 \\
+		tip_mass 1 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Based on Zoey's holster
+
+	TIP:
+
+	Syntax:
+	 $Holster jiggle_holster -3 3 -75 -15
+*/
+$definemacro Holster BoneName MinPitch MaxPitch YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_rigid { \\
+		length 10 \\
+		tip_mass 1000 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		pitch_constraint $MinPitch$ $MaxPitch$ \\
+		yaw_friction 0 \\
+		yaw_bounce 1 \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+  Jiggle Genéricos
+  Normalmente são usados em cabelos e peças que precisam de algum balanço, mesmo que seja mínimo.
+
+	TIP:
+
+	Syntax:
+*/
+
+
+/*
+	Almost a full modular macro for "is_flexible", useful for testing new presets
+
+	TIP:
+
+	Syntax:
+	 $IsFlexibleAngle Prop_0  50  40  100 8  75 8  60 6  20
+*/
+$definemacro IsFlexibleAngle BoneName Mass Lengh PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		angle_constraint $Angle$ \\
+		tip_mass $Mass$ \\
+		length $Lengh$ \\
+		pitch_stiffness $PitchStiff$ \\
+		pitch_damping $PitchDamp$ \\
+		yaw_stiffness $YawStiff$ \\
+		yaw_damping $YawDamp$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff$ \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\
+
+
+/*
+		A full modular macro for "is_flexible"
+
+	TIP:
+
+	Syntax:
+	 $IsFlexiblePitchYaw Jiggle_0  50  40  100 8  75 8  60 6
+*/
+$definemacro IsFlexiblePitchYaw BoneName Mass Lengh PitchStiff PitchDamp YawStiff YawDamp AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		pitch_constraint -$Angle$ $Angle$ \\
+		yaw_constraint -$Angle$ $Angle$ \\
+		tip_mass $Mass$ \\
+		length $Lengh$ \\
+		pitch_stiffness $PitchStiff$ \\
+		pitch_damping $PitchDamp$ \\
+		yaw_stiffness $YawStiff$ \\
+		yaw_damping $YawDamp$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff$ \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\
+
+
+/*
+	A even more modular macro for "is_flexible"
+
+	TIP:
+
+	Syntax:
+	 $IsFlexiblePitchYaw Jiggle_0  50  40  100 8  75 8  60 6
+*/
+$definemacro IsFlexibleFull BoneName Mass Lenght PitchStiff PitchDamp PitchBounce YawStiff YawDamp YawBounce AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		pitch_constraint -$PitchMin$ $PitchMax$ \\
+		yaw_constraint -$YawMin$ $YawMax$ \\
+		tip_mass $Mass$ \\
+		length $Lenght$ \\
+		pitch_stiffness $PitchStiff$ \\
+		pitch_damping $PitchDamp$ \\
+		pitch_bounce $PitchBounce$ \\
+		yaw_stiffness $YawStiff$ \\
+		yaw_damping $YawDamp$ \\
+		pitch_bounce $YawBounce$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff$ \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\
+
+
+/*
+	A even more modular macro for "is_flexible"
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro IsFlexibleStiffDampBounceFric BoneName Mass Lenght PitchStiff PitchDamp PitchBounce PitchFriction YawStiff YawDamp YawBounce YawFriction AlongStiff AlongDamp PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		pitch_constraint -$PitchMin$ $PitchMax$ \\
+		yaw_constraint -$YawMin$ $YawMax$ \\
+		tip_mass $Mass$ \\
+		length $Lenght$ \\
+		pitch_stiffness $PitchStiff$ \\
+		pitch_damping $PitchDamp$ \\
+		pitch_bounce $PitchBounce$ \\
+		pitch_friction $PitchFriction$ \\
+		yaw_stiffness $YawStiff$ \\
+		yaw_damping $YawDamp$ \\
+		pitch_bounce $YawBounce$ \\
+		pitch_friction $YawFriction$ \\
+		allow_length_flex \\
+		along_stiffness $AlongStiff$ \\
+		along_damping $AlongDamp$ \\
+	} \\
+} \\
+
+
+/*
+	This jiggle has moderate moviments and jiggle up to two timws before enter into it rest state of inercia
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric1 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 20 \\
+		tip_mass 20 \\
+		pitch_stiffness 85 \\
+		pitch_damping 6 \\
+		yaw_stiffness 60 \\
+		yaw_damping 6 \\
+		allow_length_flex \\
+		along_stiffness 50 \\
+		along_damping .001 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	It jiggle 6 to 8 times before stop, and have a very weak gravity influence
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric2 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 44 \\
+		yaw_damping 5 \\
+		pitch_stiffness 44 \\
+		pitch_damping 5 \\
+		length 10 \\
+		tip_mass 3 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric3 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 90 \\
+		yaw_damping 5 \\
+		pitch_stiffness 90 \\
+		pitch_damping 5 \\
+		length 3 \\
+		tip_mass 1 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Much like $JiggleGeneric2 but X-Axis will flex more stiff than Y-Axis
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric4 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 64 \\
+		yaw_damping 9 \\
+		pitch_stiffness 98 \\
+		pitch_damping 3 \\
+		length 6 \\
+		tip_mass 3 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	It is $JiggleGeneric2 but with heavy gravity influence
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric5 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 50 \\
+		yaw_damping 5 \\
+		pitch_stiffness 50 \\
+		pitch_damping 5 \\
+		length 16 \\
+		tip_mass 128 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Made for KOS-MOS hair, with heavy gravity influence
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric6 BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 64 \\
+		tip_mass 200 \\
+		pitch_stiffness 50 \\
+		pitch_damping 7 \\
+		yaw_stiffness 50 \\
+		yaw_damping 7 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+	Sistermon's sleeves
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric7 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 200 \\
+		tip_mass 8 \\
+		pitch_stiffness 70 \\
+		pitch_damping 5 \\
+		yaw_stiffness 70 \\
+		yaw_damping 5 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Sistermon's num cape
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric8 BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 150 \\
+		tip_mass 512 \\
+		pitch_stiffness 128 \\
+		pitch_damping 24 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_stiffness 128 \\
+		yaw_damping 24 \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+	Sistermon's (Awaken) num cape
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric9 BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 128 \\
+		tip_mass 65 \\
+		pitch_stiffness 128 \\
+		pitch_damping 8 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_stiffness 128 \\
+		yaw_damping 8 \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+	Sistermon's Noir Skirt jiggle
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric10 BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 120 \\
+		tip_mass 63 \\
+		pitch_stiffness 121 \\
+		pitch_damping 11 \\
+		pitch_constraint -16 16 \\
+		yaw_stiffness 121 \\
+		yaw_damping 11 \\
+		yaw_constraint -16 16 \\
+	} \\
+} \\
+
+
+/*
+  Asas da "Brabuleta" Digimon, Hudiemon
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro JiggleGeneric11 BoneName Mass PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		pitch_damping 1 \\
+		yaw_damping 3 \\
+		along_damping 2 \\
+		length 75 \\
+		tip_mass $Mass$ \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+	It move slow n' graciously
+
+	TIP:
+
+	Syntax:
+	 $JiggleSmooth Ear_L 44
+*/
+$definemacro JiggleSmooth BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		tip_mass 1 \\
+		length 15 \\
+		yaw_stiffness 15 \\
+		yaw_damping 50 \\
+		pitch_stiffness 15 \\
+		pitch_damping 40 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Keychains
+	Um detalhe que pode ser um desafio, isso devido à falsa gravidade da Source.
+
+	Esse Jiggle tem movimentos rápidos e tenta sempre seguir a gravidade (Z Global)
+
+	Aqui você pode definir quantos links forem necessários para o jiggle
+
+	TIP:
+
+	Syntax:
+	 $Keychain jiggle0 -5 15 -15 15
+*/
+$definemacro Keychain BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_rigid { \\
+		length 15 \\
+		tip_mass 1000 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+  Splinks made his sample as 4 bone links
+
+	TIP:
+
+	Syntax:
+	 $KeychainSplinks "ValveBiped.Jiggle_link"
+*/
+$definemacro KeychainSplinks BoneName \\
+$jigglebone $BoneName$1 { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 1000 \\
+		pitch_constraint 5 15 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		yaw_constraint -15 15 \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+	} \\
+} \\
+$jigglebone $BoneName$2 { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 1000 \\
+		pitch_constraint 0 20 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		yaw_constraint -10 10 \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+	} \\
+} \\
+$jigglebone $BoneName$3 { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 1000 \\
+		pitch_constraint 0 25 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		yaw_constraint -5 5 \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+	} \\
+} \\
+$jigglebone $BoneName$4 { \\
+	is_flexible { \\
+		length 15 \\
+		tip_mass 1000 \\
+		pitch_constraint 0 30 \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		yaw_constraint -5 5 \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+	} \\
+} \\
+
+
+/*
+  Sakuyamon's Miko Mode long sleeves
+it have a strong gravity influence and must be constrained
+
+	TIP:
+
+	Syntax:
+	 $MikoSleeve Sleeve01_L -40 40 -45 55
+*/
+$definemacro MikoSleeve BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 9 \\
+		tip_mass 155 \\
+		pitch_stiffness 26 \\
+		pitch_damping 5 \\
+		pitch_friction .001 \\
+		pitch_bounce .001 \\
+		yaw_stiffness 26 \\
+		yaw_damping 8 \\
+		yaw_friction .001 \\
+		yaw_bounce .001 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+	Scarfs, movimentos suaves composto de Root e Childs
+*/
+
+
+/*
+
+	TIP:
+
+	Syntax:
+	 $ScarfRoot Scarf_00
+*/
+$definemacro ScarfRoot BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible  { \\
+		yaw_stiffness 60 \\
+		yaw_damping 9 \\
+		pitch_stiffness 60 \\
+		pitch_damping 5 \\
+		length 55 \\
+		tip_mass 1 \\
+		angle_constraint 13 \\
+	} \\
+} \\
+
+
+/*
+
+	TIP:
+
+	Syntax:
+	 $ScarfChild Scarf_01
+*/
+$definemacro ScarfChild BoneName \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 60 \\
+		yaw_damping 9 \\
+		pitch_stiffness 60 \\
+		pitch_damping 5 \\
+		length 55 \\
+		tip_mass 1 \\
+		angle_constraint 23 \\
+	} \\
+} \\
+
+
+/*
+
+	TIP:
+
+	Syntax:
+	 $ScarfRootAngle Scarf_00 15
+*/
+$definemacro ScarfRootAngle BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 60 \\
+		yaw_damping 9 \\
+		pitch_stiffness 60 \\
+		pitch_damping 5 \\
+		length 55 \\
+		tip_mass 1 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+
+	TIP:
+
+	Syntax:
+	 $ScarfChildAngle Scarf_01 15
+*/
+$definemacro ScarfChildAngle BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		yaw_stiffness 60 \\
+		yaw_damping 9 \\
+		pitch_stiffness 60 \\
+		pitch_damping 5 \\
+		length 55 \\
+		tip_mass 1 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Silk-like jiggle
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro Silk BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 30 \\
+		tip_mass 200 \\
+		pitch_stiffness 50 \\
+		pitch_damping 7 \\
+		pitch_friction 10 \\
+		pitch_bounce 0 \\
+		yaw_stiffness 50 \\
+		yaw_damping 7 \\
+		yaw_friction 10 \\
+		yaw_bounce 0 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+} \\
+
+
+/*
+	Tail originally made for Nikoliya "Nika" Akulova (AKA.: Nika Sharkeh) which had its HWM released in mid 2019
+	modded to causes the effect "drop" and keep the Z axis pointing to the direction of gravity
+
+	TIP:
+
+	Syntax:
+	 $TailAkulova tail_1 -20 65 -45 45
+*/
+$definemacro TailAkulova BoneName PitchMin PitchMax YawMin YawMax \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 12 \\
+		tip_mass 600 \\
+		pitch_stiffness 55 \\
+		pitch_damping 6 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\ \\
+		pitch_friction 0 \\
+		pitch_bounce 0 \\
+		yaw_stiffness 55 \\
+		yaw_damping 6 \\
+		yaw_constraint $YawMin$ $YawMax$ \\ \\
+		yaw_friction 0 \\
+		yaw_bounce 0 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+	} \\
+} \\
+
+
+/*
+	Cauda originalmente composta de 6 bones que movem-se de forma livre em 60°
+
+	TIP:
+
+	Syntax:
+*/ 
+$definemacro TailType1 BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible \\
+	{ \\
+		length 300 \\
+		tip_mass 0 \\
+		pitch_stiffness 100 \\
+		pitch_damping 10 \\
+		yaw_stiffness 100 \\
+		yaw_damping 10 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Fast and smooth, much like a Lizard tail
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro TailLizard BoneName Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 200 \\
+		tip_mass 8 \\
+		pitch_stiffness 70 \\
+		pitch_damping 5 \\
+		yaw_stiffness 70 \\
+		yaw_damping 5 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
+
+
+/*
+	Originalmente feito para ser usado nas Tiferets da Rosemon que fiz;
+	Cada um dos ângulos por padrão eram 10°
+
+	TIP:
+
+	Syntax:
+	 $Tiferet Prop_0 10 10 10
+*/
+$definemacro Tiferet BoneName AngleLeft AngleUp AngleForward \\
+$jigglebone $BoneName$ { \\
+	has_base_spring { \\
+		stiffness 41 \\
+		damping 6 \\
+		base_mass 10 \\
+		left_constraint -$AngleLeft$ $AngleLeft$ \\
+		up_constraint -$AngleUp$ $AngleUp$ \\
+		forward_constraint -$AngleForward$ $AngleForward$ \\
+	} \\
+} \\
+
+
+/*
+	Not actually used on Rosemon, but this also use "is_flexible" to gain even more movement
+
+	TIP:
+
+	Syntax:
+	 $Tiferet2 Prop_0  -15 15  -15 15  10 10 10
+*/
+$definemacro Tiferet2 BoneName PitchMin PitchMax YawMin YawMax SpringAngleLeft SpringAngleUp SpringAngleForward \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 10 \\
+		tip_mass 10 \\
+		pitch_stiffness 120 \\
+		pitch_damping 4 \\
+		yaw_stiffness 120 \\
+		yaw_damping 4 \\
+		allow_length_flex \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $PitchMin$ $PitchMax$ \\
+		yaw_constraint $YawMin$ $YawMax$ \\
+	} \\
+	has_base_spring { \\
+		stiffness 41 \\
+		damping 6 \\
+		base_mass 10 \\
+		left_constraint -$SpringAngleLeft$ $SpringAngleLeft$ \\
+		up_constraint -$SpringAngleUp$ $SpringAngleUp$ \\
+		forward_constraint -$SpringAngleForward$ $SpringAngleForward$ \\
+	} \\
+} \\
+
+
+/*
+	Herrscher of Human: EGO Cloth jiggles (Left 4 Dead only!)
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro HoHESilk BoneName MinPitch MaxPitch MinYaw MaxYaw \\
+$JiggleBone $BoneName$ { \\
+	is_flexible { \\
+		length 20 \\
+		tip_mass 333 \\
+		pitch_stiffness 23 \\
+		pitch_damping 6 \\
+		pitch_friction .001 \\
+		pitch_bounce 2 \\
+		yaw_stiffness 23 \\
+		yaw_damping 6 \\
+		yaw_friction .001 \\
+		yaw_bounce 1 \\
+		along_stiffness 24 \\
+		along_damping 6 \\
+		allow_length_flex \\
+		pitch_constraint $MinPitch$ $MaxPitch$ \\
+		yaw_constraint $MinYaw$ $MaxYaw$ \\
+	} \\
+} \\
+
+
+/*
+	Herrscher of Flamescion Generic jiggles
+
+	TIP:
+
+	Syntax:
+*/
+$definemacro HoFBraid BoneName MinPitch MaxPitch MinYaw MaxYaw Angle \\
+$jigglebone $BoneName$ { \\
+	is_flexible { \\
+		length 30 \\
+		tip_mass 200 \\
+		pitch_stiffness 50 \\
+		pitch_damping 7 \\
+		yaw_stiffness 50 \\
+		yaw_damping 7 \\
+		along_stiffness 100 \\
+		along_damping 0 \\
+		pitch_constraint $MinPitch$ $MaxPitch$ \\
+		yaw_constraint $MinYaw$ $MaxYaw$ \\
+		angle_constraint $Angle$ \\
+	} \\
+} \\
