@@ -2,21 +2,24 @@
 	This is a index for all Proportion Trick related macros on this prefab
 		Made by Davi (Debiddo) Gooz
 */
-$include ../debiddos_open_macros/includes/ProportionTrick.qci
-$include ../debiddos_open_macros/includes/ProportionTrickBiker.qci
-$include ../debiddos_open_macros/includes/ProportionTrickBoomer.qci
-$include ../debiddos_open_macros/includes/ProportionTrickBoomette.qci
-$include ../debiddos_open_macros/includes/ProportionTrickCharger.qci
-$include ../debiddos_open_macros/includes/ProportionTrickCoach.qci
-$include ../debiddos_open_macros/includes/ProportionTrickGambler.qci
-$include ../debiddos_open_macros/includes/ProportionTrickHulk.qci
-$include ../debiddos_open_macros/includes/ProportionTrickHunter.qci
-$include ../debiddos_open_macros/includes/ProportionTrickJockey.qci
-$include ../debiddos_open_macros/includes/ProportionTrickManager.qci
-$include ../debiddos_open_macros/includes/ProportionTrickMechanic.qci
-$include ../debiddos_open_macros/includes/ProportionTrickNamVet.qci
-$include ../debiddos_open_macros/includes/ProportionTrickProducer.qci
-$include ../debiddos_open_macros/includes/ProportionTrickSmoker.qci
-$include ../debiddos_open_macros/includes/ProportionTrickSpitter.qci
-$include ../debiddos_open_macros/includes/ProportionTrickTeenAngst.qci
-$include ../debiddos_open_macros/includes/ProportionTrickWitch.qci
+//if not defined use this:
+$definevariable _IN "../debiddos_open_macros/includes"
+
+$include $_IN$/macro/ProportionTrick.qci
+$include $_IN$/macro/ProportionTrickBiker.qci
+$include $_IN$/macro/ProportionTrickBoomer.qci
+$include $_IN$/macro/ProportionTrickBoomette.qci
+$include $_IN$/macro/ProportionTrickCharger.qci
+$include $_IN$/macro/ProportionTrickCoach.qci
+$include $_IN$/macro/ProportionTrickGambler.qci
+$include $_IN$/macro/ProportionTrickHulk.qci
+$include $_IN$/macro/ProportionTrickHunter.qci
+$include $_IN$/macro/ProportionTrickJockey.qci
+$include $_IN$/macro/ProportionTrickManager.qci
+$include $_IN$/macro/ProportionTrickMechanic.qci
+$include $_IN$/macro/ProportionTrickNamVet.qci
+$include $_IN$/macro/ProportionTrickProducer.qci
+$include $_IN$/macro/ProportionTrickSmoker.qci
+$include $_IN$/macro/ProportionTrickSpitter.qci
+$include $_IN$/macro/ProportionTrickTeenAngst.qci
+$include $_IN$/macro/ProportionTrickWitch.qci
