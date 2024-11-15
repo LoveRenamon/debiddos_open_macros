@@ -6,12 +6,15 @@
 	Geralmente você não poderá usa-lo diretamente, (pois cada artista cria Shape Keys com nomes diferentes)
 	Portanto use como referência para editar conforme sua necessidade.
 */
-flexcontroller head range -1 1 head_forwardback					// inútil para 9-way
-flexcontroller head range -60 60 head_rightleft					// inútil para 9-way
-flexcontroller head range -30 30 head_updown						// inútil para 9-way
-flexcontroller head range -15 15 head_tilt							// inútil para 9-way
-flexcontroller chest range -35 35 chest_rightleft				// inútil para 9-way
-flexcontroller chest range -21 21 chest_updown					// inútil para 9-way
+// if not defined, use this:
+$definevariable eyedeflection 35
+
+flexcontroller head range -1 1 head_forwardback				// inútil para 9-way
+flexcontroller head range -60 60 head_rightleft				// inútil para 9-way
+flexcontroller head range -30 30 head_updown					// inútil para 9-way
+flexcontroller head range -15 15 head_tilt					// inútil para 9-way
+flexcontroller chest range -35 35 chest_rightleft			// inútil para 9-way
+flexcontroller chest range -21 21 chest_updown				// inútil para 9-way
 flexcontroller gesture range -45 45 gesture_updown			// inútil para 9-way
 flexcontroller gesture range -45 45 gesture_rightleft		// inútil para 9-way
 
