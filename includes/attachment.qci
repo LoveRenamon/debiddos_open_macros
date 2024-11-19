@@ -12,7 +12,7 @@
   I had tested this in mid 2017, but as I remember it gave some problems...
 
   Using this method there is a downside to addons where the modder has explicitly placed
-  which should use one of these removed bones, causing the object to collapse to root (which is usually the ValveBiped.Bip01_Pelvis bone)
+  which one of these removed bones should use, causing the object to collapse to root (which is usually the ValveBiped.Bip01_Pelvis bone)
   in other words, if you want maximum compatibility, use Valve's default, not this one.
 */
 // shared on all source games
@@ -29,8 +29,22 @@ $attachment  righteye $Bone$Head1 -$eyex$  $eyey$  $eyez$  absolute
 //$attachment anim_attachment_RH $Bone$R_Hand 2.43 -1.55 -0.19 rotate 4.36 0.17 -180
 //$attachment anim_attachment_LH $Bone$L_Hand 2.43 -1.55 0.19 rotate 4.36 -179.83 0
 
-// Valve's Defaul (basic)
+// Valve's Default (basic)
 //$attachment forward $Bone$Head1 0 0 0 rotate 0 -77 -90
-//$attachment anim_attachment_head $Bone$Head1 0 0 0 rotate -90 -90 0
-//$attachment anim_attachment_RH "ValveBiped.Anim_Attachment_RH" 0 0 0
-//$attachment anim_attachment_LH "ValveBiped.Anim_Attachment_LH" 0 0 0
+$attachment anim_attachment_head $Bone$Head1 0 0 0 rotate -90 -90 0
+$attachment anim_attachment_RH "ValveBiped.Anim_Attachment_RH" 0 0 0
+$attachment anim_attachment_LH "ValveBiped.Anim_Attachment_LH" 0 0 0
+$attachment righthand $Bone$R_Hand 3 -0.5 0
+$attachment lefthand $Bone$L_Hand 3 -0.5 0
+$attachment emp $Bone$R_Hand 3 -0.5 0
+$attachment emp_LH $Bone$L_Hand 3 -0.5 0
+$attachment L_shoulderBladeAim $Bone$Spine 2 -2 2.5 rotate 0 0 16
+$attachment R_shoulderBladeAim $Bone$Spine 2 -2 -2.9 rotate 0 0 17
+$attachment muzzle_flash $Bone$L_Hand 0 0 0
+
+// TODO: Require know where its actually used
+$attachment grenade0 $Bone$Pelvis  7.45  4.24 -3.33 rotate -13.05 173.19  92.40
+$attachment grenade1 $Bone$Pelvis  2.13  4.48 -6.15 rotate -81.11 178.93  91.12
+$attachment grenade2 $Bone$Pelvis -7.50  3.33  2.16 rotate  22.39   2.47 -86.84
+$attachment grenade3 $Bone$Pelvis -7.89  4.44 -4.03 rotate -33.13  -2.70 -87.60
+$attachment c4       $Bone$Spine2 13.67 -7.55   .95 rotate -29.12  65.25  22.32
