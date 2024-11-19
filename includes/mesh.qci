@@ -1,0 +1,63 @@
+/*
+  This is a highly detailed example of how 
+  to include and use includes/mesh.qci and QC objects.
+*/
+
+/*
+  Since we opened the "mesh" directory, every file from here on will be relative to "./mesh" instead of "./".
+  Extensions are not necessary because the compiler prioritizes DMX over SMD.
+  This rule does not apply to $collisionmodel or $collisionjoints, which require explicit formats.
+*/
+
+// $model is the parameter that enables a range of implementations.
+// Use it only if necessary to save CPU resources.
+$model $Name$ Head.dmx {
+
+// Disables Hardware Morphs (facial expressions managed by hardware).
+// They are faster but need to be configured in Blender and are exclusive to DMX.
+// NOTE: Not Exists for HL2 StudioMDL
+  NoAutoDMXRules
+
+// To realign normals of a material for a cartoon-style look, this is a lifesaver for aligning the head or achieving NPR effects.
+// Ideally, alignment should be done in Blender, but this is a faster and lazier alternative.
+// WARNING: breaks normal seam lines
+//  spherenormals MaterialName GlobalPosX GlobalPosY GlobalPosZ
+
+// Eye structure. These parameters ignore UVMap.
+// It's important to have the right eye first, followed by the left, as with Flexes.
+  eyeball righteye $Bone$Head1 -$eyex$ $eyey$ $eyez$ $eyetex$r $eyer$  $eyed$ none $eyetexs$
+  eyeball lefteye  $Bone$Head1  $eyex$ $eyey$ $eyez$ $eyetex$l $eyer$ -$eyed$ none $eyetexs$
+
+// To animate eyelids EMtomatically, they must follow this sequence:
+//  eyelid "upper_right" $vta$ lowerer 1 -.2813 neutral 0  .1503 raiser 2  .2446 split  .1 eyeball righteyer
+//  eyelid "lower_right" $vta$ lowerer 3 -.3553 neutral 0 -.2877 raiser 4 -.146  split  .1 eyeball righteyer
+//  eyelid "upper_left"  $vta$ lowerer 1 -.2813 neutral 0  .1503 raiser 2  .2446 split -.1 eyeball lefteye
+//  eyelid "lower_left"  $vta$ lowerer 3 -.3553 neutral 0 -.2877 raiser 4 -.146  split -.1 eyeball lefteye
+// We keep the same names for better compatibility, but Flexes can have different names if desired.
+
+// New method using DMX instead of SMD for eyelids, with:
+// EM0 = middle | EM61 = left | EM62 = right | EM63 = up | EM64 = down
+//  DmxEyelid upper Head.dmx lowerer EM64 -.2813 neutral EM0  .1503 raiser EM63  .244 righteyeball righteye lefteyeball lefteye
+//  DmxEyelid lower Head.dmx lowerer EM64 -.3553 neutral EM0 -.2877 raiser EM63 -.146 righteyeball righteye lefteyeball lefteye
+// HACK! You can use only one of the lines to get "practically" the same effect, lol.
+
+// This only defines the lighting vector for the mouth when using a material with the "Teeth" or "VertexLitGeneric" shader along "Client" properties
+// NOTE: apparently only for legacy stuff.
+  mouth 0 "mouth" $Bone$Head1 0 1 0
+
+// Add advanced facial expressions (navigate the repository for more details):
+  $include $_IN$/Flex_FACS.qci
+}
+
+// $body is the simplest way to add meshes and model parts. It doesn’t use any special parameters.
+$body "name string" "file"
+
+// For multiple meshes within a group/slider, use $bodygroup. 
+// Limit: 256 parts (8-bit limit) for viewmodel hands (c_arms) and 4,294,967,296 (32-bit limit) for worldmodels.
+// To calculate the limit, multiply all combinations, including blanks.
+
+$bodygroup "Group Name1" {
+  blank          // Adds an "off" empty slot.
+  studio "file1" // Adds each new mesh (DMX or SMD) relative to "./mesh/".
+  studio "file2" // And so on.
+}

@@ -5,8 +5,7 @@ macro/*
 !attachment.qci
 !base.qci
 !bonemerge.qci
-!base.qci
-!base.qci
+!mesh.qci
 !c_arms_CBBfix.qci
 !Flex*
 !facerules/*

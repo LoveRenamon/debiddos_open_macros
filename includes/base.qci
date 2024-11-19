@@ -1,17 +1,17 @@
 /* Base
-	Aqui segue toda a estrutura que é shared entre playermodels (não survivors e infected), npcs e ragdolls para construir um model, muitos desses parâmetros são para QoL e melhor desempenho
+	Here follows the entire structure that is shared between playermodels (not survivors and infected), NPCs, and ragdolls to build a model. Many of these parameters are for QoL and better performance.
 
-	É possível usar diretamente esse arquivo como $include, entretanto você precisará incluir o $model $body e $bodygroups se aplicáveis
+	It is possible to directly use this file as $include, but you will need to include $model, $body, and $bodygroups if applicable.
 
-	Mas, Why?
-		Para quando eu fazer uma edição num addon, isso ser shared com todos os demais e assim mante-los todos atualizados com as mesmas settings
+	But, Why?
+		So that when I make an edit to an addon, it is shared with all the others, keeping them all updated with the same settings.
 
-	OBS.: Usar esse número absurdo de variáveis só funciona para a Source2013 e afins;
-	Nas demais, por algum erro, elas misturam ou são ignoradas pelo StudioMDL.
+	NOTE: Using this absurd number of variables only works for Source2013 and similar;
+	In others, due to some error, they mix or are ignored by StudioMDL.
 */
 $zbrush
 $upaxis "Z"
-//if not defined use this:
+// if not defined, use below:
 $definevariable _IN "../debiddos_open_macros/includes"
 
 $definevariable eyex "1.77897"
@@ -22,111 +22,132 @@ $definevariable IKHandLoc ".4"
 $definevariable IKFootLoc ".5"
 $definevariable IKHandFootRot ".05"
 
-// Aqui está nossos diretórios para os materiais ($cdmaterial)
+// Let's use our experimental macro index for $jigglebone, $sequence, and much more
+$include $_IN$/macros.qci
+
+// Here are our directories for materials ($cdmaterial)
 $MODaMOD "" $Name$
 $cdmaterials "shared"
 
 $surfaceprop "flesh"
 $contents "solid"
 
-// limita o ângulo do olho pelo valor dessa variável
+// Limits the eye angle by the value of this variable
 $maxeyedeflection $eyedeflection$
 
-// posição do olhos do modelo quando a engine precisar usar algo genérico ou estiver fora da visão dos jogadores.
-// A engine opta em poupar calculos do attachment "eyes" e faz uso desse valor fixo
+// Eye position of the model when the engine needs to use something generic or is out of the players' view.
+// The engine opts to save calculations of the "eyes" attachment and uses this fixed value.
 $eyeposition 0 0 $eyez$
 
-// posição do pivot para calcular a interpolação da luz
+// Pivot position for calculating light interpolation
 $illumposition 0 0 36
 
-// posição e escala global para o modelo ser compilado (segue nos valores padrão)
+// Global position and scale for the model to be compiled (follows default values)
 $origin 0 0 0 0
 $scale 1.0
 
-// para SMD, irá forçar uma suavização entre cada Shape Key / Flex em uso
+// For SMD, will force smoothing between each Shape Key / Flex in use
 $forcephonemecrossfade
 
-// Renderiza o modelo em duas etapas, primeiro opaco e depois a transparência.
-// Isso vem de uma técnica antiga para lidar com gradientes e alpha sorting
+// Renders the model in two stages, first opaque and then transparency.
+// This comes from an old technique to deal with gradients and alpha sorting.
 $mostlyopaque
 
-// Acitamos que o modelo receba a gambiarra da Valve para aumentar a iluminação do modelo em ambientes escuros.
-// chamado também de "cubemap boost"
+// Allows the model to receive Valve's workaround to increase model lighting in dark environments.
+// Also called "cubemap boost."
 $ambientboost
 
-//$lockbonelengths	// Limita distância dos bones, mas falta descobrir onde está o gatilho (útil para custom animations only)
-$collapsebones			// Qualquer bone sem weight e sem $bonemerge será deletado por performace
+//$lockbonelengths    // Limits bone distances, but need to find the trigger (useful for custom animations only)
+$collapsebones        // Any bone without weight and without $bonemerge will be deleted for performance
 
-// Vamos usar nosso index experimental de macros para $jigglebone, $sequence, muito mais
-$include $_IN$/macros.qci
-
-// Vamos usar o $include local do VProject para adicionar cada malha;
-// Isso permite reciclar esse "base.qci" para vários projetos da Source 2013
+// Let's use the local $include from VProject to add each mesh;
+// This allows reusing this "base.qci" for various Source 2013 projects.
+// NOTE: if you gonna use $definebone QC command, call inside
 $include "includes/mesh.qci"
 
-// Sempre inclua proceduralbones para worldmodel (ao menos nos pulsos)
-// referência está em "vrd_base.vrd", tire uma cópia, renomeie e faça suas edições
-// TODO: explicar como criar sua própria lista de proceduralbones
+// Always include proceduralbones for worldmodel (at least on wrists).
+// Reference is in "vrd_base.vrd"; make a copy, rename it, and make your edits.
+// TODO: Explain how to create your own proceduralbones list.
 $proceduralbones "includes/proceduralbones.vrd"
 
-// Attachments mínimos e obrigatórios
+// Minimum mandatory attachments
 $include $_IN$/attachment.qci
+//$attachment nose $Bone$Head1 0 -3 59 absolute
+//$attachment mouth $Bone$Head1 0 -2.50656 64.9419 absolute
+//$attachment amulet $Bone$Spine4 4.3 1.8 0 rotate 0 90 90
+$attachment amulet $Bone$Spine4 4.3 1.8 0 rotate 0 90 90
+$attachment hips $Bone$Pelvis 0 1.8 0 rotate -90 -90 0
+$attachment chest  $Bone$Spine4 4 3 0 rotate 0 90 90
+$attachment pouch1 $Bone$Pelvis 5.5 1 2 rotate -90 -90 0
+$attachment pouch2 $Bone$Pelvis 6.5 0.5 -2 rotate -90 -90 0
 
-// Attachments adicionais e relativos ao seu Project
+// Additional attachments relative to your project
 //$include "includes/attachment.qci"
 
-// Attachments adicionais, usados por addons e outros jogos;
-// Cada attachment "absolute" usa as coordenadas extraídas diretamente do Blender
-//$attachment nose $head$ 0 -3 59 absolute
-//$attachment mouth $head$ 0 -2.50656 64.9419 absolute
-//$attachment chest $chest$ 4 3 0 rotate 0 90 90
-//$attachment amulet $chest$ 4.3 1.8 0 rotate 0 90 90
-//$attachment hips $pelvis$ 0 1.8 0 rotate -90 -90 0
-//$attachment pouch1 $pelvis$ 5.5 1 2 rotate -90 -90 0
-//$attachment pouch2 $pelvis$ 6.5 0.5 -2 rotate -90 -90 0
-//$attachment righthand $handr$ 3 -0.5 0 rotate 0 0 0
-//$attachment lefthand $handl$ 3 -0.5 0 rotate 0 0 0
-//$attachment emp $handr$ 3 -0.5 0 rotate 0 0 0
-//$attachment emp_LH $handl$ 3 -0.5 0 rotate 0 0 0
-//$attachment L_shoulderBladeAim $spine$ 2 -2 2.5 rotate 0 0 16
-//$attachment R_shoulderBladeAim $spine$ 2 -2 -2.9 rotate 0 0 17
-
-// Controla o boost da iluminação para $ambientboost e cubemap
-// pelo que testei, funciona somente no Left 4 Dead e Left 4 Dead 2
+// Control illumination boost for $ambientboost and cubemap
+// As far as I've tested, works only in Left 4 Dead and Left 4 Dead 2
 $keyvalues { AddedAmbientScale .05 }
 
-// Lista de ossos que vamos mover o weight paint para o "parent" e descarta-los
+// List of bones whose weight paint will be moved to the "parent" and discarded
 $alwayscollapse "blender_implicit"
 
-// há pessoas que hardcode o bone a ser usado ao invés do attachment
-// Então, se quiser maior compatibilidade, e não estiver necessitando de 1~3 bones adicionais, substitua $alwayscollapse por $bonemerge;
+// Some people hardcode bone to be used instead of the attachment.
+// If you want greater compatibility and don't need 1~3 additional bones, replace $alwayscollapse with $bonemerge.
 //$alwayscollapse "ValveBiped.forward"
 //$alwayscollapse "ValveBiped.Anim_Attachment_LH"
 //$alwayscollapse "ValveBiped.Anim_Attachment_RH"
 
-// Força a hieraquia abaixo. Tanto os parâmetros $heirarchy ou $hierarchy funcionam. LULz
-// isso é um workarond se sua Pelvis não for o root para o compilador e estiver trabalhando com esqueletos tipo do 3DS Max, XSI ou MikuMikuDance
-//$include $_IN$/hierarchy.qci
+// Forces the below hierarchy. Both $heirarchy and $hierarchy parameters work. LOL.
+// This is a workaround if your Pelvis is not the root for the compiler and you're working with skeletons from 3DS Max, XSI, or MikuMikuDance.
+$hierarchy    $Bone$Pelvis   ""
+$hierarchy    $Bone$L_Thigh  $Bone$Pelvis
+$hierarchy    $Bone$R_Thigh  $Bone$Pelvis
 
-// Força a existência desses ossos mesmo se não houver nenhum WeightPaint, por $bonemerge e $includemodel evita que o compilador descarte-os em prol das otimizações automáticas
+// Used bone to move the character and tell which bone is the master bone when a child doesn't find it parent bone at import
+$root         $Bone$Pelvis
+
+$hierarchy    $Bone$Spine      $Bone$Pelvis
+$hierarchy    $Bone$Spine1     $Bone$Spine
+$hierarchy    $Bone$Spine2     $Bone$Spine1
+$hierarchy    $Bone$Spine4     $Bone$Spine2
+$hierarchy    $Bone$Neck1      $Bone$Spine4
+$hierarchy    $Bone$Head1      $Bone$Neck1
+$hierarchy    $Bone$L_Calf     $Bone$L_Thigh
+$hierarchy    $Bone$L_Foot     $Bone$L_Calf
+$hierarchy    $Bone$L_Toe0     $Bone$L_Foot
+$hierarchy    $Bone$R_Calf     $Bone$R_Thigh
+$hierarchy    $Bone$R_Foot     $Bone$R_Calf
+$hierarchy    $Bone$R_Toe0     $Bone$R_Foot
+$hierarchy    $Bone$L_Clavicle $Bone$Spine4
+$hierarchy    $Bone$L_UpperArm $Bone$L_Clavicle
+$hierarchy    $Bone$L_Forearm  $Bone$L_UpperArm
+$hierarchy    $Bone$L_Hand     $Bone$L_Forearm
+$hierarchy    $Bone$R_Clavicle $Bone$Spine4
+$hierarchy    $Bone$R_UpperArm $Bone$R_Clavicle
+$hierarchy    $Bone$R_Forearm  $Bone$R_UpperArm
+$hierarchy    $Bone$R_Hand     $Bone$R_Forearm
+
+
+// Forces the existence of these bones even if there's no WeightPaint / Skinning, as $bonemerge and $includemodel prevent the compiler from discarding them for automatic optimizations.
 $include $_IN$/bonemerge.qci
 
 /*
-	Kinemáticas Invertidas
+	Inverse Kinematics
 
-	Geralmente não há necessidades de editar as $ikchains
-		IK "pelvis" faz parte do legado deixado pela GoldSource, não sendo mais usado
+	Usually, there is no need to edit $ikchains.
+		IK "pelvis" is part of the legacy left by GoldSource and is no longer used.
 */
-//$ikchain "pelvis" $pelvis$ Z 0 knee .707 .707 0
+//$ikchain "pelvis" $Bone$Pelvis Z 0 knee .707 .707 0
 $ikchain rhand $Bone$R_Hand knee .7 .7 -.1
 $ikchain lhand $Bone$L_Hand knee .7 .7 -.1
 $ikchain rfoot $Bone$R_Foot knee .7 -.7 0 radius 21 center 0 0 0
 $ikchain lfoot $Bone$L_Foot knee .7 -.7 0 radius 21 center 0 0 0
 
-/* Isso indica um valor do quanto a kinemática deve ser aplicada antes de qualquer animação, o primeiro valor é a posição e o segundo a rotação
-				"1" = 100%
-				"0" = 0%
-		Sendo possível usar valores negativos e acima de 1
+/* This indicates a value of how much kinematics should be applied before any animation. 
+	The first value is position and the second is rotation:
+		"1" = 100%
+		"0" = 0%
+	It's possible to use negative values and values above 1.
 */
 $ikautoplaylock rhand $IKHandLoc$ $IKHandFootRot$
 $ikautoplaylock lhand $IKHandLoc$ $IKHandFootRot$
