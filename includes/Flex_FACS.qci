@@ -1,4 +1,4 @@
-// FACs V10 || fuck you gmod and your shitty system which uses order over ID ||
+// FACs V11.1 || fuck you gmod and your shitty system which uses order over ID ||
 flexcontroller eyelid   range  0 1 right_lid_raiser    left_lid_raiser
 flexcontroller eyelid   range  0 1 right_lid_tightener left_lid_tightener
 flexcontroller eyelid   range  0 1 right_lid_droop     left_lid_droop
@@ -20,13 +20,12 @@ flexcontroller phoneme  range  0 1 right_puckerer  left_puckerer
 flexcontroller phoneme  range  0 1 right_funneler  left_funneler
 flexcontroller phoneme  range  0 1 right_stretcher left_stretcher
 flexcontroller phoneme  range  0 1 bite presser tightener jaw_clencher
-flexcontroller phoneme  range  0 2 jaw_drop // FIXME: FUCK YOU GMOD FACEPOSER
+flexcontroller phoneme  range  0 2 jaw_drop                            // FIXME: FUCK YOU GMOD FACEPOSER
 flexcontroller phoneme  range  0 1 right_mouth_drop left_mouth_drop
-
 flexcontroller mouth    range  0 1 smile lower_lip
 
 // more Flexes, stay at end to ensure compatibility with HL2 order and doesnt mess with shitty GMod's faceposer tool
-flexcontroller mouth    range  0 1 smile_2 wide_open
+flexcontroller mouth    range  0 1 wide_open smile_2
 flexcontroller eyelid   range  0 1 right_lid_squinter left_lid_squinter
 flexcontroller nose     range  0 1 right_wrinkler     left_wrinkler
 flexcontroller mouth    range  0 1 right_cheek_puffer left_cheek_puffer
@@ -47,8 +46,7 @@ flexcontroller eyes  range -45 45 eyes_updown eyes_rightleft
 //flexcontroller chest   range -35 35 chest_rightleft
 //flexcontroller chest   range -21 21 chest_updown
 
-//flexcontroller gesture range -45 45 gesture_updown
-//flexcontroller gesture range -45 45 gesture_rightleft
+//flexcontroller gesture range -45 45 gesture_updown gesture_rightleft
 
 /*
   Now the shit I did by mix GMod + L4D2 + FACs
@@ -61,7 +59,7 @@ flexcontroller eyes  range -45 45 eyes_updown eyes_rightleft
   Each name features the respective FAC
 */
 
-// variables
+// Variables
 
 localvar left_blink blinking right_blink
 %blinking    = ( 1 - blink )
@@ -156,7 +154,7 @@ localvar jaw_overage jaw_underage jaw_blend
 
 // Shape Keys / Flexes
 
-// AU0 is a corrective neutral. You use it to define a default expression. Valve did uses for default eye position (rest) (baseline)
+// AU0 is a corrective neutral (rest) (baseline). You use it to define a default expression. Valve did uses for default eye position
 // TIP: You may add many flexcontrollers or shapes as you need to blend around or trigger this shape
 localvar AU0R AU0L
 %AU0R = ( 1 - right_lid_raiser )
@@ -222,7 +220,7 @@ localvar AU45R AU45L
 %AU45R = min( max( blink , right_lid_closer ) + ( ( half_closed * %right_blink / 3.337 ) ) + ( left_lid_closer  * 0.1 ) , 1 )
 %AU45L = min( max( blink , left_lid_closer  ) + ( ( half_closed * %left_blink  / 3.337 ) ) + ( right_lid_closer * 0.1 ) , 1 )
 
-// inner_raiser
+// lid_inner_raiser
 localvar AU1R AU1L
 %AU1R = right_inner_raiser
 %AU1L = left_inner_raiser
@@ -234,7 +232,7 @@ localvar AU1R AU1L
 %AU1R = %AU1R * ( 1 - right_outer_raiser ) * ( 1 - right_lowerer )
 %AU1L = %AU1L * ( 1 - left_outer_raiser  ) * ( 1 - left_lowerer  )
 
-// outer_raiser
+// lid_outer_raiser
 localvar AU2R AU2L
 %AU2R = right_outer_raiser
 %AU2L = left_outer_raiser
@@ -246,7 +244,7 @@ localvar AU2R AU2L
 %AU2R = %AU2R * ( 1 - right_inner_raiser ) * ( 1 - right_lowerer )
 %AU2L = %AU2L * ( 1 - left_inner_raiser  ) * ( 1 - left_lowerer  )
 
-// lowerer
+// lid_lowerer
 localvar AU4R AU4L
 %AU4R = right_lowerer
 %AU4L = left_lowerer
@@ -265,21 +263,21 @@ localvar AU6R AU6L
 // mixes AU1, AU2 and AU4
 localvar AU1AU2AU4R AU1AU2AU4L
 localvar AU1AU2R AU1AU2L AU1AU4R AU1AU4L AU2AU4R AU2AU4L
-%AU1AU2AU4R =       right_inner_raiser   *       right_outer_raiser   * right_lowerer
-%AU1AU2AU4L =       left_inner_raiser    *       left_outer_raiser    * left_lowerer
-%AU1AU2R    =       right_inner_raiser   *       right_outer_raiser   * ( 1 - right_lowerer ) + %AU1AU2AU4R / 2
-%AU1AU2L    =       left_inner_raiser    *       left_outer_raiser    * ( 1 - left_lowerer  ) + %AU1AU2AU4L / 2
-%AU1AU4R    =       right_inner_raiser   * ( 1 - right_outer_raiser ) * right_lowerer         + %AU1AU2AU4R / 2
-%AU1AU4L    =       left_inner_raiser    * ( 1 - left_outer_raiser  ) * left_lowerer          + %AU1AU2AU4L / 2
-%AU2AU4R    = ( 1 - right_inner_raiser ) *       right_outer_raiser   * right_lowerer         + %AU1AU2AU4R / 2
-%AU2AU4L    = ( 1 - left_inner_raiser  ) *       left_outer_raiser    * left_lowerer          + %AU1AU2AU4L / 2
+%AU1AU2AU4R = right_inner_raiser *       right_outer_raiser   * right_lowerer
+%AU1AU2AU4L = left_inner_raiser  *       left_outer_raiser    * left_lowerer
+%AU1AU2R    = right_inner_raiser *       right_outer_raiser   * ( 1 - right_lowerer ) + %AU1AU2AU4R / 3
+%AU1AU2L    = left_inner_raiser  *       left_outer_raiser    * ( 1 - left_lowerer  ) + %AU1AU2AU4L / 3
+%AU1AU4R    = right_inner_raiser * ( 1 - right_outer_raiser ) * right_lowerer         + %AU1AU2AU4R / 3
+%AU1AU4L    = left_inner_raiser  * ( 1 - left_outer_raiser  ) * left_lowerer          + %AU1AU2AU4L / 3
+%AU2AU4R    = right_outer_raiser * ( 1 - right_inner_raiser ) * right_lowerer         + %AU1AU2AU4R / 3
+%AU2AU4L    = left_outer_raiser  * ( 1 - left_inner_raiser  ) * left_lowerer          + %AU1AU2AU4L / 3
 
 // wrinkler
 localvar AU9R AU9L
 %AU9R = max( right_wrinkler * %right_raiser_suppressor * ( 1 - right_upper_raiser ) + ( wrinkler * 0.5 ) , wrinkler )
 %AU9L = max( left_wrinkler  * %left_raiser_suppressor  * ( 1 - left_upper_raiser  ) + ( wrinkler * 0.5 ) , wrinkler )
 
-// upper_raiser
+// upper_raiser and sneer
 localvar AU10R AU10L
 %AU10R = right_upper_raiser * %right_raiser_suppressor + right_sneer * ( 1 - bite * 0.5 )
 %AU10L = left_upper_raiser  * %left_raiser_suppressor  + left_sneer  * ( 1 - bite * 0.5 )
@@ -296,7 +294,7 @@ localvar AU10R AU10L
 %AU12R = %AU12R + smile
 %AU12L = %AU12L + smile
 
-// blend AU12AU25 to AU12 and AU25 amount
+// if AU12 and AU25 is active use AU12AU25 shape
 %AU12AU25R = %right_scaled_part * right_corner_puller
 %AU12AU25L = %left_scaled_part  * left_corner_puller
 
@@ -318,7 +316,7 @@ localvar AU15R AU15L
 %AU15R = right_corner_depressor * ( right_corner_depressor * %right_depressor_suppressor )
 %AU15L = left_corner_depressor  * ( left_corner_depressor  * %left_depressor_suppressor  )
 
-// lower_lip, suppress jaw_open and supressed by bite
+// lower_lip, suppressed by jaw_open and bite
 localvar AU16R AU16L
 %AU16R = %lower_lip_active * %right_lip_suppressor
 %AU16L = %lower_lip_active * %left_lip_suppressor
@@ -383,8 +381,8 @@ localvar AU26R AU26L AU26ZR AU26ZL AU27R AU27L AU27ZR AU27ZL
 %AU27L  = %AU27L  * ( 1 - wide_open )
 %AU26ZR = %AU26ZR * ( 1 - wide_open )
 %AU26ZL = %AU26ZL * ( 1 - wide_open )
-%AU27ZR = %AU27ZR * ( 1 - wide_open ) + wide_open * 1.128 * %biting
-%AU27ZL = %AU27ZL * ( 1 - wide_open ) + wide_open * 1.128 * %biting
+%AU27ZR = %AU27ZR * ( 1 - wide_open ) + ( wide_open * 1.128 * %biting )
+%AU27ZL = %AU27ZL * ( 1 - wide_open ) + ( wide_open * 1.128 * %biting )
 
 // lip_suck
 localvar AU28R AU28L
@@ -425,4 +423,5 @@ localvar AD96L AD96R
 %mouth = %AU27R*0.5+%AU27L*0.5+%AU27ZR*0.5+%AU27ZL*0.5+%AU26ZR*0.35+%AU26ZL*0.35 \\
        + %AU22R*0.35+%AU22L*0.35+%AU18R*0.25+%AU18L*0.25+%AU25R*0.35+%AU25L*0.35 \\
        + %AU12AU25R*0.5+%AU12AU25L*0.5+%AU16L*0.30+%AU16R*0.30+%AU10R*0.5+%AU10L*0.5 \\
+       //+%AU10SR*0.35+%AU10SL*0.35 \\
        + %AD32*0.5
